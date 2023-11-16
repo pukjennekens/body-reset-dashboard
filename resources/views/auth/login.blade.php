@@ -4,4 +4,9 @@
 
         @livewire('forms.login')
     </div>
+
+
+    <div class="mt-4">
+        <a href="{{ route('auth.reset-password') }}" class="text-sm text-gray-600 hover:underline">Wachtwoord vergeten?</a>
+    </div>
 </x-auth-layout>

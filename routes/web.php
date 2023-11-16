@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/reset-password', [AuthController::class, 'resetPassword'])->name('auth.reset-password');
