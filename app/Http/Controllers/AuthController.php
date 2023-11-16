@@ -8,11 +8,15 @@ class AuthController extends Controller
 {
     public function login()
     {
+        if(auth()->check()) return redirect()->route('dashboard');
+
         return view('auth.login');
     }
 
     public function resetPassword()
     {
+        if(auth()->check()) auth()->logout();
+
         return view('auth.reset-password');
     }
 }

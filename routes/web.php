@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/reset-password', [AuthController::class, 'resetPassword'])->name('auth.reset-password');
+
+Route::get('/dashboard', [DashboardController::class, 'dashboardRedirector'])->name('dashboard');
