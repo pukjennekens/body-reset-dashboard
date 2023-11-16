@@ -47,6 +47,7 @@ class ResetPassword extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
+                    ->subject('Wachtwoord resetten')
                     ->greeting('Hey ' . $this->user->name)
                     ->line('U ontvangt deze e-mail omdat we een wachtwoord reset verzoek hebben ontvangen voor uw account.')
                     ->line('Klik op de onderstaande knop om uw wachtwoord te resetten.')
