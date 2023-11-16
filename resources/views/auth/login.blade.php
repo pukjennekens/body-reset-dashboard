@@ -1,3 +1,7 @@
 <x-auth-layout>
-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit recusandae id repellendus quam aliquid. Vitae porro illum fugit, repellendus quam perspiciatis consequuntur fuga natus veritatis nulla accusamus hic consequatur laudantium?
+    <div class="space-y-2">
+        <h1 class="text-2xl font-bold">Inloggen</h1>
+
+        @livewire('forms.login')
+    </div>
 </x-auth-layout>

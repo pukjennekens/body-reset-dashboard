@@ -9,11 +9,14 @@
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
-<body>
-    <div class="min-h-screen flex justify-center items-center" style="background-image: linear-gradient( rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) ), url({{@asset('img/auth-background.jpg')}}">
-        <div class="bg-white rounded-sm p-8 shadow-lg mx-4 max-w-md">
-            {{ $slot }}
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+
+    <div class="bg-white p-8 rounded shadow-sm w-full mx-4 max-w-md">
+        <div class="text-center mb-8">
+            <img src="{{ asset('img/logo.svg') }}" alt="{{ env('APP_NAME') }}" class="w-32 mx-auto">
         </div>
+
+        {{ $slot }}
     </div>
 
     @livewireScripts
