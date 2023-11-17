@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/reset-password', [AuthController::class, 'resetPassword'])->name('auth.reset-password');
 Route::get('/reset-password/{token}', [AuthController::class, 'resetPasswordToken'])->name('auth.reset-password.token');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 // Dashboard routes all with auth middleware, make a group with prefix /dashboard and middleware auth
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {

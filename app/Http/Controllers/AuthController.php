@@ -28,4 +28,11 @@ class AuthController extends Controller
             'request' => $request,
         ]);
     }
+
+    public function logout()
+    {
+        auth()->logout();
+
+        return redirect()->route('auth.login');
+    }
 }

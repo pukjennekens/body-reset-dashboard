@@ -24,7 +24,7 @@
                     Credits kopen
                 </a>
 
-                <x-modal name="buy-credits" :show="true" focusable>
+                <x-modal name="buy-credits" focusable>
                     <x-slot name="title">
                         Credits kopen
                     </x-slot>
@@ -43,6 +43,22 @@
                 <x-slot name="content">
                     <x-dropdown-link :href="route('dashboard')">
                         {{ __('Test link') }}
+                    </x-dropdown-link>
+
+                    <x-dropdown-link :href="route('dashboard')">
+                        {{ __('Test link') }}
+                    </x-dropdown-link>
+
+                    <hr class="my-2">
+
+                    <x-dropdown-link :href="route('dashboard')">
+                        <form action="{{ route('auth.logout') }}" method="POST">
+                            @csrf
+
+                            <button type="submit" class="w-full text-left">
+                                {{ __('Log out') }}
+                            </button>
+                        </form>
                     </x-dropdown-link>
                 </x-slot>
             </x-dropdown>
