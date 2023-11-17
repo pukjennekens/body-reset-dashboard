@@ -17,7 +17,8 @@ class ResetPassword extends Component
         $this->validate();
 
         $user = User::where('email', $this->form->email)->first();
-        if($user) $user->notify(new NotificationsResetPassword($user, $user->createToken('reset-password')->plainTextToken));
+        $token = app('auth.password.broker')->createToken($user);
+        if($user) $user->notify(new NotificationsResetPassword($user, $token));
 
         $this->submitted = true;
     }

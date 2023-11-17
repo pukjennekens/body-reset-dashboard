@@ -20,8 +20,12 @@ class AuthController extends Controller
         return view('auth.reset-password');
     }
 
-    public function resetPasswordToken()
+    public function resetPasswordToken(Request $request)
     {
+        if(auth()->check()) auth()->logout();
         
+        return view('auth.reset-password-token', [
+            'request' => $request,
+        ]);
     }
 }
