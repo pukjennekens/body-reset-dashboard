@@ -44,4 +44,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the body composition measurements for the user.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bodyCompositionMeasurements()
+    {
+        return $this->hasMany(BodyCompositionMeasurement::class);
+    }
+
+    /**
+     * Get the girth measurements for the user.
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function girthMeasurements()
+    {
+        return $this->hasMany(GirthMeasurement::class);
+    }
 }
