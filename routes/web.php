@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -24,5 +25,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'dashboardRedirector'])->name('dashboard');
 
-    Route::get('/metingen', [DashboardController::class, 'userHome'])->name('dashboard.user.home');
+    Route::get('/measurements', [DashboardController::class, 'userHome'])->name('dashboard.user.home');
+
+    Route::get('/users', [AdminUserController::class, 'index'])->name('dashboard.admin.users.index');
 });
