@@ -22,4 +22,6 @@ Route::get('/reset-password/{token}', [AuthController::class, 'resetPasswordToke
 // Dashboard routes all with auth middleware, make a group with prefix /dashboard and middleware auth
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'dashboardRedirector'])->name('dashboard');
+
+    Route::get('/metingen', [DashboardController::class, 'userHome'])->name('dashboard.user.home');
 });

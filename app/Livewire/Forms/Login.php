@@ -17,7 +17,8 @@ class Login extends Component
             return;
         }
 
-        // Redirect the user to the dashboard.
+        request()->session()->regenerate();
+
         return redirect()->route('dashboard');
     }
 
