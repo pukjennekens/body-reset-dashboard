@@ -20,7 +20,7 @@
         <div class="flex items-center gap-8">
             <div class="flex items-center gap-6">
                 <p>U heeft <strong>10</strong> credits</p>
-                <a href="#" class="rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600" x-data="" x-on:click.prevent="$dispatch('open-modal', 'buy-credits')">
+                <a href="#" class="rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600 text-center" x-data="" x-on:click.prevent="$dispatch('open-modal', 'buy-credits')">
                     Credits kopen
                 </a>
 
