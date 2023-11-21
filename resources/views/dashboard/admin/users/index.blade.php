@@ -3,6 +3,5 @@
         Gebruikers
     </h2>
 
-    {{-- Use the UserTable --}}
     <livewire:user-table />
 </x-dashboard-layout>
