@@ -5,3 +5,19 @@
 [x-cloak] {
     display: none !important;
 }
+
+table thead th {
+    @apply bg-white border text-left p-2;
+}
+
+table tbody tr {
+    @apply border;
+}
+
+table tbody tr td {
+    @apply p-2;
+}
+
+table tbody tr:nth-child(even) {
+    @apply bg-white;
+}

@@ -29,5 +29,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('dashboard.admin.users.index');
     Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('dashboard.admin.users.show')->where('id', '[0-9]+');
-    Route::get('/users/{id}/measurements', [AdminUserController::class, 'show'])->name('dashboard.admin.users.measurements')->where('id', '[0-9]+');
+    Route::get('/users/{id}/measurements', [AdminUserController::class, 'measurements'])->name('dashboard.admin.users.measurements')->where('id', '[0-9]+');
 });
