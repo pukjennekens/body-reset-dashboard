@@ -17,8 +17,8 @@ class BodyCompositionMeasurementsTable extends Component
         $this->bodyCompositionMeasurements = $this->user->bodyCompositionMeasurements;
     }
 
-    #[On('body-composition-ceasurement-created')]
-    #[On('body-composition-ceasurement-deleted')]
+    #[On('body-composition-measurement-created')]
+    #[On('body-composition-measurement-deleted')]
     public function refreshBodyCompositionMeasurements($userId)
     {
         $this->user = User::find($userId);
@@ -30,7 +30,7 @@ class BodyCompositionMeasurementsTable extends Component
         $bodyCompositionMeasurement = $this->user->bodyCompositionMeasurements()->find($id);
         $bodyCompositionMeasurement->delete();
 
-        $this->dispatch('body-composition-ceasurement-deleted', userId: $this->user->id);
+        $this->dispatch('body-composition-measurement-deleted', userId: $this->user->id);
         $this->dispatch('user-updated', id: $this->user->id);
     }
 

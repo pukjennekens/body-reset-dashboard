@@ -31,7 +31,7 @@
                 @endforeach
             </tbody>
         </table>
-        @else
-            <p>Er zijn nog geen metingen gedaan.</p>
-        @endif
+    @else
+        <p>Er zijn nog geen metingen gedaan.</p>
+    @endif
 </div>

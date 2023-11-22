@@ -35,31 +35,9 @@
                 Nieuwe omtrek meting invoeren voor {{ $user->name }}
             </x-slot>
 
-            test...
+            @livewire('forms.new-girth-measurement', ['id' => $user->id])
         </x-modal>
     </div>
 
-    <table class="table-fixed">
-        <thead>
-            <th>Datum</th>
-            <th>Borst</th>
-            <th>Heup</th>
-            <th>Dij</th>
-            <th>Onder borst</th>
-            <th>Biceps</th>
-            <th>Taille</th>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>2023-11-21</td>
-                <td>170</td>
-                <td>70</td>
-                <td>50</td>
-                <td>20</td>
-                <td>15</td>
-                <td>60</td>
-            </tr>
-        </tbody>
-    </table>
+    @livewire('girth-measurements-table', ['id' => $user->id])
 @endsection
