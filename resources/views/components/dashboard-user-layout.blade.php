@@ -20,6 +20,11 @@
                     <i class="fa-solid fa-ruler"></i>
                     Metingen
                 </a>
+
+                <a href="{{ route('dashboard.admin.users.credits', ['id' => $user->id]) }}" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100 inline-flex items-center gap-2 {{ request()->routeIs('dashboard.admin.users.credits') ? 'border-primary' : '' }}"">
+                    <i class="fa-solid fa-coins"></i>
+                    Credits
+                </a>
             </div>
         </div>
 

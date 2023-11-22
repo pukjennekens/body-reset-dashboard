@@ -23,4 +23,10 @@ class AdminUserController extends Controller
         $user = User::findOrFail($id);
         return view('dashboard.admin.users.measurements', compact('user'));
     }
+
+    public function credits($id)
+    {
+        $user = User::findOrFail($id);
+        return view('dashboard.admin.users.credits', compact('user'));
+    }
 }
