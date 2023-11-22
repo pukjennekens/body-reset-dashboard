@@ -31,6 +31,7 @@ class BodyCompositionMeasurementsTable extends Component
         $bodyCompositionMeasurement->delete();
 
         $this->dispatch('body-composition-ceasurement-deleted', userId: $this->user->id);
+        $this->dispatch('user-updated', id: $this->user->id);
     }
 
     public function render()

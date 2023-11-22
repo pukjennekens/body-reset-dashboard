@@ -73,4 +73,30 @@ class User extends Authenticatable
     {
         return $this->hasMany(GirthMeasurement::class);
     }
+
+    /**
+     * Get the users weight
+     * @return float|bool The users weight or false if no weight is found
+     */
+    public function getWeight()
+    {
+        $weight = $this->bodyCompositionMeasurements()->orderBy('date', 'desc')->first();
+
+        if ($weight) return $weight->weight;
+
+        return false;
+    }
+
+    /**
+     * Get the users height
+     * @return float|bool The users height or false if no height is found
+     */
+    public function getLength()
+    {
+        $height = $this->bodyCompositionMeasurements()->orderBy('date', 'desc')->first();
+
+        if ($height) return $height->height;
+
+        return false;
+    }
 }

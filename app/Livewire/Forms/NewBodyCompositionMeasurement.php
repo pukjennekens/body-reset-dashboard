@@ -24,6 +24,7 @@ class NewBodyCompositionMeasurement extends Component
         $this->user->bodyCompositionMeasurements()->create($this->form->toArray());
 
         $this->dispatch('body-composition-ceasurement-created', userId: $this->user->id);
+        $this->dispatch('user-updated', id: $this->user->id);
     }
 
     public function render()

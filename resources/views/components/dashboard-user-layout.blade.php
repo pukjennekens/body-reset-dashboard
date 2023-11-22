@@ -8,13 +8,7 @@
 
     <div class="grid grid-cols-12 gap-8">
         <div class="col-span-3">
-            <h2 class="text-2xl font-semibold mb-1">
-                {{ $user->name }}
-            </h2>
-
-            <p class="mb-4 text-sm">
-                {{ Carbon\Carbon::parse($user->birth_date)->age }} jaar
-            </p>
+            @livewire('user-profile-info', ['id' => $user->id])
 
             <div class="flex flex-col gap-2">
                 <a href="{{ route('dashboard.admin.users.show', ['id' => $user->id]) }}" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100 inline-flex items-center gap-2 {{ request()->routeIs('dashboard.admin.users.show') ? 'border-primary' : '' }}">

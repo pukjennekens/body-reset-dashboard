@@ -28,6 +28,8 @@ class UserPersonalInfo extends Component
         $this->user->update($this->form->toArray());
 
         $this->editing = false;
+
+        $this->dispatch('user-updated', id: $this->user->id);
     }
 
     public function toggleEditing()
