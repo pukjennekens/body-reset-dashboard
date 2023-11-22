@@ -15,37 +15,11 @@
                 Nieuwe lichaamssamenstelling meting invoeren voor {{ $user->name }}
             </x-slot>
 
-            test...
+            @livewire('forms.new-body-composition-measurement', ['id' => $user->id])
         </x-modal>
     </div>
 
-    <table class="table-fixed">
-        <thead>
-            <th>Datum</th>
-            <th>Hoogte</th>
-            <th>Gewicht</th>
-            <th>Botmassa</th>
-            <th>Spiermassa</th>
-            <th>Vet percentage</th>
-            <th>Water percentage</th>
-            <th>Metabolische leeftijd</th>
-            <th>Visceraal vet</th>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>2023-11-21</td>
-                <td>170</td>
-                <td>70</td>
-                <td>50</td>
-                <td>20</td>
-                <td>15</td>
-                <td>60</td>
-                <td>35</td>
-                <td>10</td>
-            </tr>
-        </tbody>
-    </table>
+    @livewire('body-composition-measurements-table', ['id' => $user->id])
 
     <div class="flex items-center justify-between mb-4 mt-12">
         <h3 class="text-2xl font-semibold">
