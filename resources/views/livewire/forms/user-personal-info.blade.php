@@ -32,6 +32,9 @@
             {{-- Phone --}}
             <x-input.text name="form.phone_number" label="Telefoonnummer" value="{{ old('form.phone_number', $user ? $user->phone_number : '') }}" :disabled="!$editing" />
 
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
             {{-- Street --}}
             <x-input.text name="form.street_name" label="Straat" value="{{ old('form.street_name', $user ? $user->street_name : '') }}" :disabled="!$editing" />
 
