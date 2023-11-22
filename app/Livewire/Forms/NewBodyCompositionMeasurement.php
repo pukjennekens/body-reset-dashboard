@@ -27,6 +27,8 @@ class NewBodyCompositionMeasurement extends Component
         $this->dispatch('user-updated', id: $this->user->id);
 
         $this->form->reset();
+
+        $this->dispatch('close-modal', name: 'new-body-composition-measurement');
     }
 
     public function render()

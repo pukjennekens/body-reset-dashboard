@@ -26,6 +26,8 @@ class NewGirthMeasurement extends Component
         $this->dispatch('user-updated', id: $this->user->id);
 
         $this->form->reset();
+
+        $this->dispatch('close-modal', name: 'new-girth-measurement');
     }
 
     public function render()
