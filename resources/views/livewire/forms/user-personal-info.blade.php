@@ -12,7 +12,7 @@
     </div>
 
     <form wire:submit="updatePersonalInfo" class="space-y-4">
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
             {{-- Name --}}
             <x-input.text name="form.name" label="Naam" value="{{ old('form.name', $user ? $user->name : '') }}" :disabled="!$editing" />
 

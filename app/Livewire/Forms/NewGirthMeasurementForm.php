@@ -10,21 +10,21 @@ class NewGirthMeasurementForm extends Form
     #[Rule('required|date')]
     public string $date = '';
 
-    #[Rule('required')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $chest = '';
 
-    #[Rule('required')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $hips = '';
 
-    #[Rule('required')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $thigh = '';
 
-    #[Rule('required')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $under_breast = '';
 
-    #[Rule('required')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $upper_arm = '';
 
-    #[Rule('required')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $waist = '';
 }

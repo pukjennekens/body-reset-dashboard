@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\StringToFloatWithCommasCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,7 +23,15 @@ class BodyCompositionMeasurement extends Model
     ];
 
     protected $casts = [
-        'date' => 'date',
+        'date'             => 'date',
+        'height'           => StringToFloatWithCommasCast::class,
+        'weight'           => StringToFloatWithCommasCast::class,
+        'bone_mass'        => StringToFloatWithCommasCast::class,
+        'muscle_mass'      => StringToFloatWithCommasCast::class,
+        'fat_percentage'   => StringToFloatWithCommasCast::class,
+        'water_percentage' => StringToFloatWithCommasCast::class,
+        'metabolic_age'    => StringToFloatWithCommasCast::class,
+        'visceral_fat'     => StringToFloatWithCommasCast::class,
     ];
 
     /**

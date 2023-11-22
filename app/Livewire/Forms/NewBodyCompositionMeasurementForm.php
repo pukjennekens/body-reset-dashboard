@@ -10,28 +10,28 @@ class NewBodyCompositionMeasurementForm extends Form
     #[Rule('required|date')]
     public string $date = '';
 
-    #[Rule('required|numeric')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $height = '';
 
-    #[Rule('required|numeric')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $weight = '';
 
-    #[Rule('required|numeric')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $bone_mass = '';
 
-    #[Rule('required|numeric')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $muscle_mass = '';
 
-    #[Rule('required|numeric')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $fat_percentage = '';
 
-    #[Rule('required')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $water_percentage = '';
 
-    #[Rule('required|numeric')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $metabolic_age = '';
 
-    #[Rule('required|numeric')]
+    #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]
     public string $visceral_fat = '';
 
 }

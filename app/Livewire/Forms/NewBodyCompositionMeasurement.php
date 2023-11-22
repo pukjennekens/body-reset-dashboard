@@ -25,6 +25,8 @@ class NewBodyCompositionMeasurement extends Component
 
         $this->dispatch('body-composition-measurement-created', userId: $this->user->id);
         $this->dispatch('user-updated', id: $this->user->id);
+
+        $this->form->reset();
     }
 
     public function render()
