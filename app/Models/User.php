@@ -62,7 +62,7 @@ class User extends Authenticatable
      */
     public function bodyCompositionMeasurements()
     {
-        return $this->hasMany(BodyCompositionMeasurement::class)->orderBy('date', 'asc');
+        return $this->hasMany(BodyCompositionMeasurement::class);
     }
 
     /**
@@ -71,7 +71,7 @@ class User extends Authenticatable
      */
     public function girthMeasurements()
     {
-        return $this->hasMany(GirthMeasurement::class)->orderBy('date', 'asc');
+        return $this->hasMany(GirthMeasurement::class);
     }
 
     /**

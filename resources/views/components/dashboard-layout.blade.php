@@ -71,10 +71,8 @@
 
     <header class="w-full px-8 flex bg-primary text-white">
         <div class="flex">
-            <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="#"><i class="fa-solid fa-chart-simple"></i> Prestaties</a>
-            <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="#"><i class="fa-regular fa-calendar"></i> Afspraken</a>
-            <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="#"><i class="fa-solid fa-utensils"></i> Voedingsschema's</a>
-            <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="#"><i class="fa-solid fa-folder"></i> Documenten</a>
+            <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
+            <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
         </div>
     </header>
 

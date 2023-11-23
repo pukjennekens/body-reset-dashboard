@@ -14,7 +14,7 @@ class GirthMeasurementsTable extends Component
     public function mount($id = null)
     {
         $this->user = User::find($id) ?? new User();
-        $this->girthMeasurements = $this->user->girthMeasurements;
+        $this->girthMeasurements = $this->user->girthMeasurements->sortBy('date');;
     }
 
     #[On('girth-measurement-created')]
@@ -22,7 +22,7 @@ class GirthMeasurementsTable extends Component
     public function refreshgirthMeasurements($userId)
     {
         $this->user = User::find($userId);
-        $this->girthMeasurements = $this->user->girthMeasurements;
+        $this->girthMeasurements = $this->user->girthMeasurements->sortBy('date');;
     }
 
     public function deleteGirthMeasurement($id)

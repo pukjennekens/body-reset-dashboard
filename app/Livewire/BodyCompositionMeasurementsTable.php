@@ -14,7 +14,7 @@ class BodyCompositionMeasurementsTable extends Component
     public function mount($id = null)
     {
         $this->user = User::find($id) ?? new User();
-        $this->bodyCompositionMeasurements = $this->user->bodyCompositionMeasurements;
+        $this->bodyCompositionMeasurements = $this->user->bodyCompositionMeasurements->sortBy('date');
     }
 
     #[On('body-composition-measurement-created')]
@@ -22,7 +22,7 @@ class BodyCompositionMeasurementsTable extends Component
     public function refreshBodyCompositionMeasurements($userId)
     {
         $this->user = User::find($userId);
-        $this->bodyCompositionMeasurements = $this->user->bodyCompositionMeasurements;
+        $this->bodyCompositionMeasurements = $this->user->bodyCompositionMeasurements->sortBy('date');
     }
 
     public function deleteBodyCompositionMeasurement($id)
