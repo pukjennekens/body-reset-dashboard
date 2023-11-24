@@ -37,6 +37,12 @@ class UserPersonalInfo extends Component
         $this->editing = ! $this->editing;
     }
 
+    public function cancelEditing()
+    {
+        $this->editing = false;
+        $this->form->fill($this->user->toArray());
+    }
+
     public function render()
     {
         return view('livewire.forms.user-personal-info', [

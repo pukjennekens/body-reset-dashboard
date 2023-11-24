@@ -58,9 +58,15 @@
         </div>
 
         @if($editing)
-            <x-input.button type="submit">
-                Opslaan
-            </x-input.button>
+            <div class="inline-flex items-center gap-4">
+                <x-input.button type="submit">
+                    Opslaan
+                </x-input.button>
+
+                <button type="button" class="text-red-400 underline" wire:click="cancelEditing">
+                    Annuleren
+                </button>
+            </div>
         @endif
     </form>
 </div>
