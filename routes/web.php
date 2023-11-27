@@ -32,6 +32,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('dashboard.admin.users.show')->where('id', '[0-9]+');
     Route::get('/users/{id}/measurements', [AdminUserController::class, 'measurements'])->name('dashboard.admin.users.measurements')->where('id', '[0-9]+');
     Route::get('/users/{id}/credits', [AdminUserController::class, 'credits'])->name('dashboard.admin.users.credits')->where('id', '[0-9]+');
+    Route::get('/users/{id}/nutrition-plans', [AdminUserController::class, 'nutritionPlans'])->name('dashboard.admin.users.nutrition-plans')->where('id', '[0-9]+');
 
     Route::get('/recipies', [AdminRecipiesController::class, 'index'])->name('dashboard.admin.recipies.index');
 });
