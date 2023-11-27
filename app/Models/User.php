@@ -99,4 +99,13 @@ class User extends Authenticatable
 
         return false;
     }
+
+    /**
+     * Get the users nutrition plans
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function nutritionPlans()
+    {
+        return $this->hasMany(NutritionPlan::class);
+    }
 }

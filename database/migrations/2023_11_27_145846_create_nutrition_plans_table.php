@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->date('date');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('creator_user_id')->constrained('users')->cascadeOnDelete();
             $table->longText('remark')->nullable();
             $table->longText('remark_internal')->nullable();
 
