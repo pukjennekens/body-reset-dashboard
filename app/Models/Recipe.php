@@ -36,4 +36,23 @@ class Recipe extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the meal type
+     * @return string
+     */
+    public function getMealTypeAttribute($value)
+    {
+        if($value == 'breakfast') {
+            return 'Ontbijt';
+        } elseif($value == 'lunch') {
+            return 'Lunch';
+        } elseif($value == 'dinner') {
+            return 'Diner';
+        } elseif($value == 'snack') {
+            return 'Snack';
+        } else {
+            return 'Onbekend';
+        }
+    }
 }
