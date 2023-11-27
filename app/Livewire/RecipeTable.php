@@ -22,8 +22,6 @@ final class RecipeTable extends PowerGridComponent
 
     public function setUp(): array
     {
-        $this->showCheckBox();
-
         return [
             Header::make()->showSearchInput(),
             Footer::make()
@@ -44,18 +42,61 @@ final class RecipeTable extends PowerGridComponent
 
     public function addColumns(): PowerGridColumns
     {
-        return PowerGrid::columns();
+        return PowerGrid::columns()
+            ->addColumn('prepation_time', function(Recipe $recipe) {
+                $hours   = floor($recipe->prepation_time / 60);
+                $minutes = $recipe->prepation_time % 60;
+                return sprintf('%02d:%02d', $hours, $minutes);
+            })
+            ->addColumn('allergens', function(Recipe $recipe) {
+                $allergensOptions = [
+                    'gluten'         => 'Gluten',
+                    'crustaceans'    => 'Schaaldieren',
+                    'eggs'           => 'Eieren',
+                    'fish'           => 'Vis',
+                    'peanuts'        => 'Pinda\'s',
+                    'soybeans'       => 'Soja',
+                    'milk'           => 'Melk',
+                    'nuts'           => 'Noten',
+                    'celery'         => 'Selderij',
+                    'mustard'        => 'Mosterd',
+                    'sesame'         => 'Sesam',
+                    'sulfur_dioxide' => 'Sulfieten',
+                    'lupin'          => 'Lupines',
+                    'molluscs'       => 'Weekdieren',
+                ];
+
+                $allergens = array_map(function($allergen) use ($allergensOptions) {
+                    return $allergensOptions[$allergen];
+                }, $recipe->allergens);
+
+                if (count($allergens) > 3) {
+                    $allergens = array_slice($allergens, 0, 3);
+                    $allergens[] = '...';
+                }
+
+                return implode(', ', $allergens);
+            });
     }
 
     public function columns(): array
     {
         return [
             Column::add()
-                ->title(__('Name'))
+                ->title(__('Naam'))
                 ->field('name')
                 ->searchable()
                 ->sortable(),
-            Column::action('Action')
+            Column::add()
+                ->title(__('Bereidingstijd'))
+                ->field('prepation_time'),
+            Column::add()
+                ->title(__('Aantal personen'))
+                ->field('number_of_people'),
+            Column::add()
+                ->title(__('Allergenen'))
+                ->field('allergens'),
+            Column::action('Acties')
         ];
     }
 
@@ -63,12 +104,6 @@ final class RecipeTable extends PowerGridComponent
     {
         return [
         ];
-    }
-
-    #[\Livewire\Attributes\On('edit')]
-    public function edit($rowId): void
-    {
-        $this->js('alert('.$rowId.')');
     }
 
     #[\Livewire\Attributes\On('recipe-created')]
@@ -91,7 +126,7 @@ final class RecipeTable extends PowerGridComponent
             Button::add('show-recipe')  
                 ->slot('<i class="fas fa-edit"></i>')
                 ->class('rounded-lg px-4 py-1.5 border-0 bg-primary text-sm text-white uppercase font-semibold hover:bg-green-600')
-                ->dispatch('edit', ['id' => $row->id]),
+                ->openModal('forms.recipe', ['id' => $row->id]),
             Button::add('delete-recipe')
                 ->slot('<i class="fas fa-trash"></i>')
                 ->class('rounded-lg px-4 py-1.5 border-0 bg-red-500 text-sm text-white uppercase font-semibold hover:bg-green-600')

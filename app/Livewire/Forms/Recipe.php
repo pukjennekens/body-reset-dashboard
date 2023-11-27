@@ -5,8 +5,9 @@ namespace App\Livewire\Forms;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use App\Models\Recipe as RecipeModel;
+use LivewireUI\Modal\ModalComponent;
 
-class Recipe extends Component
+class Recipe extends ModalComponent
 {
     public RecipeForm $form;
     public $allergens = array();
@@ -31,11 +32,18 @@ class Recipe extends Component
     public $ingredients = [];
     public $steps       = [];
 
-    private $recipe;
+    public $recipe;
 
     public function mount($id = null)
     {
         $this->recipe = RecipeModel::find($id);
+
+        Log::debug('Recipe: ', [$this->recipe]);
+
+        if($this->recipe) {
+            $this->ingredients = $this->recipe->ingredients;
+            $this->steps       = $this->recipe->steps;
+        }
     }
 
     public function createRecipe()
@@ -73,24 +81,26 @@ class Recipe extends Component
                     'user_id'     => auth()->user()->id,
                 ]
             ));
+
+            $this->form->name             = '';
+            $this->form->description      = '';
+            $this->form->tips             = '';
+            $this->form->meal_type        = 'breakfast';
+            $this->form->prepation_time   = '';
+            $this->form->number_of_people = '';
+            $this->ingredients = [];
+            $this->steps       = [];
+            $this->allergens   = [];
         }
 
-        $this->form->name             = '';
-        $this->form->description      = '';
-        $this->form->tips             = '';
-        $this->form->meal_type        = 'breakfast';
-        $this->form->prepation_time   = '';
-        $this->form->number_of_people = '';
-        $this->ingredients = [];
-        $this->steps       = [];
-        $this->allergens   = [];
-
-        $this->dispatch('close-modal', name: 'new-recipe');
+        $this->closeModal();
         $this->dispatch('recipe-created', id: $this->recipe->id);
     }
 
     public function render()
     {
-        return view('livewire.forms.recipe');
+        return view('livewire.forms.recipe', [
+            'recipe' => $this->recipe ?? new RecipeModel(),
+        ]);
     }
 }

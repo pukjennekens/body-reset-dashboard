@@ -4,18 +4,10 @@
             Recepten
         </h2>
 
-        <button class="rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600" x-data="" x-on:click.prevent="$dispatch('open-modal', 'new-recipe')">
+        <button class="rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600" x-data="" x-on:click.prevent="$dispatch('openModal', {component: 'forms.recipe'})">
             <i class="fas fa-plus"></i>
         </button>
     </div>
-
-    <x-modal name="new-recipe" focusable>
-        <x-slot name="title">
-            Nieuw recept toevoegen
-        </x-slot>
-
-        @livewire('forms.recipe')
-    </x-modal>
 
     <livewire:recipe-table />
 </x-dashboard-layout>

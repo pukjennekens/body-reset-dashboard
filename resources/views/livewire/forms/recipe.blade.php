@@ -1,6 +1,6 @@
 <form wire:submit="createRecipe">
     <div x-data="{ tab: 'general' }">
-        <div class="border-b flex my-4"> 
+        <div class="border-b flex mb-4"> 
             <button class="px-2 py-1 inline-flex items-center gap-2 hover:bg-gray-200" :class="tab == 'general' && 'border-b border-primary'" x-on:click.prevent="tab = 'general'">
                 <i class="fas fa-info"></i>
                 Algemeen
@@ -22,22 +22,26 @@
         <div class="space-y-4" x-show="tab === 'general'" x-transition>
             <h3 class="text-xl font-semibold mb-2">Algemeen</h3>
 
-            <x-input.text name="form.name" label="Naam" />
+            <x-input.text name="form.name" label="Naam" value="{{ old('form.name', $recipe ? $recipe->name : '') }}" />
 
             <x-input.select name="form.meal_type" label="Soort maaltijd">
-                <option value="breakfast">Ontbijt</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Diner</option>
-                <option value="snack">Snack</option>
+                <option value="breakfast" {{ old('form.meal_type', $recipe ? $recipe->meal_type : '') == 'breakfast' ? 'selected' : '' }}>Ontbijt</option>
+                <option value="lunch" {{ old('form.meal_type', $recipe ? $recipe->meal_type : '') == 'lunch' ? 'selected' : '' }}>Lunch</option>
+                <option value="dinner" {{ old('form.meal_type', $recipe ? $recipe->meal_type : '') == 'dinner' ? 'selected' : '' }}>Diner</option>
+                <option value="snack" {{ old('form.meal_type', $recipe ? $recipe->meal_type : '') == 'snack' ? 'selected' : '' }}>Snack</option>
             </x-input.select>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <x-input.text name="form.prepation_time" label="Bereidingstijd (in minuten)" />
-                <x-input.text name="form.number_of_people" label="Aantal personen" />
+                <x-input.text name="form.prepation_time" label="Bereidingstijd (in minuten)" value="{{ old('form.prepation_time', $recipe ? $recipe->prepation_time : '') }}" />
+                <x-input.text name="form.number_of_people" label="Aantal personen" value="{{ old('form.number_of_people', $recipe ? $recipe->number_of_people : '') }}" />
             </div>
 
-            <x-input.textarea name="form.description" label="Omschrijving" />
-            <x-input.textarea name="form.tips" label="Tip" />
+            <x-input.textarea name="form.description" label="Omschrijving">
+                {{ old('form.description', $recipe ? $recipe->description : '') }}
+            </x-input.textarea>
+            <x-input.textarea name="form.tips" label="Tip">
+                {{ old('form.tips', $recipe ? $recipe->tips : '') }}
+            </x-input.textarea>
         </div>
 
         <div class="space-y-1" x-show="tab === 'allergens'" x-transition>
@@ -46,7 +50,7 @@
             <div class="flex flex-col">
                 @foreach($allergensOptions as $key => $option)
                     <label class="inline-flex items-center">
-                        <input type="checkbox" wire:model="allergens" value="{{ $key }}">
+                        <input type="checkbox" wire:model.fill="allergens" value="{{ $key }}" @if(in_array($key, old('allergens', $recipe ? $recipe->allergens : []))) checked @endif>
                         <span class="ml-2 text-sm">{{ __($option) }}</span>
                     </label>
                 @endforeach
