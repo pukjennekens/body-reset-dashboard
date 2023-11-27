@@ -50,6 +50,11 @@ final class RecipeTable extends PowerGridComponent
     public function columns(): array
     {
         return [
+            Column::add()
+                ->title(__('Name'))
+                ->field('name')
+                ->searchable()
+                ->sortable(),
             Column::action('Action')
         ];
     }
@@ -66,14 +71,31 @@ final class RecipeTable extends PowerGridComponent
         $this->js('alert('.$rowId.')');
     }
 
+    #[\Livewire\Attributes\On('recipe-created')]
+    public function recipeCreated(): void
+    {
+        $this->refresh();
+    }
+
+    #[\Livewire\Attributes\On('delete-recipe')]
+    public function deleteRecipe($id): void
+    {
+        $recipe = Recipe::find($id);
+        $recipe->delete();
+        $this->refresh();
+    }
+
     public function actions(\App\Models\Recipe $row): array
     {
         return [
-            Button::add('edit')
-                ->slot('Edit: '.$row->id)
-                ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+            Button::add('show-recipe')  
+                ->slot('<i class="fas fa-edit"></i>')
+                ->class('rounded-lg px-4 py-1.5 border-0 bg-primary text-sm text-white uppercase font-semibold hover:bg-green-600')
+                ->dispatch('edit', ['id' => $row->id]),
+            Button::add('delete-recipe')
+                ->slot('<i class="fas fa-trash"></i>')
+                ->class('rounded-lg px-4 py-1.5 border-0 bg-red-500 text-sm text-white uppercase font-semibold hover:bg-green-600')
+                ->dispatch('delete-recipe', ['id' => $row->id]),
         ];
     }
 

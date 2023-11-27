@@ -19,6 +19,7 @@ class Recipe extends Model
         'allergens',
         'ingredients',
         'steps',
+        'user_id',
     ];
 
     protected $casts = [
