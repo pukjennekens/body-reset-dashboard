@@ -5,6 +5,10 @@
         Het uitvoeren van deze actie kan niet ongedaan worden gemaakt.
     </p>
 
+    @error('deletion')
+        <p class="bg-red-200 rounded-lg border border-red-500 text-red-500 text-sm px-4 py-2 mt-2">{{ $message }}</p>
+    @enderror
+
     <div>
         <hr class="my-4">
     </div>
