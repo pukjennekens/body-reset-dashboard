@@ -17,8 +17,9 @@ class UserNutritionPlansTable extends Component
         $this->nutritionPlans = $this->user->nutritionPlans->sortBy('date');
     }
 
-    #[On('nutritionPlanCreated')]
-    #[On('nutritionPlanDeleted')]
+    #[On('nutrition-plan-created')]
+    #[On('nutrition-plan-updated')]
+    #[On('nutrition-plan-deleted')]
     public function refreshNutritionPlans($userId)
     {
         $this->user = User::find($userId);

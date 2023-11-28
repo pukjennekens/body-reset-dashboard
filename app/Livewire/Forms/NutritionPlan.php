@@ -79,7 +79,7 @@ class NutritionPlan extends ModalComponent
             ));
         }
 
-        $this->dispatch('user-nutrition-plan-created');
+        $this->dispatch('nutrition-plan-created', userId: auth()->user()->id);
         $this->closeModal();
     }
 
