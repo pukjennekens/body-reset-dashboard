@@ -22,7 +22,7 @@
                         <td>{{ $measurement->under_breast }}</td>
                         <td>{{ $measurement->upper_arm }}</td>
                         <td>{{ $measurement->waist }}</td>
-                        <td class="text-center"><button wire:click="deleteGirthMeasurement({{ $measurement->id }})" class="text-xs bg-red-500 text-white p-2 rounded-md hover:bg-red-700"><i class="fas fa-trash"></i></button></td>
+                        <td class="text-center"><button wire:click="$dispatch('openModal', {component: 'delete-girth-measurement', arguments: {id: {{ $measurement->id }}}})" class="text-xs bg-red-500 text-white p-2 rounded-md hover:bg-red-700"><i class="fas fa-trash"></i></button></td>
                     </tr>
                 @endforeach
             </tbody>

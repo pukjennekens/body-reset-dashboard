@@ -25,15 +25,6 @@ class BodyCompositionMeasurementsTable extends Component
         $this->bodyCompositionMeasurements = $this->user->bodyCompositionMeasurements->sortBy('date');
     }
 
-    public function deleteBodyCompositionMeasurement($id)
-    {
-        $bodyCompositionMeasurement = $this->user->bodyCompositionMeasurements()->find($id);
-        $bodyCompositionMeasurement->delete();
-
-        $this->dispatch('body-composition-measurement-deleted', userId: $this->user->id);
-        $this->dispatch('user-updated', id: $this->user->id);
-    }
-
     public function render()
     {
         return view('livewire.body-composition-measurements-table', [

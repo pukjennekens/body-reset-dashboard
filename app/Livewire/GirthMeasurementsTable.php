@@ -25,15 +25,6 @@ class GirthMeasurementsTable extends Component
         $this->girthMeasurements = $this->user->girthMeasurements->sortBy('date');;
     }
 
-    public function deleteGirthMeasurement($id)
-    {
-        $girthMeasurement = $this->user->girthMeasurements()->find($id);
-        $girthMeasurement->delete();
-
-        $this->dispatch('girth-measurement-deleted', userId: $this->user->id);
-        $this->dispatch('user-updated', id: $this->user->id);
-    }
-
     public function render()
     {
         return view('livewire.girth-measurements-table', [

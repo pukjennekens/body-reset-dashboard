@@ -107,16 +107,10 @@ final class RecipeTable extends PowerGridComponent
     }
 
     #[\Livewire\Attributes\On('recipe-created')]
+    #[\Livewire\Attributes\On('recipe-updated')]
+    #[\Livewire\Attributes\On('recipe-deleted')]
     public function recipeCreated(): void
     {
-        $this->refresh();
-    }
-
-    #[\Livewire\Attributes\On('delete-recipe')]
-    public function deleteRecipe($id): void
-    {
-        $recipe = Recipe::find($id);
-        $recipe->delete();
         $this->refresh();
     }
 
@@ -129,8 +123,8 @@ final class RecipeTable extends PowerGridComponent
                 ->openModal('forms.recipe', ['id' => $row->id]),
             Button::add('delete-recipe')
                 ->slot('<i class="fas fa-trash"></i>')
-                ->class('rounded-lg px-4 py-1.5 border-0 bg-red-500 text-sm text-white uppercase font-semibold hover:bg-green-600')
-                ->dispatch('delete-recipe', ['id' => $row->id]),
+                ->class('rounded-lg px-4 py-1.5 border-0 bg-red-500 text-sm text-white uppercase font-semibold hover:bg-red-700')
+                ->openModal('delete-recipe', ['id' => $row->id]),
         ];
     }
 
