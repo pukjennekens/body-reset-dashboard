@@ -1,19 +1,19 @@
 <form wire:submit="createRecipe">
     <div x-data="{ tab: 'general' }">
-        <div class="border-b flex mb-4"> 
-            <button class="px-2 py-1 inline-flex items-center gap-2 hover:bg-gray-200" :class="tab == 'general' && 'border-b border-primary'" x-on:click.prevent="tab = 'general'">
+        <div class="border-b flex flex-col sm:flex-row mb-4"> 
+            <button class="px-2 py-1 inline-flex items-center gap-2 hover:bg-gray-200" :class="tab == 'general' && 'sm:border-b sm:border-primary bg-gray-200 sm:bg-white'" x-on:click.prevent="tab = 'general'">
                 <i class="fas fa-info"></i>
                 Algemeen
             </button>
-            <button class="px-2 py-1 inline-flex items-center gap-2 hover:bg-gray-200" :class="tab == 'allergens' && 'border-b border-primary'" x-on:click.prevent="tab = 'allergens'">
+            <button class="px-2 py-1 inline-flex items-center gap-2 hover:bg-gray-200" :class="tab == 'allergens' && 'sm:border-b sm:border-primary bg-gray-200 sm:bg-white'" x-on:click.prevent="tab = 'allergens'">
                 <i class="fa-solid fa-star-of-life"></i>
                 Allergenen
             </button>
-            <button class="px-2 py-1 inline-flex items-center gap-2 hover:bg-gray-200" :class="tab == 'ingredients' && 'border-b border-primary'" x-on:click.prevent="tab = 'ingredients'">
+            <button class="px-2 py-1 inline-flex items-center gap-2 hover:bg-gray-200" :class="tab == 'ingredients' && 'sm:border-b sm:border-primary bg-gray-200 sm:bg-white'" x-on:click.prevent="tab = 'ingredients'">
                 <i class="fa-solid fa-basket-shopping"></i>
                 Ingrediënten
             </button>
-            <button class="px-2 py-1 inline-flex items-center gap-2 hover:bg-gray-200" :class="tab == 'preparation' && 'border-b border-primary'" x-on:click.prevent="tab = 'preparation'">
+            <button class="px-2 py-1 inline-flex items-center gap-2 hover:bg-gray-200" :class="tab == 'preparation' && 'sm:border-b sm:border-primary bg-gray-200 sm:bg-white'" x-on:click.prevent="tab = 'preparation'">
                 <i class="fa-solid fa-kitchen-set"></i>
                 Bereiden
             </button>

@@ -1,23 +1,25 @@
 <form wire:submit="createNutritionPlan" x-data="{ tab: 'general' }">
-    <div class="grid grid-cols-12">
-        <div class="col-span-3">
-            <ul class="flex flex-col border-r pb-4 h-full">
-                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'general'" :class="tab == 'general' && 'border-r-2 border-primary'">Algemeen</li>
-                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'monday'" :class="tab == 'monday' && 'border-r-2 border-primary'">Maandag</li>
-                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'tuesday'" :class="tab == 'tuesday' && 'border-r-2 border-primary'">Dinsdag</li>
-                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'wednesday'" :class="tab == 'wednesday' && 'border-r-2 border-primary'">Woensdag</li>
-                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'thursday'" :class="tab == 'thursday' && 'border-r-2 border-primary'">Donderdag</li>
-                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'friday'" :class="tab == 'friday' && 'border-r-2 border-primary'">Vrijdag</li>
-                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'saturday'" :class="tab == 'saturday' && 'border-r-2 border-primary'">Zaterdag</li>
-                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'sunday'" :class="tab == 'sunday' && 'border-r-2 border-primary'">Zondag</li>
+    <div class="grid grid-cols-1 sm:grid-cols-12">
+        <div class="col-span-1 sm:col-span-3">
+            <ul class="flex flex-col sm:border-r sm:pb-4 h-full">
+                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'general'" :class="tab == 'general' && 'sm:border-r-2 sm:border-primary bg-gray-200 sm:bg-white'">Algemeen</li>
+                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'monday'" :class="tab == 'monday' && 'sm:border-r-2 sm:border-primary bg-gray-200 sm:bg-white'">Maandag</li>
+                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'tuesday'" :class="tab == 'tuesday' && 'sm:border-r-2 sm:border-primary bg-gray-200 sm:bg-white'">Dinsdag</li>
+                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'wednesday'" :class="tab == 'wednesday' && 'sm:border-r-2 sm:border-primary bg-gray-200 sm:bg-white'">Woensdag</li>
+                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'thursday'" :class="tab == 'thursday' && 'sm:border-r-2 sm:border-primary bg-gray-200 sm:bg-white'">Donderdag</li>
+                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'friday'" :class="tab == 'friday' && 'sm:border-r-2 sm:border-primary bg-gray-200 sm:bg-white'">Vrijdag</li>
+                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'saturday'" :class="tab == 'saturday' && 'sm:border-r-2 sm:border-primary bg-gray-200 sm:bg-white'">Zaterdag</li>
+                <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" x-on:click="tab = 'sunday'" :class="tab == 'sunday' && 'sm:border-r-2 sm:border-primary bg-gray-200 sm:bg-white'">Zondag</li>
             </ul>
         </div>
 
-        <div class="col-span-9 px-4">
+        <hr class="sm:hidden my-2">
+
+        <div class="col-span-1 sm:col-span-9 sm:px-4">
             <div x-show="tab === 'general'" x-transition class="space-y-4 pb-4">
                 <h3 class="text-xl font-semibold mb-2">Algemeen</h3>
 
-                <x-input.date name="form.date" label="Datum" value="{{ old('form.date', $nutritionPlan ? $nutritionPlan->date->format('Y-m-d') : '') }}" />
+                <x-input.date name="form.date" label="Datum" value="{{ old('form.date', $nutritionPlan->date ? $nutritionPlan->date->format('Y-m-d') : '') }}" />
 
                 <x-input.textarea label="Opmerkingen" name="form.remark">
                     {{ old('form.remark', $nutritionPlan ? $nutritionPlan->remark : '') }}
