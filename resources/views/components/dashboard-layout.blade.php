@@ -76,7 +76,7 @@
 
             <x-dropdown align="left" width="48">
                 <x-slot name="trigger">
-                    <button type="button" class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Instellingen</button>
+                    <button type="button" class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Beheer</button>
                 </x-slot>
 
                 <x-slot name="content">
