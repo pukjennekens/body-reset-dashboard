@@ -17,7 +17,7 @@
             <div x-show="tab === 'general'" x-transition class="space-y-4 pb-4">
                 <h3 class="text-xl font-semibold mb-2">Algemeen</h3>
 
-                <x-input.date name="form.date" label="Datum" value="{{ old('form.date', $nutritionPlan ? $nutritionPlan->date : '') }}" />
+                <x-input.date name="form.date" label="Datum" value="{{ old('form.date', $nutritionPlan ? $nutritionPlan->date->format('Y-m-d') : '') }}" />
 
                 <x-input.textarea label="Opmerkingen" name="form.remark">
                     {{ old('form.remark', $nutritionPlan ? $nutritionPlan->remark : '') }}

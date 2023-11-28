@@ -39,6 +39,7 @@ class NutritionPlan extends Model
         'recipies_friday'    => 'array',
         'recipies_saturday'  => 'array',
         'recipies_sunday'    => 'array',
+        'date'               => 'date',
     ];
 
     /**

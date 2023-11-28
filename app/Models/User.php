@@ -106,6 +106,6 @@ class User extends Authenticatable
      */
     public function nutritionPlans()
     {
-        return $this->hasMany(NutritionPlan::class);
+        return $this->hasMany(NutritionPlan::class, 'user_id', 'id');
     }
 }

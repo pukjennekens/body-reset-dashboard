@@ -10,4 +10,6 @@
             <i class="fas fa-plus"></i>
         </button>
     </div>
+
+    @livewire('user-nutrition-plans-table', ['userId' => $user->id])
 @endsection

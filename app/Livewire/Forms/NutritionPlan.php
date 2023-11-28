@@ -7,6 +7,8 @@ use App\Models\NutritionPlan as NutritionPlanModel;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Log;
 
+use function Ramsey\Uuid\v1;
+
 class NutritionPlan extends ModalComponent
 {
     public NutritionPlanForm $form;
@@ -45,7 +47,7 @@ class NutritionPlan extends ModalComponent
     {
         $this->validate();
 
-        if ($this->nutritionPlan) {
+        if ($this->nutritionPlan->id) {
             $this->nutritionPlan->update(array_merge(
                 $this->form->toArray(),
                 [
@@ -56,6 +58,8 @@ class NutritionPlan extends ModalComponent
                     'recipies_friday'    => $this->recipies_friday,
                     'recipies_saturday'  => $this->recipies_saturday,
                     'recipies_sunday'    => $this->recipies_sunday,
+                    'creator_user_id'    => auth()->user()->id,
+                    'user_id'            => auth()->user()->id,
                 ]
             ));
         } else {
@@ -69,11 +73,13 @@ class NutritionPlan extends ModalComponent
                     'recipies_friday'    => $this->recipies_friday,
                     'recipies_saturday'  => $this->recipies_saturday,
                     'recipies_sunday'    => $this->recipies_sunday,
+                    'creator_user_id'    => auth()->user()->id,
+                    'user_id'            => auth()->user()->id,
                 ]
             ));
         }
 
-        $this->emit('nutritionPlanCreated', $this->nutritionPlan->id);
+        $this->dispatch('user-nutrition-plan-created');
         $this->closeModal();
     }
 
