@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminRecipiesController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminSettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/users/{id}/nutrition-plans', [AdminUserController::class, 'nutritionPlans'])->name('dashboard.admin.users.nutrition-plans')->where('id', '[0-9]+');
 
     Route::get('/recipies', [AdminRecipiesController::class, 'index'])->name('dashboard.admin.recipies.index');
+
+    Route::get('/settings/credits', [AdminSettingsController::class, 'credits'])->name('dashboard.admin.settings.credits');
 });

@@ -34,6 +34,10 @@ class User extends Authenticatable
         'city',
         'country',
         'province',
+
+        // Credit info
+        'credits',
+        'credits_expiration_date',
     ];
 
     /**
@@ -52,8 +56,9 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'email_verified_at'       => 'datetime',
+        'password'                => 'hashed',
+        'credits_expiration_date' => 'date',
     ];
 
     /**

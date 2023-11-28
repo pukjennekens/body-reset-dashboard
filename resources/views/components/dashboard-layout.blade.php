@@ -73,6 +73,18 @@
         <div class="flex">
             <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
             <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
+
+            <x-dropdown align="left" width="48">
+                <x-slot name="trigger">
+                    <button type="button" class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Instellingen</button>
+                </x-slot>
+
+                <x-slot name="content">
+                    <x-dropdown-link :href="route('dashboard.admin.settings.credits')">
+                        {{ __('Credits instellingen') }}
+                    </x-dropdown-link>
+                </x-slot>
+            </x-dropdown>
         </div>
     </header>
 
