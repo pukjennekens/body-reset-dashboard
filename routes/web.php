@@ -38,6 +38,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/recipies', [AdminRecipiesController::class, 'index'])->name('dashboard.admin.recipies.index');
 
     Route::get('/settings/credits', [AdminSettingsController::class, 'credits'])->name('dashboard.admin.settings.credits');
+    Route::get('/settings/credit-orders', [AdminUserController::class, 'creditOrders'])->name('dashboard.admin.settings.credit-orders');
 });
 
 // Mollie webhook route

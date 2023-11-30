@@ -36,7 +36,7 @@ class BuyCredits extends ModalComponent
             'webhookUrl'  => 'https://google.com', // route('webhooks.mollie'),
         ]);
 
-        $creditOrder = CreditOrder::create([
+        CreditOrder::create([
             'user_id'           => auth()->id(),
             'credit_option_id'  => $this->selectedCreditOption,
             'payment_method'    => null,

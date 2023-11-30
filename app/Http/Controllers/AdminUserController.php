@@ -35,4 +35,9 @@ class AdminUserController extends Controller
         $user = User::findOrFail($id);
         return view('dashboard.admin.users.nutrition-plans', compact('user'));
     }
+
+    public function creditOrders()
+    {
+        return view('dashboard.admin.settings.credit-orders');
+    }
 }
