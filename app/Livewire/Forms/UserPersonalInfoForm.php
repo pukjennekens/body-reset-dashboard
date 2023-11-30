@@ -39,4 +39,10 @@ class UserPersonalInfoForm extends Form
 
     #[Rule('required')]
     public string $province = '';
+
+    #[Rule('required|numeric')]
+    public string $credits = '';
+
+    #[Rule('date|nullable')]
+    public string $credits_expiration_date = '';
 }

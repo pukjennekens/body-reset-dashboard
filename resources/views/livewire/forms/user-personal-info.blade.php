@@ -57,6 +57,18 @@
             <x-input.text name="form.province" label="Provincie" value="{{ old('form.province', $user ? $user->province : '') }}" :disabled="!$editing" />
         </div>
 
+        <h3 class="text-2xl font-semibold">
+            Credits:
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {{-- Credits --}}
+            <x-input.text name="form.credits" label="Credits" value="{{ old('form.credits', $user ? $user->credits : '') }}" :disabled="!$editing" />
+
+            {{-- Credits expiration date --}}
+            <x-input.date name="form.credits_expiration_date" label="Credits vervaldatum" value="{{ old('form.credits_expiration_date', $user ? $user->credits_expiration_date->format('Y-m-d') : '') }}" :disabled="!$editing" />
+        </
+
         @if($editing)
             <div class="inline-flex items-center gap-4">
                 <x-input.button type="submit">
