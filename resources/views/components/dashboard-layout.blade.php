@@ -28,7 +28,7 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <p>Uw credits verlopen op {{ auth()->user()->credits_expiration_date->format('d-m-Y') }}</p>
+                            <p class="px-4 py-2 text-center">Uw credits verlopen op {{ auth()->user()->credits_expiration_date->format('d-m-Y') }}</p>
                         </x-slot>
                     </x-dropdown>
                 @else

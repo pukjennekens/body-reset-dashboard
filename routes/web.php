@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminSettingsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,4 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 });
 
 // Mollie webhook route
-Route::post('/webhooks/mollie', [WebhookController::class, 'handle'])->name('webhooks.mollie');
+Route::post('/webhooks/mollie', [WebhookController::class, 'mollie'])->name('webhooks.mollie');

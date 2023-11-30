@@ -113,4 +113,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(NutritionPlan::class, 'user_id', 'id');
     }
+
+    /**
+     * Get the users credit orders
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function creditOrders()
+    {
+        return $this->hasMany(CreditOrder::class);
+    }
+
+    /**
+     * Add credits to the user
+     * @param int $credits The amount of credits to add
+     * @return void
+     */
+    public function addCredits(int $credits)
+    {
+        $this->credits += $credits;
+        $this->save();
+    }
 }

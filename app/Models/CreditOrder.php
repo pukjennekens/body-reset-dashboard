@@ -29,4 +29,21 @@ class CreditOrder extends Model
     {
         return $this->belongsTo(CreditOption::class);
     }
+
+    public function getStatusAttribute($value)
+    {
+        switch($value) {
+            case 'open': $value = 'Open'; break;
+            case 'canceled': $value = 'Geannuleerd'; break;
+            case 'pending': $value = 'In afwachting'; break;
+            case 'authorized': $value = 'Geautoriseerd'; break;
+            case 'expired': $value = 'Verlopen'; break;
+            case 'failed': $value = 'Mislukt'; break;
+            case 'paid': $value = 'Betaald'; break;
+        }
+
+        if(!$value) $value = 'Nog niet bekend';
+
+        return $value;
+    }
 }

@@ -26,6 +26,12 @@ class BuyCredits extends ModalComponent
 
         $creditOption = CreditOption::find($this->selectedCreditOption);
 
+        $creditOrder = CreditOrder::create([
+            'user_id'           => auth()->id(),
+            'credit_option_id'  => $this->selectedCreditOption,
+            'payment_method'    => null,
+        ]);
+
         $payment = Mollie::api()->payments()->create([
             'amount' => [
                 'currency' => 'EUR',
@@ -33,13 +39,13 @@ class BuyCredits extends ModalComponent
             ],
             'description' => $creditOption->credits . ' credits. ' . $creditOption->validityPeriodString(),
             'redirectUrl' => route('dashboard'),
-            'webhookUrl'  => 'https://google.com', // route('webhooks.mollie'),
+            'webhookUrl'  => 'https://501617ee8c6a.ngrok.app/webhooks/mollie', // route('webhooks.mollie'),
+            'metadata'    => [
+                'credit_order_id' => $creditOrder->id,
+            ],
         ]);
 
-        CreditOrder::create([
-            'user_id'           => auth()->id(),
-            'credit_option_id'  => $this->selectedCreditOption,
-            'payment_method'    => null,
+        $creditOrder->update([
             'status'            => $payment->status,
             'order_description' => $payment->description,
             'currency'          => $payment->amount->currency,
