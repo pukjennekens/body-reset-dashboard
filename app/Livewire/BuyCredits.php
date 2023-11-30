@@ -39,7 +39,7 @@ class BuyCredits extends ModalComponent
             ],
             'description' => $creditOption->credits . ' credits. ' . $creditOption->validityPeriodString(),
             'redirectUrl' => route('dashboard'),
-            'webhookUrl'  => 'https://501617ee8c6a.ngrok.app/webhooks/mollie', // route('webhooks.mollie'),
+            'webhookUrl'  => route('webhooks.mollie'),
             'metadata'    => [
                 'credit_order_id' => $creditOrder->id,
             ],
