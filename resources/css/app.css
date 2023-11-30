@@ -21,3 +21,7 @@ table tbody tr td {
 table tbody tr:nth-child(even) {
     @apply bg-white;
 }
+
+.buy-credits-form label:has(input:checked) {
+    @apply border-primary;
+}

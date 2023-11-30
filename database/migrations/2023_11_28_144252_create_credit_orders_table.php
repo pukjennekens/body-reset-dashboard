@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('credit_option_id')->constrained();
-            $table->string('payment_method');
-            $table->string('status');
-            $table->string('order_description');
-            $table->string('currency');
-            $table->float('price');
+            $table->string('payment_method')->nullable();
+            $table->enum('status', ['open', 'canceled', 'pending', 'authorized', 'expired', 'failed', 'paid'])->nullable();
+            $table->string('order_description')->nullable();
+            $table->string('currency')->nullable();
+            $table->float('price')->nullable();
             $table->timestamps();
         });
     }

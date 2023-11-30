@@ -39,3 +39,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
     Route::get('/settings/credits', [AdminSettingsController::class, 'credits'])->name('dashboard.admin.settings.credits');
 });
+
+// Mollie webhook route
+Route::post('/webhooks/mollie', [WebhookController::class, 'handle'])->name('webhooks.mollie');
