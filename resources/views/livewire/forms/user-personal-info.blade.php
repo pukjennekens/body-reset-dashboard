@@ -57,9 +57,11 @@
             <x-input.text name="form.province" label="Provincie" value="{{ old('form.province', $user ? $user->province : '') }}" :disabled="!$editing" />
         </div>
 
-        <h3 class="text-2xl font-semibold">
-            Credits:
-        </h3>
+        <div>
+            <h3 class="text-2xl font-semibold mt-12">
+                Credits:
+            </h3>
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
             {{-- Credits --}}
