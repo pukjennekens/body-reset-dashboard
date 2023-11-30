@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('anamnesis', function (Blueprint $table) {
+        Schema::create('anamneses', function (Blueprint $table) {
             $table->id();
 
             $table->string('gastrointestinal_issues')->nullable();                   // Maag- of darmklachten
