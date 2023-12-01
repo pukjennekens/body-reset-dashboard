@@ -96,6 +96,10 @@
                     <x-dropdown-link :href="route('dashboard.admin.settings.credit-orders')">
                         {{ __('Bestellingen') }}
                     </x-dropdown-link>
+
+                    <x-dropdown-link :href="route('dashboard.admin.settings.branches')">
+                        {{ __('Filialen') }}
+                    </x-dropdown-link>
                 </x-slot>
             </x-dropdown>
         </div>

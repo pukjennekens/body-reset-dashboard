@@ -10,4 +10,9 @@ class AdminSettingsController extends Controller
     {
         return view('dashboard.admin.settings.credits');
     }
+
+    public function branches()
+    {
+        return view('dashboard.admin.settings.branches');
+    }
 }
