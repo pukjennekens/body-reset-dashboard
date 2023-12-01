@@ -38,6 +38,9 @@ class User extends Authenticatable
         // Credit info
         'credits',
         'credits_expiration_date',
+
+        // Trainer
+        'trainer_user_id',
     ];
 
     /**

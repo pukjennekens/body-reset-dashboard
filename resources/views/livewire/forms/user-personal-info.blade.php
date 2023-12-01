@@ -69,7 +69,20 @@
 
             {{-- Credits expiration date --}}
             <x-input.date name="form.credits_expiration_date" label="Credits vervaldatum" value="{{ old('form.credits_expiration_date', $user ? $user->credits_expiration_date->format('Y-m-d') : '') }}" :disabled="!$editing" />
-        </
+        </div>
+
+        <div>
+            <h3 class="text-2xl font-semibold mt-12">
+                Trainer:
+            </h3>
+
+            <x-input.select name="form.trainer_user_id" label="Trainer" :disabled="!$editing">
+                <option value="">Geen trainer</option>
+                @foreach($trainers as $trainer)
+                    <option value="{{ $trainer->id }}" {{ old('form.trainer_user_id', $user ? $user->trainer_user_id : '') == $trainer->id ? 'selected' : '' }}>{{ $trainer->name }}</option>
+                @endforeach
+            </x-input.select>
+        </div>
 
         @if($editing)
             <div class="inline-flex items-center gap-4">

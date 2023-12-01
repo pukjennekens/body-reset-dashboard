@@ -45,4 +45,7 @@ class UserPersonalInfoForm extends Form
 
     #[Rule('date|nullable')]
     public string $credits_expiration_date = '';
+
+    #[Rule('nullable|exists:users,id')]
+    public $trainer_user_id = 0;
 }

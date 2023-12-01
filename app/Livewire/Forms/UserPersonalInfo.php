@@ -11,12 +11,14 @@ class UserPersonalInfo extends Component
     public UserPersonalInfoForm $form;
 
     public User $user;
+    public $trainers = [];
 
     public $editing = false;
 
     public function mount($id = null)
     {
         $this->user = User::find($id) ?? new User();
+        $this->trainers = User::where('role', 'trainer')->pluck('name', 'id')->toArray();
     }
 
     public function updatePersonalInfo()
