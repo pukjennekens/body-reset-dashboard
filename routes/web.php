@@ -42,6 +42,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/settings/credits', [AdminSettingsController::class, 'credits'])->name('dashboard.admin.settings.credits');
     Route::get('/settings/credit-orders', [AdminUserController::class, 'creditOrders'])->name('dashboard.admin.settings.credit-orders');
     Route::get('/settings/branches', [AdminSettingsController::class, 'branches'])->name('dashboard.admin.settings.branches');
+    Route::get('/settings/branches/{id}', [AdminSettingsController::class, 'branch'])->name('dashboard.admin.settings.branches.show')->where('id', '[0-9]+');
 });
 
 // Mollie webhook route
