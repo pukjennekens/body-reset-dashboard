@@ -18,6 +18,12 @@ class AdminUserController extends Controller
         return view('dashboard.admin.users.show', compact('user'));
     }
 
+    public function anamnesis($id)
+    {
+        $user = User::findOrFail($id);
+        return view('dashboard.admin.users.anamnesis', compact('user'));
+    }
+
     public function measurements($id)
     {
         $user = User::findOrFail($id);

@@ -22,6 +22,11 @@
                     Dossier
                 </a>
 
+                <a href="{{ route('dashboard.admin.users.anamnesis', ['id' => $user->id]) }}" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100 inline-flex items-center gap-2 {{ request()->routeIs('dashboard.admin.users.anamnesis') ? 'border-primary' : '' }}">
+                    <i class="fa-solid fa-kit-medical"></i>
+                    Anamnese
+                </a>
+
                 <a href="{{ route('dashboard.admin.users.measurements', ['id' => $user->id]) }}" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100 inline-flex items-center gap-2 {{ request()->routeIs('dashboard.admin.users.measurements') ? 'border-primary' : '' }}"">
                     <i class="fa-solid fa-ruler"></i>
                     Metingen

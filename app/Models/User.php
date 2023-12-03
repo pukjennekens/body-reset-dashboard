@@ -136,4 +136,13 @@ class User extends Authenticatable
         $this->credits += $credits;
         $this->save();
     }
+
+    /**
+     * Get the users anamnesis
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function anamnesis()
+    {
+        return $this->hasOne(Anamnesis::class, 'user_id', 'id');
+    }
 }
