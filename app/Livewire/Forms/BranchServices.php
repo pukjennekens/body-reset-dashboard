@@ -30,6 +30,11 @@ class BranchServices extends Component
         ]);
 
         $this->branch->services()->sync($this->services);
+
+        $this->dispatch('branch-services-updated');
+
+        // Temporary: reload the page to show the updated data
+        return redirect()->route('dashboard.admin.settings.branches.show', $this->branch->id);
     }
 
     public function render()

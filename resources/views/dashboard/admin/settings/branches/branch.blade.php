@@ -10,4 +10,8 @@
     @livewire('forms.branch-services', ['branchId' => $branch->id])
 
     <h2 class="text-2xl font-semibold mt-8 mb-4">Openingstijden:</h2>
+
+    @foreach( $branch->services as $service )
+        @livewire('branch-service-opening-hours', ['branchId' => $branch->id, 'serviceId' => $service->id])
+    @endforeach
 </x-dashboard-layout>
