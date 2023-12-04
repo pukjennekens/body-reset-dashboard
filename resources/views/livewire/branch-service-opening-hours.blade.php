@@ -30,33 +30,33 @@
         <tbody>
             @php $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']; @endphp
             @foreach( $days as $day )
-                <tr x-data="{ openingHours_{!! $day !!}: @entangle('opening_hours_' . $day) }">
+                <tr x-data="{ openingHours_{!! $branchService->id !!}_{!! $day !!}: @entangle('opening_hours_' . $day) }">
                     <td>{{ formatDay($day) }}</td>
 
                     <td class="flex items-center gap-2">
-                        <label for="openingHours_{!! $day !!}_closed">
-                            <input type="checkbox" id="openingHours_{!! $day !!}_closed" x-model="openingHours_{!! $day !!}.closed" class="hidden">
-                            <span class="rounded-full text-sm cursor-pointer px-2 py-1 bg-red-200" x-show="openingHours_{!! $day !!}.closed">Ja</span>
-                            <span class="rounded-full text-sm cursor-pointer px-2 py-1 bg-green-200" x-show="!openingHours_{!! $day !!}.closed">Nee</span>
+                        <label for="openingHours_{!! $branchService->id !!}_{!! $day !!}_closed">
+                            <input type="checkbox" id="openingHours_{!! $branchService->id !!}_{!! $day !!}_closed" x-model="openingHours_{!! $branchService->id !!}_{!! $day !!}.closed" class="hidden">
+                            <span class="rounded-full text-sm cursor-pointer px-2 py-1 bg-red-200" x-show="openingHours_{!! $branchService->id !!}_{!! $day !!}.closed">Ja</span>
+                            <span class="rounded-full text-sm cursor-pointer px-2 py-1 bg-green-200" x-show="!openingHours_{!! $branchService->id !!}_{!! $day !!}.closed">Nee</span>
                         </label>
                     </td>
 
                     <td>
                         <div class="flex justify-between items-center">
                             <div class="flex flex-col gap-1">
-                                <template x-for="(time, index) in openingHours_{!! $day !!}.times" :key="index">
+                                <template x-for="(time, index) in openingHours_{!! $branchService->id !!}_{!! $day !!}.times" :key="index">
                                     <div class="flex items-center">
                                         <input type="text" class="w-16" x-model="time.from" />
                                         <span class="mx-2">-</span>
                                         <input type="text" class="w-16" x-model="time.to" />
-                                        <button type="button" @click="openingHours_{!! $day !!}.times.splice(index, 1); console.log(index)" class="w-6 h-6 flex items-center justify-center bg-red-500 rounded text-white hover:bg-red-600">
+                                        <button type="button" @click="openingHours_{!! $branchService->id !!}_{!! $day !!}.times.splice(index, 1);" class="w-6 h-6 flex items-center justify-center bg-red-500 rounded text-white hover:bg-red-600">
                                             <span class="h-[26px]">&times;</span>
                                         </button>
                                     </div>
                                 </template>
                             </div>
 
-                            <button @click="openingHours_{!! $day !!}.times.push({from: '', to: ''});" class="w-6 h-6 flex items-center justify-center bg-primary rounded text-white hover:bg-green-600">
+                            <button @click="openingHours_{!! $branchService->id !!}_{!! $day !!}.times.push({from: '', to: ''});" class="w-6 h-6 flex items-center justify-center bg-primary rounded text-white hover:bg-green-600">
                                 <span class="h-[26px]">&plus;</span>
                             </button>
                         </div>

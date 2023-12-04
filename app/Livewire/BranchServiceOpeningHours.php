@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\BranchService;
+use App\Models\Service;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class BranchServiceOpeningHours extends Component
 {
     public BranchService $branchService;
+    public Service $service;
 
     public $opening_hours_monday    = [];
     public $opening_hours_tuesday   = [];
