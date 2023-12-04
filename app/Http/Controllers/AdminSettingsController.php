@@ -22,4 +22,9 @@ class AdminSettingsController extends Controller
         $branch = Branch::findOrFail($id);
         return view('dashboard.admin.settings.branches.branch', compact('branch'));
     }
+
+    public function services()
+    {
+        return view('dashboard.admin.settings.services');
+    }
 }
