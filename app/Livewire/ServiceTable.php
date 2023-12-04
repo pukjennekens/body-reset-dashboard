@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Service;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\Attributes\On;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
@@ -66,26 +67,25 @@ final class ServiceTable extends PowerGridComponent
         ];
     }
 
+    #[On('service-created')]
+    #[On('service-updated')]
+    #[On('service-deleted')]
+    public function updatingServiceTableGrid(): void
+    {
+        $this->refresh();
+    }
+
     public function actions(\App\Models\Service $row): array
     {
         return [
-            Button::add('edit')
-                ->slot('Edit: '.$row->id)
-                ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+            Button::add('edit-service')
+                ->slot('<i class="fas fa-edit"></i>')
+                ->class('text-xs bg-primary text-white p-2 rounded-md hover:bg-green-600')
+                ->openModal('forms.service', ['id' => $row->id]),
+            Button::add('delete-service')  
+                ->slot('<i class="fas fa-trash"></i>')
+                ->class('text-xs bg-red-500 text-white p-2 rounded-md hover:bg-red-700')
+                ->openModal('delete-service', ['id' => $row->id]),
         ];
     }
-
-    /*
-    public function actionRules($row): array
-    {
-       return [
-            // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
-        ];
-    }
-    */
 }

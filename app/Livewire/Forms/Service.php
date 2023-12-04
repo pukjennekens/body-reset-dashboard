@@ -14,6 +14,7 @@ class Service extends ModalComponent
     public function mount($id = null)
     {
         $this->service = ModelsService::findOrNew($id);
+        $this->form->fill($this->service);
     }
 
     public function saveService()

@@ -7,7 +7,7 @@ use Livewire\Form;
 
 class ServiceForm extends Form
 {
-    #[Rule('required|unique:services,name,{{service?->id}}')]
+    #[Rule('required')]
     public string $name;
     
     #[Rule('required|numeric|min:1')]
