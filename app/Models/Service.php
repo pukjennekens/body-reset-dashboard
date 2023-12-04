@@ -20,4 +20,12 @@ class Service extends Model
     protected $casts = [
         'price' => StringToFloatWithCommasCast::class,
     ];
+
+    /**
+     * Get the branches for the service.
+     */
+    public function branches()
+    {
+        return $this->belongsToMany(Branch::class);
+    }
 }

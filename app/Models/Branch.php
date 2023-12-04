@@ -32,4 +32,12 @@ class Branch extends Model
             default => 'Onbekend',
         };
     }
+
+    /**
+     * Get the services for the branch.
+     */
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
+    }
 }
