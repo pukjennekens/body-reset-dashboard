@@ -13,7 +13,7 @@
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
     <nav class="bg-white w-full py-4 px-8 flex items-center justify-between">
         <a href="{{ route('dashboard') }}">
             <img src="{{ asset('img/logo.svg') }}" alt="{{ env('APP_NAME') }}" class="w-28">

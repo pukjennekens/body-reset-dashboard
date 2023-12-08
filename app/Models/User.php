@@ -83,6 +83,24 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the most recent body composition measurement for the user.
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function mostRecentBodyCompositionMeasurement()
+    {
+        return $this->bodyCompositionMeasurements()->orderBy('date', 'desc')->first();
+    }
+
+    /**
+     * Get the most recent girth measurement for the user.
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function mostRecentGirthMeasurement()
+    {
+        return $this->girthMeasurements()->orderBy('date', 'desc')->first();
+    }
+
+    /**
      * Get the users weight
      * @return float|bool The users weight or false if no weight is found
      */
@@ -104,6 +122,32 @@ class User extends Authenticatable
         $height = $this->bodyCompositionMeasurements()->orderBy('date', 'desc')->first();
 
         if ($height) return $height->height;
+
+        return false;
+    }
+
+    /**
+     * Get the users metabolic age
+     * @return int|bool The users metabolic age or false if no metabolic age is found
+     */
+    public function getMetabolicAge()
+    {
+        $metabolicAge = $this->bodyCompositionMeasurements()->orderBy('date', 'desc')->first();
+
+        if ($metabolicAge) return $metabolicAge->metabolic_age;
+
+        return false;
+    }
+
+    /**
+     * Get the users visceral fat
+     * @return int|bool The users visceral fat or false if no visceral fat is found
+     */
+    public function getVisceralFat()
+    {
+        $visceralFat = $this->bodyCompositionMeasurements()->orderBy('date', 'desc')->first();
+
+        if ($visceralFat) return $visceralFat->visceral_fat;
 
         return false;
     }

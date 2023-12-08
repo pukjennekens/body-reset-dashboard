@@ -1,46 +1,70 @@
 <x-dashboard-layout>
-    <h2 class="text-2xl font-semibold mb-2">
-        Welkom op uw persoonlijke dashboard
-    </h2>
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-2xl font-semibold mb-2">
+            Hi {{ strtok(auth()->user()->name, ' ') }},
+        </h2>
 
-    <p class="mb-8 max-w-md">
-        Hier vind u in éen oogopslag alle belangrijke gegevens terug zoals uw metingen, uw volgende afspraak, het aantal credits die u nog ter beschikking heeft en de bijhorende vervaldatum. Via de navigatie hierboven kunt u uw afspraken beheren, voedingsschema's bekijken, documenten downloaden en nieuwe bundels credits aankopen.
-    </p>
+        <p class="mt-2">
+            Welkom op je persoonlijke dashboard, {{ strtok(auth()->user()->name, ' ') }}. Hier vind je in een oogopslag alle belangrijke gegevens terug zoals je metingen, je volgende afspraak, het aantal credits en de bijhorende vervaldatum. Via de navigatie hierboven kun je jouw afspraken beheren, voedingsschema's bekijken, documenten downloaden en nieuwe bundels of producten aankopen.
+        </p>
 
-    <h2 class="text-2xl font-semibold mb-4">
-        Informatie:
-    </h2>
+        <div class="mt-8 grid grid-cols-3 gap-4">
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <i class="fa-solid fa-weight-scale text-8xl text-primary"></i>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16">
-        <div class="bg-white rounded shadow-md px-6 py-4">
-            <h3 class="text-2xl text-primary font-bold inline-flex items-center gap-4 mb-2"><i class="fa-regular fa-calendar"></i> Volgende afspraak</h3>
-            <p class="text-gray-600">U heeft nog geen afspraak gepland staan</p>
+                <h3 class="text-2xl font-semibold mt-4">Gewicht:</h3>
+
+                <p class="mt-2">{{ auth()->user()->getWeight() ? auth()->user()->getWeight() . ' kg' : 'Nog geen meting' }}</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <i class="fa-solid fa-calendar-days text-8xl text-primary"></i>
+
+                <h3 class="text-2xl font-semibold mt-4">Volgende afspraak:</h3>
+
+                <p class="mt-2">-</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <i class="fa-solid fa-coins text-8xl text-primary"></i>
+
+                <h3 class="text-2xl font-semibold mt-4">Credits:</h3>
+
+                <p class="mt-2">{{ auth()->user()->credits }} credits</p>
+                @if(auth()->user()->credits_expiration_date)
+                    <p class="mt-1 text-sm font-bold text-gray-600 italic">Geldig tot: {{ auth()->user()->credits_expiration_date ?? auth()->user()->credits_expiration_date->format('d-m-Y') }}</p>
+                @endif
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <h3 class="text-2xl font-semibold mb-4">Gewichtsverdeling:</h3>
+
+                @livewire('weight-distribution-graph', ['userId' => auth()->user()->id])
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <i class="fa-solid fa-heart-pulse text-8xl text-primary"></i>
+
+                <h3 class="text-2xl font-semibold mt-4">Visceraal vet:</h3>
+
+                <p class="mt-2">{{ auth()->user()->getVisceralFat() ? auth()->user()->getVisceralFat() : 'Nog geen meting' }}</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                <i class="fa-solid fa-person-walking text-8xl text-primary"></i>
+
+                <h3 class="text-2xl font-semibold mt-4">Metabolische leeftijd:</h3>
+
+                <p class="mt-2">{{ auth()->user()->getMetabolicAge() ? auth()->user()->getMetabolicAge() . ' jaar' : 'Nog geen meting' }}</p>
+            </div>
         </div>
 
-        <div class="bg-white rounded shadow-md px-6 py-4">
-            <h3 class="text-2xl text-primary font-bold inline-flex items-center gap-4 mb-2"><i class="fa-solid fa-coins"></i> Credits</h3>
-            <p class="text-gray-600">U heeft nog <strong>10</strong> credits ter beschikking</p>
-        </div>
-    </div>
+        <div class="grid grid-cols-2 mt-4 gap-4">
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            </div>
 
-    <h2 class="text-2xl font-semibold mb-4">
-        Huidige metingen:
-    </h2>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16">
-        <div class="bg-white rounded shadow-md px-6 py-4">
-            <h3 class="text-2xl text-primary font-bold inline-flex items-center gap-4 mb-2"><i class="fa-solid fa-weight-scale"></i> Gewicht</h3>
-            <p class="text-gray-600">Uw huidige gewicht is <strong>80kg</strong></p>
-        </div>
-
-        <div class="bg-white rounded shadow-md px-6 py-4">
-            <h3 class="text-2xl text-primary font-bold inline-flex items-center gap-4 mb-2"><i class="fa-solid fa-heart-pulse"></i> Visceraal vet</h3>
-            <p class="text-gray-600">Uw huidige visceraal vet is <strong>4</strong></p>
-        </div>
-
-        <div class="bg-white rounded shadow-md px-6 py-4">
-            <h3 class="text-2xl text-primary font-bold inline-flex items-center gap-4 mb-2"><i class="fa-solid fa-person-walking"></i> Metabolische leeftijd</h3>
-            <p class="text-gray-600">Uw huidige metabolische leeftijd is <strong>22</strong> jaar</p>
+            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            </div>
         </div>
     </div>
 </x-dashboard-layout>
