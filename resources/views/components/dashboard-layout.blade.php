@@ -80,32 +80,39 @@
 
     <header class="w-full px-8 flex bg-primary text-white">
         <div class="flex">
-            <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
-            <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
+            @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
+                <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
+            @endif
 
-            <x-dropdown align="left" width="48">
-                <x-slot name="trigger">
-                    <button type="button" class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Beheer</button>
-                </x-slot>
+            @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
+                <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
+            @endif
 
-                <x-slot name="content">
-                    <x-dropdown-link :href="route('dashboard.admin.settings.credits')">
-                        {{ __('Credits instellingen') }}
-                    </x-dropdown-link>
+            @if(auth()->user()->hasRole(['admin']))
+                <x-dropdown align="left" width="48">
+                    <x-slot name="trigger">
+                        <button type="button" class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Beheer</button>
+                    </x-slot>
 
-                    <x-dropdown-link :href="route('dashboard.admin.settings.credit-orders')">
-                        {{ __('Bestellingen') }}
-                    </x-dropdown-link>
+                    <x-slot name="content">
+                        <x-dropdown-link :href="route('dashboard.admin.settings.credits')">
+                            {{ __('Credits instellingen') }}
+                        </x-dropdown-link>
 
-                    <x-dropdown-link :href="route('dashboard.admin.settings.branches')">
-                        {{ __('Filialen') }}
-                    </x-dropdown-link>
+                        <x-dropdown-link :href="route('dashboard.admin.settings.credit-orders')">
+                            {{ __('Bestellingen') }}
+                        </x-dropdown-link>
 
-                    <x-dropdown-link :href="route('dashboard.admin.settings.services')">
-                        {{ __('Diensten') }}
-                    </x-dropdown-link>
-                </x-slot>
-            </x-dropdown>
+                        <x-dropdown-link :href="route('dashboard.admin.settings.branches')">
+                            {{ __('Filialen') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('dashboard.admin.settings.services')">
+                            {{ __('Diensten') }}
+                        </x-dropdown-link>
+                    </x-slot>
+                </x-dropdown>
+            @endif
         </div>
     </header>
 

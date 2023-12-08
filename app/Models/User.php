@@ -145,4 +145,21 @@ class User extends Authenticatable
     {
         return $this->hasOne(Anamnesis::class, 'user_id', 'id');
     }
+
+    /**
+     * Check if the user has a role
+     * @param string|string[] $role The role(s) to check
+     * @return bool
+     */
+    public function hasRole($role): bool
+    {
+        if (is_array($role)) {
+            foreach ($role as $r) {
+                if ($this->hasRole($r)) return true;
+            }
+            return false;
+        }
+
+        return $this->role === $role;
+    }
 }
