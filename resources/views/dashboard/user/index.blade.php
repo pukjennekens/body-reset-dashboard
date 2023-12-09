@@ -60,7 +60,10 @@
         </div>
 
         <div class="grid grid-cols-2 mt-4 gap-4">
-            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-semibold mb-4">Lichaamssamenstelling:</h3>
+
+                @livewire('body-composition-history-graph', ['userId' => auth()->user()->id])
             </div>
 
             <div class="bg-white rounded-lg shadow-md p-6 text-center">
