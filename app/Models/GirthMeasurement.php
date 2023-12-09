@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\StringToFloatWithCommasCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +21,13 @@ class GirthMeasurement extends Model
     ];
 
     protected $casts = [
-        'date' => 'date',
+        'date'         => 'date',
+        'chest'        => StringToFloatWithCommasCast::class,
+        'hips'         => StringToFloatWithCommasCast::class,
+        'thigh'        => StringToFloatWithCommasCast::class,
+        'under_breast' => StringToFloatWithCommasCast::class,
+        'upper_arm'    => StringToFloatWithCommasCast::class,
+        'waist'        => StringToFloatWithCommasCast::class,
     ];
 
     /**

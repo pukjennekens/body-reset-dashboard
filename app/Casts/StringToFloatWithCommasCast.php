@@ -14,7 +14,7 @@ class StringToFloatWithCommasCast implements CastsAttributes
      */
     public function get(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        return str_replace( '.', ',', (string) $value);
+        return $value;
     }
 
     /**

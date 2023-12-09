@@ -66,7 +66,10 @@
                 @livewire('body-composition-history-graph', ['userId' => auth()->user()->id])
             </div>
 
-            <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-semibold mb-4">Omtrekkingen:</h3>
+
+                @livewire('girth-measurements-history-graph', ['userId' => auth()->user()->id])
             </div>
         </div>
     </div>
