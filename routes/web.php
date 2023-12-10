@@ -28,7 +28,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'dashboardRedirector'])->name('dashboard');
     Route::get('/home', [DashboardController::class, 'userHome'])->name('dashboard.user.home');
-    Route::get('/measurements', [DashboardController::class, 'userHome'])->name('dashboard.user.measurements');
+    Route::get('/nutrition-plans', [DashboardController::class, 'userNutritionPlans'])->name('dashboard.user.nutrition-plans');
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('dashboard.admin.users.index');
     Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('dashboard.admin.users.show')->where('id', '[0-9]+');
