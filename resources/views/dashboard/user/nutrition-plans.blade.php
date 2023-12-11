@@ -12,7 +12,7 @@
             <div class="grid grid-cols-3 gap-4">
                 @foreach(auth()->user()->nutritionPlans()->get() as $nutritionPlan)
                     <a
-                        href="#"
+                        href="{{ route('dashboard.user.nutrition-plans.show', ['id' => $nutritionPlan->id]) }}"
                         style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url({{ $imageUrl }});"
                         class="aspect-video bg-cover bg-center rounded-lg shadow-md flex items-center justify-center text-white font-bold text-3xl"
                     >
