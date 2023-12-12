@@ -62,8 +62,8 @@
 @endphp
 
 <x-dashboard-layout>
-    <div x-data="{ tab: 'overview' }" class="grid grid-cols-12 gap-8">
-        <div class="col-span-3 flex flex-col gap-2">
+    <div x-data="{ tab: 'overview' }" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="col-span-1 lg:col-span-3 flex flex-col gap-2">
             <button 
                 x-on:click.prevent="tab = 'overview'" 
                 class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100 inline-flex items-center gap-2"
@@ -82,7 +82,7 @@
             @endforeach
         </div>
 
-        <div class="flex flex-col col-span-9">
+        <div class="flex flex-col col-span-1 lg:col-span-9">
             <div class="space-y-4" x-show="tab === 'overview'">
                 <h2 class="text-2xl font-semibold">Overzicht</h2>
 
@@ -129,8 +129,8 @@
                                         class="bg-white px-6 py-4 shadow-lg rounded-lg" 
                                         x-data="{ open: false }"
                                     >
-                                        <div x-on:click="open = !open" class="cursor-pointer flex items-center justify-between">
-                                            <h3 class="font-bold" :class="{ 'mb-2 font-semibold text-2xl': open }">
+                                        <div x-on:click="open = !open" class="cursor-pointer flex items-center justify-between gap-4">
+                                            <h3 class="font-bold" :class="{ 'mb-2 font-semibold md:text-2xl': open }">
                                                 {{ $recipe->name }} ({{ $recipe->meal_type }})
                                             </h3>
 
@@ -187,8 +187,8 @@
                                                 </p>
                                             @endif
 
-                                            <div class="grid grid-cols-12 mt-8 gap-8">
-                                                <div class="col-span-3">
+                                            <div class="grid grid-cols-1 lg:grid-cols-12 mt-8 gap-8">
+                                                <div class="col-span-1 lg:col-span-3">
                                                     <h3 class="font-semibold text-xl mb-4">Ingrediënten</h3>
 
                                                     <ul class="divide-y-2 divide-dashed flex flex-col">
@@ -205,7 +205,7 @@
                                                     </ul>
                                                 </div>
 
-                                                <div class="col-span-9">
+                                                <div class="col-span-1 lg:col-span-9">
                                                     <h3 class="font-semibold text-xl mb-4">Bereiding:</h3>
 
                                                     <ul class="list-decimal pl-4">

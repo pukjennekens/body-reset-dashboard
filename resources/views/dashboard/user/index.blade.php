@@ -8,7 +8,7 @@
             Welkom op je persoonlijke dashboard, {{ strtok(auth()->user()->name, ' ') }}. Hier vind je in een oogopslag alle belangrijke gegevens terug zoals je metingen, je volgende afspraak, het aantal credits en de bijhorende vervaldatum. Via de navigatie hierboven kun je jouw afspraken beheren, voedingsschema's bekijken, documenten downloaden en nieuwe bundels of producten aankopen.
         </p>
 
-        <div class="mt-8 grid grid-cols-3 gap-4">
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div class="bg-white rounded-lg shadow-md p-6 text-center">
                 <i class="fa-solid fa-weight-scale text-8xl text-primary"></i>
 
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-2 mt-4 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 mt-4 gap-4">
             <div class="bg-white rounded-lg shadow-md p-6">
                 <h3 class="text-2xl font-semibold mb-4">Lichaamssamenstelling:</h3>
 

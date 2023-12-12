@@ -9,7 +9,7 @@
         </h2>
 
         @if(auth()->user()->nutritionPlans()->count() > 0)
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach(auth()->user()->nutritionPlans()->get() as $nutritionPlan)
                     <a
                         href="{{ route('dashboard.user.nutrition-plans.show', ['id' => $nutritionPlan->id]) }}"
