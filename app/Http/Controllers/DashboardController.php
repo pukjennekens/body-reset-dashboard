@@ -30,4 +30,9 @@ class DashboardController extends Controller
         $nutritionPlan = auth()->user()->nutritionPlans()->findOrFail($id);
         return view('dashboard.user.nutrition-plan', compact('nutritionPlan'));
     }
+
+    public function userAppointments()
+    {
+        return view('dashboard.user.appointments');
+    }
 }

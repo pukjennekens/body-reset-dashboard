@@ -86,6 +86,8 @@
                 <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard') }}"><i class="fa-solid fa-chart-simple"></i> Prestaties</a>
 
                 <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.user.nutrition-plans') }}"><i class="fa-solid fa-utensils"></i> Voedingsschema's</a>
+
+                <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.user.appointments') }}"><i class="fa-solid fa-calendar-days"></i> Afspraken</a>
             @endif
 
             @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))

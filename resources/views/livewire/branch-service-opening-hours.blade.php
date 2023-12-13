@@ -16,7 +16,7 @@
     }
 @endphp
 
-<div class="px-6 py-4 border border-gray-400 rounded-lg max-w-3xl mb-4">
+<div class="px-6 py-4 border border-gray-400 rounded-lg max-w-5xl mb-4">
     <h3 class="text-xl font-semibold mb-4">{{ $branchService->service->name }}</h3>
 
     <table class="table-fixed">
@@ -25,6 +25,7 @@
                 <th>Dag</th>
                 <th>Gesloten</th>
                 <th>Openingstijden</th>
+                <th>Aantal plekken (trainers voor dienst)</th>
             </tr>
         </thead>
         <tbody>
@@ -46,9 +47,9 @@
                             <div class="flex flex-col gap-1">
                                 <template x-for="(time, index) in openingHours_{!! $branchService->id !!}_{!! $day !!}.times" :key="index">
                                     <div class="flex items-center">
-                                        <input type="text" class="w-16" x-model="time.from" />
+                                        <input type="text" class="w-16 border px-2" x-model="time.from" />
                                         <span class="mx-2">-</span>
-                                        <input type="text" class="w-16" x-model="time.to" />
+                                        <input type="text" class="w-16 border px-2" x-model="time.to" />
                                         <button type="button" @click="openingHours_{!! $branchService->id !!}_{!! $day !!}.times.splice(index, 1);" class="w-6 h-6 flex items-center justify-center bg-red-500 rounded text-white hover:bg-red-600">
                                             <span class="h-[26px]">&times;</span>
                                         </button>
@@ -60,6 +61,10 @@
                                 <span class="h-[26px]">&plus;</span>
                             </button>
                         </div>
+                    </td>
+
+                    <td>
+                        <input type="number" class="w-16 border px-2" x-model="openingHours_{!! $branchService->id !!}_{!! $day !!}.max_participants_per_slot" />
                     </td>
                 </tr>
             @endforeach
