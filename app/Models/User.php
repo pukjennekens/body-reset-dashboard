@@ -41,6 +41,9 @@ class User extends Authenticatable
 
         // Trainer
         'trainer_user_id',
+
+        // Branch
+        'branch_id',
     ];
 
     /**
@@ -205,5 +208,10 @@ class User extends Authenticatable
         }
 
         return $this->role === $role;
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
     }
 }

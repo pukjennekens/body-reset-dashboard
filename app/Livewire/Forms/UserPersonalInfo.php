@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Branch;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
@@ -12,13 +13,17 @@ class UserPersonalInfo extends Component
 
     public User $user;
     public $trainers = [];
+    public $branches = [];
 
     public $editing = false;
 
     public function mount($id = null)
     {
         $this->user = User::find($id) ?? new User();
-        $this->trainers = User::where('role', 'trainer')->pluck('name', 'id')->toArray();
+        $this->trainers = User::where('role', 'trainer')->get();
+        $this->branches = Branch::all();
+        // print_r($this->trainers);
+        // die;
     }
 
     public function updatePersonalInfo()
@@ -26,6 +31,10 @@ class UserPersonalInfo extends Component
         if(!$this->editing) return;
 
         $this->validate();
+
+        // Set the trainer id to int and the branch id to int if they are not null
+        $this->form->trainer_user_id = $this->form->trainer_user_id ? (int) $this->form->trainer_user_id : null;
+        $this->form->branch_id = $this->form->branch_id ? (int) $this->form->branch_id : null;
 
         $this->user->update($this->form->toArray());
 
