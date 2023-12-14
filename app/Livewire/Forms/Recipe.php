@@ -38,8 +38,6 @@ class Recipe extends ModalComponent
     {
         $this->recipe = RecipeModel::find($id);
 
-        Log::debug('Recipe: ', [$this->recipe]);
-
         if($this->recipe) {
             $this->ingredients = $this->recipe->ingredients;
             $this->steps       = $this->recipe->steps;

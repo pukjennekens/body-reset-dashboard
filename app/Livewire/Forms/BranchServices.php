@@ -22,8 +22,6 @@ class BranchServices extends Component
 
     public function saveBranchServices()
     {
-        Log::debug($this->services);
-
         $this->validate([
             'services' => ['nullable', 'array'],
             'services.*' => ['nullable', 'exists:services,id'],

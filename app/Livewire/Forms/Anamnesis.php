@@ -23,11 +23,6 @@ class Anamnesis extends ModalComponent
     {
         $this->validate();
 
-        Log::debug('Creating anamnesis: ', [
-            'user' => $this->user->id,
-            'anamnesis' => $this->form->toArray(),
-        ]);
-
         $this->anamnesis->fill($this->form->toArray());
         $this->user->anamnesis()->save($this->anamnesis);
 

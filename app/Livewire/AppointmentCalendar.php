@@ -182,11 +182,6 @@ class AppointmentCalendar extends Component
         $this->generateCalendar($this->date->subWeek());
     }
 
-    public function selectSlot($date, $from, $to)
-    {
-        Log::info('Selected slot: ' . $date . ' ' . $from . ' - ' . $to);
-    }
-
     public function render()
     {
         return view('livewire.appointment-calendar');

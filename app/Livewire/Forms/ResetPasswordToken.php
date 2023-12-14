@@ -22,9 +22,7 @@ class ResetPasswordToken extends Component
 
     public function resetPassword()
     {
-        Log::debug('Resetting password', ['form' => $this->form]);
         $this->validate();
-        Log::debug('Form validated', ['form' => $this->form]);
 
         $status = Password::reset(
             $this->form->only('email', 'password', 'password_confirmation', 'token'),
@@ -37,13 +35,8 @@ class ResetPasswordToken extends Component
             }
         );
 
-        Log::debug('Password reset status', ['status' => $status]);
-
         if ($status == Password::PASSWORD_RESET) {
-            Log::debug('Password reset successful');
             $this->submitted = true;
-        } else {
-            Log::debug('Password reset failed', ['status' => $status]);
         }
     }
 
