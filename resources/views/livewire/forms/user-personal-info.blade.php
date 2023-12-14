@@ -68,7 +68,7 @@
             <x-input.text name="form.credits" label="Credits" value="{{ old('form.credits', $user ? $user->credits : '') }}" :disabled="!$editing" />
 
             {{-- Credits expiration date --}}
-            <x-input.date name="form.credits_expiration_date" label="Credits vervaldatum" value="{{ old('form.credits_expiration_date', $user ? $user->credits_expiration_date->format('Y-m-d') : '') }}" :disabled="!$editing" />
+            <x-input.date name="form.credits_expiration_date" label="Credits vervaldatum" value="{{ old('form.credits_expiration_date', $user->credits_expiration_date ? $user->credits_expiration_date->format('Y-m-d') : '') }}" :disabled="!$editing" />
         </div>
 
         <div>
