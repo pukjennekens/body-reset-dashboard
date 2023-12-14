@@ -4,6 +4,6 @@
             Afspraken
         </h2>
 
-        @livewire('appointment-calendar', ['branchId' => auth()->user()->branch_id])
+        @livewire('appointment-calendar', ['branchId' => auth()->user()->branch->id, 'userId' => auth()->user()->id])
     </div>
 </x-dashboard-layout>
