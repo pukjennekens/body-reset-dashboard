@@ -219,4 +219,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Appointment::class);
     }
+
+    public function nextAppointment()
+    {
+        return $this->appointments()->where('start', '>', now())->orderBy('start', 'asc')->first();
+    }
 }

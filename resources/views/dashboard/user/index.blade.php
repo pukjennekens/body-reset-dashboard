@@ -22,7 +22,19 @@
 
                 <h3 class="text-2xl font-semibold mt-4">Volgende afspraak:</h3>
 
-                <p class="mt-2">-</p>
+                @if(auth()->user()->nextAppointment())
+                    <p class="mt-2">
+                        {{ auth()->user()->nextAppointment()->start->format('d-m-Y') }} om {{ auth()->user()->nextAppointment()->start->format('H:i') }}
+                    </p>
+
+                    <p class="mt-1 text-sm font-bold text-gray-600 italic">
+                        {{ auth()->user()->nextAppointment()->service->name }}
+                    </p>
+                @else
+                    <p>
+                        <span class="text-gray-400">Nog geen afspraak gevonden.</span>
+                    </p>
+                @endif
             </div>
 
             <div class="bg-white rounded-lg shadow-md p-6 text-center">
