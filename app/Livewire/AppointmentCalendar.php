@@ -6,23 +6,27 @@ use App\Models\Branch;
 use App\Models\BranchService;
 use App\Models\Service;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class AppointmentCalendar extends Component
 {
-    public $date      = null;
-    public $month     = null;
-    public $year      = null;
-    public $days      = [];
+    public $date  = null;
+    public $month = null;
+    public $year  = null;
+    public $days  = [];
 
-    public $branch    = null;
-    public $user      = null;
+    public $prevDisabled = false;
+    public $nextDisabled = false;
+
+    public $branch = null;
+    public $user   = null;
 
     public $services  = [];
     public $serviceId = null;
     public $service   = null;
 
-    public $slots     = [];
+    public $slots = [];
 
     public function mount($branchId, $userId)
     {
@@ -38,9 +42,10 @@ class AppointmentCalendar extends Component
 
     public function selectService($serviceId)
     {
-        $this->serviceId = $serviceId;
+        $this->serviceId = intval( $serviceId );
         $this->service   = Service::find($serviceId);
-        $this->generateCalendar($this->date ?? now());
+
+        if($this->serviceId && $this->service) $this->generateCalendar($this->date ?? now());
     }
 
     public function generateSlots()
@@ -50,6 +55,7 @@ class AppointmentCalendar extends Component
         foreach($this->days as $day)  {
             $serviceDuration        = $this->service->appointment_duration_minutes;
             $serviceDurationOverlap = $this->service->appointment_overlap_minutes;
+            $actualServiceDuration  = $serviceDuration - $serviceDurationOverlap;
             $openingHours           = $this->getBranchServiceOpeningHours($this->branch, $this->service, $day);
 
             if(!$openingHours) return null;
@@ -68,14 +74,15 @@ class AppointmentCalendar extends Component
                         $toDateTime->format('Y-m-d H:i:s')
                     )->get();
 
-                    $slots = $from->floatDiffInRealMinutes($to) / ($serviceDuration - $serviceDurationOverlap);
+                    $slots = $from->diffInMinutes($to) / $actualServiceDuration;
 
                     for($i = 0; $i < $slots; $i++) {
                         $available = true;
 
-                        $slotFrom             = $from->copy()->addMinutes($i * $serviceDuration);
+                        $slotFrom             = $from->copy()->addMinutes($i * $actualServiceDuration);
                         $slotTo               = $slotFrom->copy()->addMinutes($serviceDuration);
                         $numberOfAppointments = 0;
+                        $bookedByUser         = false;
 
                         if($slotFrom->lt(now())) {
                             $available = false;
@@ -85,11 +92,14 @@ class AppointmentCalendar extends Component
                                 $appointmentTo   = $appointment->end;
     
                                 if(
-                                    $slotFrom->copy()->addMinutes(1)->between($appointmentFrom, $appointmentTo)
-                                    ||
-                                    $slotTo->copy()->subMinutes(1)->between($appointmentFrom, $appointmentTo)
+                                    $slotFrom == $appointmentFrom && $slotTo == $appointmentTo
                                 ) {
                                     $numberOfAppointments++;
+
+                                    if($appointment->user_id == $this->user->id) {
+                                        $bookedByUser = true;
+                                        $available    = false;
+                                    }
                                 }
                             }
 
@@ -98,13 +108,18 @@ class AppointmentCalendar extends Component
                             }
                         }
 
-                        $this->slots[$day->format('d-m-Y')][] = [
-                            'from'            => $slotFrom->format('H:i'),
-                            'to'              => $slotTo->format('H:i'),
-                            'available'       => $available,
-                            'maxAppointments' => $maxAppointments,
-                            'numberOfAppointments' => $numberOfAppointments,
-                        ];
+                        // If the slot doesn't surpass the opening times, add the slot
+                        if($slotTo <= $to) {
+                            $this->slots[$day->format('d-m-Y')][] = [
+                                'date'                 => $day->format('d-m-Y'),
+                                'from'                 => $slotFrom->format('H:i'),
+                                'to'                   => $slotTo->format('H:i'),
+                                'available'            => $available,
+                                'maxAppointments'      => $maxAppointments,
+                                'numberOfAppointments' => $numberOfAppointments,
+                                'bookedByUser'         => $bookedByUser,
+                            ];
+                        }
                     }
                 }
             }
@@ -165,6 +180,11 @@ class AppointmentCalendar extends Component
     public function previousWeek()
     {
         $this->generateCalendar($this->date->subWeek());
+    }
+
+    public function selectSlot($date, $from, $to)
+    {
+        Log::info('Selected slot: ' . $date . ' ' . $from . ' - ' . $to);
     }
 
     public function render()

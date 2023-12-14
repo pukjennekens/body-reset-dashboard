@@ -13,7 +13,7 @@
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
-<body class="bg-gray-50">
+<body class="bg-white">
     <nav class="bg-white w-full py-4 px-8 flex items-center justify-between">
         <a href="{{ route('dashboard') }}">
             <img src="{{ asset('img/logo.svg') }}" alt="{{ env('APP_NAME') }}" class="w-28">
@@ -81,27 +81,27 @@
     <hr>
 
     <header class="w-full px-8 flex bg-primary text-white">
-        <div class="flex">
+        <div class="flex w-full justify-center">
             @if(auth()->user()->hasRole(['user']))
-                <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard') }}"><i class="fa-solid fa-chart-simple"></i> Prestaties</a>
+                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard') }}"><i class="fa-solid fa-chart-simple"></i> Prestaties</a>
 
-                <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.user.nutrition-plans') }}"><i class="fa-solid fa-utensils"></i> Voedingsschema's</a>
+                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.user.nutrition-plans') }}"><i class="fa-solid fa-utensils"></i> Voedingsschema's</a>
 
-                <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.user.appointments') }}"><i class="fa-solid fa-calendar-days"></i> Afspraken</a>
+                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.user.appointments') }}"><i class="fa-solid fa-calendar-days"></i> Afspraken</a>
             @endif
 
             @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
-                <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
+                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
             @endif
 
             @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
-                <a class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
+                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
             @endif
 
             @if(auth()->user()->hasRole(['admin']))
                 <x-dropdown align="left" width="48">
                     <x-slot name="trigger">
-                        <button type="button" class="uppercase text-sm py-2 px-4 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Beheer</button>
+                        <button type="button" class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Beheer</button>
                     </x-slot>
 
                     <x-slot name="content">

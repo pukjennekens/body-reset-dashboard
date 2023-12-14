@@ -44,7 +44,33 @@
             </div>
         </div>
 
-        <div class="flex mt-8 border border-gray-400 rounded-lg overflow-x-auto">
+        <div class="my-4 inline-flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-4">
+            <div class="inline-flex items-center">
+                <div class="w-5 h-5 rounded-md bg-primary"></div>
+                <span class="ml-2">Beschikbaar</span>
+            </div>
+
+            <div class="inline-flex items-center">
+                <div class="w-5 h-5 rounded-md bg-yellow-400"></div>
+                <span class="ml-2">Nog één plek beschikbaar</span>
+            </div>
+
+            <div class="inline-flex items-center">
+                <div class="w-5 h-5 rounded-md bg-blue-400"></div>
+                <span class="ml-2">Door u geboekt</span>
+            </div>
+
+            <div class="inline-flex items-center">
+                <div class="w-5 h-5 rounded-md bg-red-500"></div>
+                <span class="ml-2">Niet beschikbaar</span>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <p><i class="fas fa-info-circle"></i> <strong>{{ $this->service->name }}</strong> kost {{ $this->service->price }} {{ $this->service->price == 1 ? 'credit' : 'credits' }}.</p>
+        </div>
+
+        <div class="flex border rounded-lg overflow-x-auto bg-white shadow-md px-4">
             @foreach($days as $day)
                 <div class="min-w-[140px] w-full">
                     <div class="flex flex-col items-center px-2 py-4">
@@ -57,7 +83,10 @@
                             @foreach($slots[$day->format('d-m-Y')] as $slot)
                                 <button 
                                     type="button"
-                                    class="w-full font-semibold text-center py-2 rounded-md {{ $slot['available'] ? 'bg-primary text-white hover:bg-green-600' : 'bg-red-200 text-gray-900'  }}"
+                                    class="w-full font-semibold text-center py-2 rounded-md cursor-pointer inline-block {{ $slot['available'] ? ( $slot['maxAppointments'] > 1 ? ($slot['maxAppointments'] - $slot['numberOfAppointments'] == 1 ? 'bg-yellow-400 text-white hover:bg-yellow-500' : 'bg-primary text-white hover:bg-green-600') : 'bg-primary text-white hover:bg-green-600' ) : ($slot['bookedByUser'] ? 'bg-blue-400 text-white cursor-not-allowed' : 'bg-red-500 text-white cursor-not-allowed') }}"
+                                    @if($slot['available'])
+                                        wire:click="$dispatch('openModal', {component: 'make-appointment', arguments: {date: '{{ $slot['date'] }}', from: '{{ $slot['from'] }}', to: '{{ $slot['to'] }}', serviceId: {{ $this->service->id }}, branchId: {{ $this->branch->id }}, userId: {{ $this->user->id }}}})"
+                                    @endif
                                 >
                                     <span>{{ $slot['from'] }} - {{ $slot['to'] }}</span>
                                 </button>
