@@ -17,6 +17,11 @@ class Appointment extends Model
         'end',
     ];
 
+    protected $casts = [
+        'start' => 'datetime',
+        'end'   => 'datetime',
+    ];
+
     public function branch()
     {
         return $this->belongsTo(Branch::class);
