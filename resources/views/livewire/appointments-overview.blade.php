@@ -3,31 +3,44 @@
         Afspraken
     </h2>
 
-    <table class="table-fixed">
-        <thead>
-            <th>Datum</th>
-            <th>Tijd</th>
-            <th>Dienst</th>
-            <th>Prijs</th>
-        </thead>
+    @if(!empty($user->appointments->where('start', '>=', now())->sortBy('start')->toArray()))
+        <table class="table-fixed">
+            <thead>
+                <th>Datum</th>
+                <th>Tijd</th>
+                <th>Dienst</th>
+                <th>Prijs</th>
+                <th></th>
+            </thead>
 
-        <tbody>
-            @if(!empty($user->appointments))
-                @foreach($user->appointments->sortBy('start') as $appointment)
+            <tbody>
+                @foreach($user->appointments->where('start', '>=', now())->sortBy('start') as $appointment)
                     <tr>
                         <td>{{ $appointment->start->format('d-m-Y') }}</td>
                         <td>{{ $appointment->start->format('H:i') }}</td>
                         <td>{{ $appointment->service->name }}</td>
                         <td>{{ $appointment->service->price }} {{ $appointment->service->price == 1 ? 'credit' : 'credits' }}</td>
+                        <td>
+                            {{-- Check if the appointment is less then 24 hours away --}}
+                            @if($appointment->start->diffInHours(now()) > 24)
+                                <button 
+                                    type="button"
+                                    class="rounded-lg px-4 py-1.5 border-0 bg-red-500 text-sm text-white uppercase font-semibold hover:bg-red-700 inline-flex items-center justify-center"
+                                    wire:click="$dispatch('openModal', {component: 'cancel-appointment', arguments: {appointmentId: {{ $appointment->id }}}})"
+                                >
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
-            @else
-                <tr>
-                    <td colspan="4" class="text-center">
-                        <span class="text-gray-400">Geen afspraken gevonden.</span>
-                    </td>
-                </tr>
-            @endif
-        </tbody>
-    </table>    
+            </tbody>
+        </table>   
+    @else
+        <tr>
+            <td colspan="4" class="text-center">
+                <span class="text-gray-800">Geen afspraken gevonden.</span>
+            </td>
+        </tr>
+    @endif 
 </div>

@@ -7,6 +7,7 @@ use App\Models\BranchService;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class AppointmentCalendar extends Component
@@ -180,6 +181,14 @@ class AppointmentCalendar extends Component
     public function previousWeek()
     {
         $this->generateCalendar($this->date->subWeek());
+    }
+
+    #[On('appointment-created')]
+    #[On('appointment-updated')]
+    #[On('appointment-deleted')]
+    public function refreshCalendar()
+    {
+        if($this->date && $this->service) $this->generateCalendar($this->date);
     }
 
     public function render()

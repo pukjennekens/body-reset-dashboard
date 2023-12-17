@@ -2,19 +2,17 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\User;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
-class AppointmentsOverview extends Component
+class NavCreditsOverview extends Component
 {
     public User $user;
 
-    public function mount($userId)
+    public function mount()
     {
-        $this->user = User::find($userId);
-
-        if(!$this->user) abort(404);
+        $this->user = auth()->user();
     }
 
     #[On('appointment-created')]
@@ -27,6 +25,6 @@ class AppointmentsOverview extends Component
 
     public function render()
     {
-        return view('livewire.appointments-overview');
+        return view('livewire.nav-credits-overview');
     }
 }

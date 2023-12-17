@@ -21,29 +21,7 @@
 
         <div class="flex items-center gap-8">
             @if(auth()->user()->hasRole('user'))
-                <div class="flex items-center gap-6">
-                    @if(auth()->user()->credits > 0)
-                        <x-dropdown align="center" width="48">
-                            <x-slot name="trigger">
-                                <p class="underline decoration-dotted cursor-pointer">U heeft <strong>{{ auth()->user()->credits }}</strong> credits</p>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <p class="px-4 py-2 text-center">Uw credits verlopen op {{ auth()->user()->credits_expiration_date->format('d-m-Y') }}</p>
-                            </x-slot>
-                        </x-dropdown>
-                    @else
-                        <p>U heeft geen credits</p>
-                    @endif
-
-                    <button 
-                        class="rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600 text-center" 
-                        x-data=""
-                        x-on:click.prevent="$dispatch('openModal', {component: 'buy-credits'})"
-                    >
-                        Credits kopen
-                    </button>
-                </div>
+                @livewire('nav-credits-overview')
             @endif
 
             <x-dropdown align="right" width="48">
