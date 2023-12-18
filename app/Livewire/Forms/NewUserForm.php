@@ -8,44 +8,44 @@ use Livewire\Form;
 class NewUserForm extends Form
 {
     #[Rule('required')]
-    public $name = ''; // 
+    public $name = ''; 
 
     #[Rule('required|email')]
-    public $email = ''; //
+    public $email = '';
 
-    #[Rule('required|date')]
-    public $birth_date = ''; //
-
-    #[Rule('required')]
-    public $language = ''; //
+    #[Rule('required_if:role,user|date')]
+    public $birth_date = '';
 
     #[Rule('required')]
-    public $phone_number = ''; //
+    public $language = '';
+
+    #[Rule('required_if:role,user')]
+    public $phone_number = '';
+
+    #[Rule('required_if:role,user')]
+    public $street_name = '';
+
+    #[Rule('required_if:role,user')]
+    public $house_number = '';
+
+    #[Rule('required_if:role,user')]
+    public $postal_code = '';
+
+    #[Rule('required_if:role,user')]
+    public $city = '';
 
     #[Rule('required')]
-    public $street_name = ''; //
+    public $country = '';
 
-    #[Rule('required')]
-    public $house_number = ''; //
-
-    #[Rule('required')]
-    public $postal_code = ''; //
-
-    #[Rule('required')]
-    public $city = ''; //
-
-    #[Rule('required')]
-    public $country = ''; // 
-
-    #[Rule('required')]
-    public $province; //
+    #[Rule('required_if:role,user')]
+    public $province;
  
-    #[Rule('required|numeric|exists:users,id')]
+    #[Rule('required_if:role,user|numeric|exists:users,id')]
     public $trainer_user_id = '';
 
-    #[Rule('required|numeric|exists:branches,id')]
+    #[Rule('required_if:role,user|numeric|exists:branches,id')]
     public $branch_id = '';
 
-    #[Rule('required|numeric|in:admin,manager,trainer,user')]
+    #[Rule('required_if:role,user|numeric|in:admin,manager,trainer,user')]
     public $role = '';
 }

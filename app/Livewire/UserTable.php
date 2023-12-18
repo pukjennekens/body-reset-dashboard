@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\Attributes\On;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
@@ -87,5 +88,13 @@ final class UserTable extends PowerGridComponent
                 ->class('rounded-lg px-4 py-1.5 border-0 bg-primary text-sm text-white uppercase font-semibold hover:bg-green-600')
                 ->route('dashboard.admin.users.show', ['id' => $row->id]),
         ];
+    }
+
+    #[\Livewire\Attributes\On('user-created')]
+    #[\Livewire\Attributes\On('user-updated')]
+    #[\Livewire\Attributes\On('user-deleted')]
+    public function userCreated(): void
+    {
+        $this->refresh();
     }
 }
