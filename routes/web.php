@@ -52,5 +52,9 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'admin']],
     Route::get('/settings/services', [AdminSettingsController::class, 'services'])->name('dashboard.admin.settings.services');
 });
 
+Route::get('/', function() {
+    return redirect()->route('dashboard');
+});
+
 // Mollie webhook route
 Route::post('/webhooks/mollie', [WebhookController::class, 'mollie'])->name('webhooks.mollie');
