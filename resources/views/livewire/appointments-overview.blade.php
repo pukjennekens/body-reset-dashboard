@@ -31,15 +31,7 @@
                                         Annuleren
                                     </button>
                                 @else
-                                    <x-dropdown align="center" width="64">
-                                        <x-slot name="trigger">
-                                            <p class="underline decoration-dotted cursor-pointer">Niet meer mogelijk</p>
-                                        </x-slot>
-
-                                        <x-slot name="content">
-                                            <p class="px-4 py-2 text-left">Omdat deze afspraak binnen 24 uur valt, is het niet meer mogelijk om deze afspraak te annuleren. Wilt u toch de afspraak annuleren? Neem dan contact op met onze klantenservice.</p>
-                                        </x-slot>
-                                    </x-dropdown>
+                                    <p class="underline decoration-dotted cursor-pointer">Niet meer mogelijk</p>
                                 @endif
                             </td>
                         </tr>
