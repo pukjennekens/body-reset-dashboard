@@ -15,9 +15,77 @@
 </head>
 <body class="bg-white">
     <nav class="bg-white w-full py-4 px-8 flex items-center justify-between">
-        <a href="{{ route('dashboard') }}">
-            <img src="{{ asset('img/logo.svg') }}" alt="{{ env('APP_NAME') }}" class="w-28">
-        </a>
+        <div class="flex items-center gap-4" x-data="{ mobileMenuOpen: false }">
+            <button class="w-8 h-8 border border-gray-300 rounded-md block md:hidden" @click="mobileMenuOpen = !mobileMenuOpen">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div
+                x-show="mobileMenuOpen"
+                class="fixed inset-0 z-50 bg-white block md:hidden"
+                x-on:keydown.escape.window="mobileMenuOpen = false"
+                x-transition:enter="transition ease-in-out duration-500 transform"
+                x-transition:enter-start="-translate-x-full"
+                x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in-out duration-500 transform"
+                x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="-translate-x-full"
+            >
+                <div class="p-4 flex justify-start">
+                    <button class="text-2xl p-2" @click="mobileMenuOpen = false">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="flex flex-col">
+                    @if(auth()->user()->hasRole(['user']))
+                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard') }}"><i class="fa-solid fa-chart-simple"></i> Prestaties</a>
+
+                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.user.nutrition-plans') }}"><i class="fa-solid fa-utensils"></i> Voedingsschema's</a>
+
+                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.user.appointments') }}"><i class="fa-solid fa-calendar-days"></i> Afspraken</a>
+                    @endif
+
+                    @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
+                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
+                    @endif
+
+                    @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
+                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
+                    @endif
+
+                    @if(auth()->user()->hasRole(['admin']))
+                        <x-dropdown align="left" width="48">
+                            <x-slot name="trigger">
+                                <button type="button" class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Beheer</button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('dashboard.admin.settings.credits')">
+                                    {{ __('Credits instellingen') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('dashboard.admin.settings.credit-orders')">
+                                    {{ __('Bestellingen') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('dashboard.admin.settings.branches')">
+                                    {{ __('Filialen') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('dashboard.admin.settings.services')">
+                                    {{ __('Diensten') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    @endif
+                </div>
+            </div>
+
+            <a href="{{ route('dashboard') }}">
+                <img src="{{ asset('img/logo.svg') }}" alt="{{ env('APP_NAME') }}" class="w-28">
+            </a>
+        </div>
 
         <div class="flex items-center gap-8">
             @if(auth()->user()->hasRole('user'))
@@ -58,7 +126,7 @@
 
     <hr>
 
-    <header class="w-full px-8 flex bg-primary text-white">
+    <header class="w-full px-8 bg-primary text-white hidden md:flex">
         <div class="flex w-full justify-center">
             @if(auth()->user()->hasRole(['user']))
                 <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard') }}"><i class="fa-solid fa-chart-simple"></i> Prestaties</a>
