@@ -224,4 +224,9 @@ class User extends Authenticatable
     {
         return $this->appointments()->where('start', '>', now())->orderBy('start', 'asc')->first();
     }
+
+    public function getSubUsers()
+    {
+        return $this->hasMany(User::class, 'trainer_user_id', 'id');
+    }
 }

@@ -8,9 +8,9 @@ class DashboardController extends Controller
 {
     public function dashboardRedirector()
     {
-        if(auth()->user()->hasRole('admin')) {
-            return redirect()->route('dashboard.admin.users.index');
-        }
+        if(auth()->user()->hasRole('admin')) return redirect()->route('dashboard.admin.home');
+        if(auth()->user()->hasRole('manager')) return redirect()->route('dashboard.admin.home');
+        if(auth()->user()->hasRole('trainer')) return redirect()->route('dashboard.admin.home');
 
         return redirect()->route('dashboard.user.home');
     }
@@ -34,5 +34,10 @@ class DashboardController extends Controller
     public function userAppointments()
     {
         return view('dashboard.user.appointments');
+    }
+
+    public function adminHome()
+    {
+        return view('dashboard.admin.index');
     }
 }

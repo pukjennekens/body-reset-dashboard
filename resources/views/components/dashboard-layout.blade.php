@@ -47,17 +47,17 @@
                     @endif
 
                     @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
-                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
-                    @endif
+                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.home') }}"><i class="fa-solid fa-list"></i> Overzicht</a>
 
-                    @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
+                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
+
                         <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
                     @endif
 
                     @if(auth()->user()->hasRole(['admin']))
                         <x-dropdown align="left" width="48">
                             <x-slot name="trigger">
-                                <button type="button" class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Beheer</button>
+                                <button type="button" class="uppercase w-full px-4 py-2 hover:bg-gray-100 text-left" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Beheer</button>
                             </x-slot>
 
                             <x-slot name="content">
@@ -137,10 +137,10 @@
             @endif
 
             @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
-                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
-            @endif
+                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.home') }}"><i class="fa-solid fa-list"></i> Overzicht</a>
 
-            @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
+                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
+
                 <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
             @endif
 

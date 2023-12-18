@@ -34,6 +34,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 });
 
 Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'admin']], function () {
+    Route::get('/', [DashboardController::class, 'adminHome'])->name('dashboard.admin.home');
+
     Route::get('/users', [AdminUserController::class, 'index'])->name('dashboard.admin.users.index');
     Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('dashboard.admin.users.show')->where('id', '[0-9]+');
     Route::get('/users/{id}/anamnesis', [AdminUserController::class, 'anamnesis'])->name('dashboard.admin.users.anamnesis')->where('id', '[0-9]+');
