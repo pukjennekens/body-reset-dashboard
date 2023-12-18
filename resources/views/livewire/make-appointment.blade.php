@@ -11,6 +11,16 @@
         <i class="fas fa-info-circle"></i> <strong>{{ $service->name }}</strong> kost {{ $service->price }} {{ $service->price == 1 ? 'credit' : 'credits' }}.
     </p>
 
+
+    {{-- Check if the startDateTime is less then 24 hours from now, if so, show a warning --}}
+    @if($startDateTime->lessThan(now()->addDay()))
+        <p class="bg-yellow-100 rounded-lg border border-yellow-600 text-sm px-4 py-2 mt-2">
+            <span class="mb-2"><i class="fas fa-exclamation-triangle"></i> <strong>Let op!</strong></span>
+            <br>
+            Deze afspraak valt binnen 24 uur. U kunt afpsraken maximaal 24 uur van te voren annuleren. Dat betekent dat u deze afspraak niet meer kunt annuleren.
+        </p>
+    @endif
+
     @error('error')
         <p class="bg-red-200 rounded-lg border border-red-500 text-red-500 text-sm px-4 py-2 mt-2">{{ $message }}</p>
     @enderror

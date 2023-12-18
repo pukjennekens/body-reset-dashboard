@@ -10,7 +10,7 @@
                 <th>Tijd</th>
                 <th>Dienst</th>
                 <th>Prijs</th>
-                <th></th>
+                <th>Annuleren</th>
             </thead>
 
             <tbody>
@@ -21,15 +21,24 @@
                         <td>{{ $appointment->service->name }}</td>
                         <td>{{ $appointment->service->price }} {{ $appointment->service->price == 1 ? 'credit' : 'credits' }}</td>
                         <td>
-                            {{-- Check if the appointment is less then 24 hours away --}}
                             @if($appointment->start->diffInHours(now()) > 24)
                                 <button 
                                     type="button"
                                     class="rounded-lg px-4 py-1.5 border-0 bg-red-500 text-sm text-white uppercase font-semibold hover:bg-red-700 inline-flex items-center justify-center"
                                     wire:click="$dispatch('openModal', {component: 'cancel-appointment', arguments: {appointmentId: {{ $appointment->id }}}})"
                                 >
-                                    <i class="fas fa-times"></i>
+                                    Annuleren
                                 </button>
+                            @else
+                                <x-dropdown align="center" width="64">
+                                    <x-slot name="trigger">
+                                        <p class="underline decoration-dotted cursor-pointer">Niet meer mogelijk</p>
+                                    </x-slot>
+
+                                    <x-slot name="content">
+                                        <p class="px-4 py-2 text-left">Omdat deze afspraak binnen 24 uur valt, is het niet meer mogelijk om deze afspraak te annuleren. Wilt u toch de afspraak annuleren? Neem dan contact op met onze klantenservice.</p>
+                                    </x-slot>
+                                </x-dropdown>
                             @endif
                         </td>
                     </tr>

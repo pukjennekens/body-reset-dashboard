@@ -11,12 +11,13 @@ use LivewireUI\Modal\ModalComponent;
 
 class MakeAppointment extends ModalComponent
 {
-    public $date      = null;
-    public $from      = null;
-    public $to        = null;
-    public $branchId  = null;
-    public $serviceId = null;
-    public $userId    = null;
+    public $date          = null;
+    public $from          = null;
+    public $to            = null;
+    public $branchId      = null;
+    public $serviceId     = null;
+    public $userId        = null;
+    public $startDateTime = null;
 
     public Branch $branch;
     public Service $service;
@@ -30,6 +31,8 @@ class MakeAppointment extends ModalComponent
         $this->branchId  = $branchId;
         $this->serviceId = $serviceId;
         $this->userId    = $userId;
+
+        $this->startDateTime = \Carbon\Carbon::createFromFormat('d-m-Y H:i', $this->date . ' ' . $this->from);
 
         $this->branch  = Branch::find($branchId);
         $this->service = Service::find($serviceId);
