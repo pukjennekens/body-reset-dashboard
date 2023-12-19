@@ -41,8 +41,8 @@ class NewUser extends ModalComponent
         $user->role = $this->role;
         $user->save();
 
-        if($this->role == 'user') $user->branches()->attach($this->form->branch_id);
-        if($this->role == 'user') $user->trainers()->attach($this->form->trainer_user_id);
+        if($this->role == 'user') $user->branch_id       = $this->form->branch_id;
+        if($this->role == 'user') $user->trainer_user_id = $this->form->trainer_user_id;
 
         $this->dispatch('user-created');
 
