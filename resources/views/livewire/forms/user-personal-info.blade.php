@@ -118,6 +118,26 @@
             </div>
         @endif
 
+        @if($role == 'manager')
+            <div>
+                <h3 class="text-2xl font-semibold mt-12 mb-2">
+                    Manager-specifieke instellingen:
+                </h3>
+
+                <div class="flex flex-col">
+                    {{-- manager_branches --}}
+                    @foreach($branches as $branch)
+                        <label for="manager_branches" class="inline-flex items-center gap-2">
+                            <input type="checkbox" wire:model.fill="form.manager_branches" value="{{ $branch->id }}" {{ in_array($branch->id, old('form.manager_branches', $user ? $user->manager_branches : [])) ? 'checked' : '' }} {{ !$editing ? 'disabled' : '' }} class="rounded-lg border border-gray-600 disabled:bg-gray-200 checked:bg-blue-600 checked:border-transparent">
+                            {{ $branch->name }}
+                        </label>
+                    @endforeach
+                </div>
+
+                @error('form.manager_branches') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror 
+            </div>
+        @endif
+
         @if($editing)
             <div class="inline-flex items-center gap-4">
                 <x-input.button type="submit">

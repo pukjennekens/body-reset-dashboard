@@ -37,8 +37,6 @@
                         <i class="fa-solid fa-utensils"></i>
                         Voedingsschema's
                     </a>
-                @elseif($user->hasRole(['trainer']))
-                    
                 @endif
             </div>
         </div>

@@ -44,6 +44,9 @@ class User extends Authenticatable
 
         // Branch
         'branch_id',
+        'manager_branches',
+
+        'role',
     ];
 
     /**
@@ -65,6 +68,7 @@ class User extends Authenticatable
         'email_verified_at'       => 'datetime',
         'password'                => 'hashed',
         'credits_expiration_date' => 'date',
+        'manager_branches'        => 'array',
     ];
 
     /**

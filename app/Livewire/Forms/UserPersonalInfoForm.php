@@ -54,4 +54,7 @@ class UserPersonalInfoForm extends Form
 
     #[Rule('required_if:role,user|numeric|in:admin,manager,trainer,user')]
     public $role = '';
+
+    #[Rule('required_if:role,manager|array|exists:branches,id')]
+    public $manager_branches = [];
 }
