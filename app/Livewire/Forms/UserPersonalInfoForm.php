@@ -52,7 +52,7 @@ class UserPersonalInfoForm extends Form
     #[Rule('required_if:role,user|exists:branches,id')]
     public $branch_id = '';
 
-    #[Rule('required_if:role,user|numeric|in:admin,manager,trainer,user')]
+    #[Rule('numeric|in:admin,manager,trainer,user')]
     public $role = '';
 
     #[Rule('required_if:role,manager|array|exists:branches,id')]

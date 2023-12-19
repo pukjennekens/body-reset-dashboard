@@ -29,26 +29,24 @@ class UserPersonalInfo extends Component
     public function updatePersonalInfo()
     {
         if(!$this->editing) return;
-
+        
         $this->validate();
 
         // Get the user data
         $userData = $this->form->toArray();
         foreach($userData as $key => $value) if(empty($value)) unset($userData[$key]);
 
-        // Map the manager branches array to an array with integers instead of strings
-        if($this->form->manager_branches) {
-            $managerBranches = [];
-            foreach($this->form->manager_branches as $branch) $managerBranches[] = (int) $branch;
-            $userData['manager_branches'] = $managerBranches;
-        }
-
-        Log::info($userData);
-
         // Get the role and verify if the current user is an admin
         $role = 'user';
         if(auth()->user()->hasRole('admin')) $role = $this->role;
         $userData['role'] = $role;
+
+        // Map the manager branches array to an array with integers instead of strings
+        if($this->form->manager_branches && $role == 'manager') {
+            $managerBranches = [];
+            foreach($this->form->manager_branches as $branch) $managerBranches[] = (int) $branch;
+            $userData['manager_branches'] = $managerBranches;
+        }
 
         // Set the trainer id to int and the branch id to int if they are not null
         $this->form->trainer_user_id = $this->form->trainer_user_id ? (int) $this->form->trainer_user_id : null;
