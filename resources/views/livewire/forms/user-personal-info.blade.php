@@ -95,28 +95,28 @@
             </select>
         </div>
 
-        @if($role == 'user')
-            <div>
-                <h3 class="text-2xl font-semibold mt-12">
-                    Trainer:
-                </h3>
+        <div>
+            <h3 class="text-2xl font-semibold mt-12">
+                Trainer:
+            </h3>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                @if($role == 'user')
                     <x-input.select name="form.trainer_user_id" label="Trainer" :disabled="!$editing">
                         <option value="">Geen trainer</option>
                         @foreach($trainers as $trainer)
                             <option value="{{ $trainer->id }}" {{ old('form.trainer_user_id', $user ? $user->trainer_user_id : '') == $trainer->id ? 'selected' : '' }}>{{ $trainer->name }}</option>
                         @endforeach
                     </x-input.select>
+                @endif
 
-                    <x-input.select name="form.branch_id" label="Vestiging" :disabled="!$editing">
-                        @foreach($branches as $branch)
-                            <option value="{{ $branch->id }}" {{ old('form.branch_id', $user ? $user->branch_id : '') == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
-                        @endforeach
-                    </x-input.select>
-                </div>
+                <x-input.select name="form.branch_id" label="Vestiging" :disabled="!$editing">
+                    @foreach($branches as $branch)
+                        <option value="{{ $branch->id }}" {{ old('form.branch_id', $user ? $user->branch_id : '') == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
+                    @endforeach
+                </x-input.select>
             </div>
-        @endif
+        </div>
 
         @if($role == 'manager' && auth()->user()->hasRole('admin'))
             <div>

@@ -144,28 +144,32 @@
                 <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
             @endif
 
-            @if(auth()->user()->hasRole(['admin']))
+            @if(auth()->user()->hasRole(['admin', 'manager']))
                 <x-dropdown align="left" width="48">
                     <x-slot name="trigger">
                         <button type="button" class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-cog"></i> Beheer</button>
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('dashboard.admin.settings.credits')">
-                            {{ __('Credits instellingen') }}
-                        </x-dropdown-link>
+                        @if(auth()->user()->hasRole('admin'))
+                            <x-dropdown-link :href="route('dashboard.admin.settings.credits')">
+                                {{ __('Credits instellingen') }}
+                            </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('dashboard.admin.settings.credit-orders')">
-                            {{ __('Bestellingen') }}
-                        </x-dropdown-link>
+                            <x-dropdown-link :href="route('dashboard.admin.settings.credit-orders')">
+                                {{ __('Bestellingen') }}
+                            </x-dropdown-link>
+                        @endif
 
                         <x-dropdown-link :href="route('dashboard.admin.settings.branches')">
                             {{ __('Filialen') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('dashboard.admin.settings.services')">
-                            {{ __('Diensten') }}
-                        </x-dropdown-link>
+                        @if(auth()->user()->hasRole('admin'))
+                            <x-dropdown-link :href="route('dashboard.admin.settings.services')">
+                                {{ __('Diensten') }}
+                            </x-dropdown-link>
+                        @endif
                     </x-slot>
                 </x-dropdown>
             @endif

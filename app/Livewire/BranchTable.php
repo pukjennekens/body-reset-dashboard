@@ -28,7 +28,10 @@ final class BranchTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return Branch::query();
+        if(auth()->user()->hasRole('admin')) return Branch::query();
+        if(auth()->user()->hasRole('manager')) return Branch::query()->whereIn('id', auth()->user()->manager_branches);
+
+        return Branch::query()->where('id', 0);
     }
 
     public function addColumns(): PowerGridColumns
@@ -98,7 +101,8 @@ final class BranchTable extends PowerGridComponent
             Button::add('delete-branch')  
                 ->slot('<i class="fas fa-trash"></i>')
                 ->class('text-xs bg-red-500 text-white p-2 rounded-md hover:bg-red-700')
-                ->openModal('delete-branch', ['id' => $row->id]),
+                ->openModal('delete-branch', ['id' => $row->id])
+                ->can(auth()->user()->hasRole('admin')),
         ];
     }
 }

@@ -56,25 +56,25 @@
         </div>
    </div>
 
-   @if($form->role == 'user')
-        <div>
-            <h2 class="text-2xl font-semibold mb-2">Sportschool en trainer</h2>
-            
-            <div class="grid grid-cols-2 gap-4">
-                <x-input.select name="form.branch_id" label="Sportschool">
-                    @foreach($branches as $branch)
-                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                    @endforeach
-                </x-input.select>
+    <div>
+        <h2 class="text-2xl font-semibold mb-2">Sportschool en trainer</h2>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <x-input.select name="form.branch_id" label="Sportschool">
+                @foreach($branches as $branch)
+                    <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                @endforeach
+            </x-input.select>
 
+            @if($form->role == 'user')
                 <x-input.select name="form.trainer_user_id" label="Trainer">
                     @foreach($trainers as $trainer)
                         <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
                     @endforeach
                 </x-input.select>
-            </div>
+            @endif
         </div>
-   @endif
+    </div>
 
     <x-input.button type="submit">Opslaan</x-input.button>
 </form>

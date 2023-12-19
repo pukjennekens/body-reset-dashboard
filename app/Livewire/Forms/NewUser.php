@@ -32,7 +32,7 @@ class NewUser extends ModalComponent
         foreach($userData as $key => $value) if(empty($value)) unset($userData[$key]);
 
         if($this->role != 'user') $userData['trainer_user_id'] = null;
-        if($this->role != 'user') $userData['branch_id'] = null;
+        if($this->role != 'user' && $this->role != 'trainer') $userData['branch_id'] = null;
 
         $password = \Str::random(8);
         $userData['password'] = bcrypt($password);

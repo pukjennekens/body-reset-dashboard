@@ -43,7 +43,7 @@ class NewUserForm extends Form
     #[Rule('required_if:role,user|numeric|exists:users,id')]
     public $trainer_user_id = '';
 
-    #[Rule('required_if:role,user|numeric|exists:branches,id')]
+    #[Rule('required_if:role,user,trainer|numeric|exists:branches,id')]
     public $branch_id = '';
 
     #[Rule('required_if:role,user|in:admin,manager,trainer,user')]
