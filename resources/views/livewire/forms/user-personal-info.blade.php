@@ -128,7 +128,7 @@
                     {{-- manager_branches --}}
                     @foreach($branches as $branch)
                         <label for="manager_branches" class="inline-flex items-center gap-2">
-                            <input type="checkbox" wire:model.fill="form.manager_branches" value="{{ $branch->id }}" {{ in_array($branch->id, old('form.manager_branches', $user ? $user->manager_branches : [])) ? 'checked' : '' }} {{ !$editing ? 'disabled' : '' }} class="rounded-lg border border-gray-600 disabled:bg-gray-200 checked:bg-blue-600 checked:border-transparent">
+                            <input type="checkbox" wire:model.fill="form.manager_branches" value="{{ $branch->id }}" {{ in_array($branch->id, old('form.manager_branches', $user ? $user->manager_branches : []) ?: []) ? 'checked' : '' }} {{ !$editing ? 'disabled' : '' }} class="rounded-lg border border-gray-600 disabled:bg-gray-200 checked:bg-blue-600 checked:border-transparent">
                             {{ $branch->name }}
                         </label>
                     @endforeach
