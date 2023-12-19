@@ -118,7 +118,7 @@
             </div>
         @endif
 
-        @if($role == 'manager')
+        @if($role == 'manager' && auth()->user()->hasRole('admin'))
             <div>
                 <h3 class="text-2xl font-semibold mt-12 mb-2">
                     Manager-specifieke instellingen:
