@@ -60,8 +60,8 @@
                     <tbody>
                         @foreach($appointments as $appointment)
                             <tr>
-                                <td>{{ $appointment->start }}</td>
-                                <td>{{ $appointment->end }}</td>
+                                <td>{{ $appointment->start->format('d-m-Y H:i') }}</td>
+                                <td>{{ $appointment->end->format('d-m-Y H:i') }}</td>
                                 <td>{{ $appointment->user->name }}</td>
                             </tr>
                         @endforeach
