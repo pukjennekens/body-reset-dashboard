@@ -10,7 +10,7 @@ class NewUserForm extends Form
     #[Rule('required')]
     public $name = ''; 
 
-    #[Rule('required|email')]
+    #[Rule('required|email|unique:users,email')]
     public $email = '';
 
     #[Rule('required_if:role,user|date')]
@@ -46,6 +46,6 @@ class NewUserForm extends Form
     #[Rule('required_if:role,user|numeric|exists:branches,id')]
     public $branch_id = '';
 
-    #[Rule('required_if:role,user|numeric|in:admin,manager,trainer,user')]
-    public $role = '';
+    #[Rule('required_if:role,user|in:admin,manager,trainer,user')]
+    public $role = 'user';
 }

@@ -4,11 +4,11 @@
             <h2 class="text-2xl font-semibold mb-2">Systeem</h2>
             
             <div class="grid grid-cols-2 gap-4">
-                <select class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200" wire:model.change="role" label="Rol">
-                    <option value="admin" {{ old('form.role', $role) == 'admin' ? 'selected' : '' }}>Admin</option>
-                    <option value="manager" {{ old('form.role', $role) == 'manager' ? 'selected' : '' }}>Manager</option>
-                    <option value="trainer" {{ old('form.role', $role) == 'trainer' ? 'selected' : '' }}>Trainer</option>
-                    <option value="user" {{ old('form.role', $role) == 'user' ? 'selected' : '' }}>Gebruiker</option>
+                <select class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200" wire:model.change="form.role" label="Rol">
+                    <option value="admin" {{ old('form.role', $form->role) == 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="manager" {{ old('form.role', $form->role) == 'manager' ? 'selected' : '' }}>Manager</option>
+                    <option value="trainer" {{ old('form.role', $form->role) == 'trainer' ? 'selected' : '' }}>Trainer</option>
+                    <option value="user" {{ old('form.role', $form->role) == 'user' ? 'selected' : '' }}>Gebruiker</option>
                 </select>
             </div>
         </div>
@@ -21,7 +21,7 @@
             <x-input.text name="form.name" label="Volledige naam" />
             <x-input.text name="form.email" label="E-mailadres" />
 
-            @if($role == 'user')
+            @if($form->role == 'user')
                 <x-input.date name="form.birth_date" label="Geboortedatum" />
                 <x-input.text name="form.phone_number" label="Telefoonnummer" />
             @endif
@@ -38,7 +38,7 @@
         <h2 class="text-2xl font-semibold mb-2">Adresgegevens</h2>
         
         <div class="grid grid-cols-2 gap-4">
-            @if($role == 'user')
+            @if($form->role == 'user')
                 <x-input.text name="form.street_name" label="Straat" />
                 <x-input.text name="form.house_number" label="Huisnummer" />
                 <x-input.text name="form.postal_code" label="Postcode" />
@@ -50,13 +50,13 @@
                 <option value="be">België</option>
             </x-input.select>
 
-            @if($role == 'user')
+            @if($form->role == 'user')
                 <x-input.text name="form.province" label="Provincie" />
             @endif
         </div>
    </div>
 
-   @if($role == 'user')
+   @if($form->role == 'user')
         <div>
             <h2 class="text-2xl font-semibold mb-2">Sportschool en trainer</h2>
             

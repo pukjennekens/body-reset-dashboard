@@ -14,6 +14,7 @@ class UserPersonalInfo extends Component
     public User $user;
     public $trainers = [];
     public $branches = [];
+    public $role     = 'user';
 
     public $editing = false;
 
@@ -22,8 +23,8 @@ class UserPersonalInfo extends Component
         $this->user = User::find($id) ?? new User();
         $this->trainers = User::where('role', 'trainer')->get();
         $this->branches = Branch::all();
-        // print_r($this->trainers);
-        // die;
+ 
+        $this->role = $this->user->role ?? 'user';
     }
 
     public function updatePersonalInfo()
@@ -36,7 +37,11 @@ class UserPersonalInfo extends Component
         $this->form->trainer_user_id = $this->form->trainer_user_id ? (int) $this->form->trainer_user_id : null;
         $this->form->branch_id = $this->form->branch_id ? (int) $this->form->branch_id : null;
 
-        $this->user->update($this->form->toArray());
+        $userData = $this->form->toArray();
+
+        foreach($userData as $key => $value) if(empty($value)) unset($userData[$key]);
+
+        $this->user->update($userData);
 
         $this->editing = false;
 

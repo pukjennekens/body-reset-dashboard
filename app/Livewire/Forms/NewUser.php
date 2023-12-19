@@ -4,14 +4,15 @@ namespace App\Livewire\Forms;
 
 use App\Models\Branch;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use LivewireUI\Modal\ModalComponent;
 
 class NewUser extends ModalComponent
 {
     public NewUserForm $form;
-    public $role     = 'user';
     public $branches = [];
     public $trainers = [];
+    private $role    = 'user';
 
     public function mount()
     {
@@ -23,23 +24,25 @@ class NewUser extends ModalComponent
     {
         $this->validate();
 
-        $role = 'user';
-
-        if(auth()->user()->hasRole('admin')) $role = $this->form->role;
+        if(auth()->user()->hasRole('admin')) $this->role = $this->form->role;
 
         $userData = $this->form->toArray();
-        $userData['role'] = $role;
+        $userData['role'] = $this->role;
 
-        if($role != 'user') $userData['trainer_user_id'] = null;
-        if($role != 'user') $userData['branch_id'] = null;
+        foreach($userData as $key => $value) if(empty($value)) unset($userData[$key]);
+
+        if($this->role != 'user') $userData['trainer_user_id'] = null;
+        if($this->role != 'user') $userData['branch_id'] = null;
 
         $password = \Str::random(8);
         $userData['password'] = bcrypt($password);
 
         $user = User::create($userData);
+        $user->role = $this->role;
+        $user->save();
 
-        if($role == 'user') $user->branches()->attach($this->form->branch_id);
-        if($role == 'user') $user->trainers()->attach($this->form->trainer_user_id);
+        if($this->role == 'user') $user->branches()->attach($this->form->branch_id);
+        if($this->role == 'user') $user->trainers()->attach($this->form->trainer_user_id);
 
         $this->dispatch('user-created');
 

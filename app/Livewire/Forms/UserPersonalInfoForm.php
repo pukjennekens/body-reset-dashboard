@@ -13,42 +13,45 @@ class UserPersonalInfoForm extends Form
     #[Rule('required|email')]
     public string $email = '';
 
-    #[Rule('required|date')]
+    #[Rule('required_if:role,user|date')]
     public string $birth_date = '';
 
     #[Rule('required|in:nl,en,fr')]
     public string $language = '';
 
-    #[Rule('required')]
+    #[Rule('required_if:role,user')]
     public string $phone_number = '';
 
-    #[Rule('required')]
+    #[Rule('required_if:role,user')]
     public string $street_name = '';
 
-    #[Rule('required')]
+    #[Rule('required_if:role,user')]
     public string $house_number = '';
 
-    #[Rule('required')]
+    #[Rule('required_if:role,user')]
     public string $postal_code = '';
 
-    #[Rule('required')]
+    #[Rule('required_if:role,user')]
     public string $city = '';
 
     #[Rule('required|in:nl,be')]
     public string $country = '';
 
-    #[Rule('required')]
+    #[Rule('required_if:role,user')]
     public string $province = '';
 
-    #[Rule('required|numeric')]
+    #[Rule('required_if:role,user|numeric')]
     public string $credits = '';
 
-    #[Rule('date|nullable')]
+    #[Rule('date|required_if:role,user')]
     public string $credits_expiration_date = '';
 
-    #[Rule('nullable|exists:users,id')]
+    #[Rule('required_if:role,user|exists:users,id')]
     public $trainer_user_id = '';
 
-    #[Rule('nullable|exists:branches,id')]
+    #[Rule('required_if:role,user|exists:branches,id')]
     public $branch_id = '';
+
+    #[Rule('required_if:role,user|numeric|in:admin,manager,trainer,user')]
+    public $role = '';
 }

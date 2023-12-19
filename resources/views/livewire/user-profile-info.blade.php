@@ -18,14 +18,18 @@
             {{ $user->name }}
         </h2>
 
-        <p class="text-sm mb-2">
-            {{ Carbon\Carbon::parse($user->birth_date)->age }} jaar
-        </p>
+        @if($user->hasRole('user'))
+            <p class="text-sm mb-2">
+                {{ Carbon\Carbon::parse($user->birth_date)->age }} jaar
+            </p>
 
-        <p class="text-sm">
-            <strong>Gewicht:</strong> {{ $user->getWeight() ? $user->getWeight() . ' kg' : 'Nog niet gemeten' }}
-            <br>
-            <strong>Lengte:</strong> {{ $user->getLength() ? $user->getLength() . ' cm' : 'Nog niet gemeten' }}
-        </p>
+            <p class="text-sm">
+                <strong>Gewicht:</strong> {{ $user->getWeight() ? $user->getWeight() . ' kg' : 'Nog niet gemeten' }}
+                <br>
+                <strong>Lengte:</strong> {{ $user->getLength() ? $user->getLength() . ' cm' : 'Nog niet gemeten' }}
+            </p>
+        @else
+            <p class="text-sm font-semibold italic text-primary">{{ ucfirst($user->role) }}</p>
+        @endif
     </div>
 </div>
