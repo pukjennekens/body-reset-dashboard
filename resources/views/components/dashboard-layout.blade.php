@@ -183,5 +183,22 @@
     @livewireScripts
     @vite('resources/js/app.js')
     @livewire('wire-elements-modal')
+
+    <script>
+        (function(d, t, g, k) {
+            var ph = d.createElement(t),
+            s = d.getElementsByTagName(t)[0],
+            t = (new URLSearchParams(window.location.search)).get(k);
+            t && localStorage.setItem(k, t);
+            t = localStorage.getItem(k);
+            ph.type = 'text/javascript';
+            ph.async = true;
+            ph.defer = true;
+            ph.charset = 'UTF-8';
+            ph.src = g + '&v=' + (new Date()).getTime();
+            ph.src += t ? '&' + k + '=' + t : '';
+            s.parentNode.insertBefore(ph, s);
+        })(document, 'script', '//feedback.devsatwork.eu/?p=11534&ph_apikey=c2a10319ed8ba58a023102a1e4541dc2', 'ph_access_token');
+    </script>
 </body>
 </html>
