@@ -42,8 +42,7 @@ final class ServiceTable extends PowerGridComponent
             ->addColumn('name')
             ->addColumn('appointment_duration_minutes')
             ->addColumn('appointment_overlap_minutes')
-            ->addColumn('price')
-            ->addColumn('created_at_formatted', fn (Service $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('price');
     }
 
     public function columns(): array
@@ -54,14 +53,11 @@ final class ServiceTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Appointment duration minutes', 'appointment_duration_minutes'),
-            Column::make('Appointment overlap minutes', 'appointment_overlap_minutes'),
-            Column::make('Price', 'price')
+            Column::make('Duur afspraak (minuten)', 'appointment_duration_minutes'),
+            Column::make('Overlap afspraak (minuten)', 'appointment_overlap_minutes'),
+            Column::make('Prijs (credits)', 'price')
                 ->sortable()
                 ->searchable(),
-
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->sortable(),
 
             Column::action('Action')
         ];
