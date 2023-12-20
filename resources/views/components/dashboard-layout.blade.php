@@ -95,7 +95,15 @@
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <div class="rounded-full w-12 h-12 bg-primary uppercase text-white inline-flex items-center justify-center font-bold cursor-pointer">
-                        PJ
+                        @php
+                            $nameParts = explode(' ', auth()->user()->name);
+                            $firstName = $nameParts[0];
+                            $lastName = end($nameParts);
+                            $firstLetterFirstName = substr($firstName, 0, 1);
+                            $firstLetterLastName = substr($lastName, 0, 1);
+                        @endphp
+
+                        {{ $firstLetterFirstName }}{{ $firstLetterLastName }}
                     </div>
                 </x-slot>
 
