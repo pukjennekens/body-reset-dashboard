@@ -146,7 +146,7 @@ class AppointmentCalendar extends Component
     public function generateCalendar($date)
     {
         $this->date  = $date;
-        $this->month = $this->date->format('F');
+        $this->month = \Carbon\Carbon::parse($this->date)->translatedFormat('F');
         $this->year  = $this->date->year;
         $this->days  = $this->getDays($this->date);
 

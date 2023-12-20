@@ -75,7 +75,7 @@
                 <div class="min-w-[140px] w-full">
                     <div class="flex flex-col items-center px-2 py-4">
                         <span class="font-bold">{{ $day->format('d') }}</span>
-                        <span>{{ $day->format('l') }}</span>
+                        <span>{{ \Carbon\Carbon::parse($day)->translatedFormat('l') }}</span>
                     </div>
 
                     <div class="flex flex-col gap-2 items-center px-2 py-4 border-t border-gray-400">
