@@ -108,15 +108,16 @@
                 </x-slot>
 
                 <x-slot name="content">
-                    <x-dropdown-link :href="route('dashboard')">
-                        {{ __('Test link') }}
-                    </x-dropdown-link>
-
-                    <x-dropdown-link :href="route('dashboard')">
-                        {{ __('Test link') }}
-                    </x-dropdown-link>
+                    <div class="px-4 py-2">
+                        <p class="text-base font-semibold">{{ auth()->user()->name }}</p>
+                        <p class="text-sm text-gray-500">{{ auth()->user()->email }}</p>
+                    </div>
 
                     <hr class="my-2">
+
+                    <x-dropdown-link :href="route('dashboard.user.profile')">
+                        Profiel
+                    </x-dropdown-link>
 
                     <x-dropdown-link :href="route('dashboard')">
                         <form action="{{ route('auth.logout') }}" method="POST">

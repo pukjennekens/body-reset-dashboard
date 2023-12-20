@@ -31,6 +31,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/nutrition-plans', [DashboardController::class, 'userNutritionPlans'])->name('dashboard.user.nutrition-plans');
     Route::get('/nutrition-plans/{id}', [DashboardController::class, 'userNutritionPlan'])->name('dashboard.user.nutrition-plans.show')->where('id', '[0-9]+');
     Route::get('/appointments', [DashboardController::class, 'userAppointments'])->name('dashboard.user.appointments');
+    Route::get('/profile', [DashboardController::class, 'userProfile'])->name('dashboard.user.profile');
 });
 
 Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'admin']], function () {

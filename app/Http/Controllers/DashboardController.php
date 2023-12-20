@@ -40,4 +40,9 @@ class DashboardController extends Controller
     {
         return view('dashboard.admin.index');
     }
+
+    public function userProfile()
+    {
+        return view('dashboard.user.profile');
+    }
 }
