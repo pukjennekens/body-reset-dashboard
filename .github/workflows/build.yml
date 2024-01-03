@@ -40,10 +40,10 @@ jobs:
           name: build-artifacts
           path: public/build
 
-      - name: Commit build artifacts
-        uses: EndBug/add-and-commit@v7
-        with:
-          author_name: GitHub Actions
-          author_email: pukjennekens@outlook.com
-          message: "Build artifacts"
-          add: "public/build"
+      - name: Commit and push build
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "pukjennekens@outlook.com"
+          git add public/build
+          git commit -m "Added production build"
+          git push
