@@ -18,6 +18,16 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mbstring, zip, intl, gd, curl, exif, dom, fileinfo, iconv, json, pdo, pdo_mysql, tokenizer, xml, xmlwriter, xmlreader, simplexml, ctype, session, bcmath, mysqli, openssl, phar, posix, readline, sockets, sodium, sqlite3, tokenizer, zip, zlib, xdebug
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-ansi --no-progress --no-suggest --no-scripts --no-plugins --prefer-dist --optimize-autoloader
+
       - name: Install dependencies
         run: npm install
 
