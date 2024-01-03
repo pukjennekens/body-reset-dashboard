@@ -35,7 +35,7 @@ final class UserTable extends PowerGridComponent
     public function datasource(): Builder
     {
         if(auth()->user()->hasRole('admin')) return User::query();
-        if(auth()->user()->hasRole('manager')) return User::query()->whereIn('branch_id', auth()->user()->manager_branches)->where('role', '!=', 'admin')->where('role', '!=', 'manager');
+        if(auth()->user()->hasRole('manager') && auth()->user()->manager_branches) return User::query()->whereIn('branch_id', auth()->user()->manager_branches)->where('role', '!=', 'admin')->where('role', '!=', 'manager');
         if(auth()->user()->hasRole('trainer')) return User::query()->where('trainer_user_id', auth()->user()->id)->where('role', '!=', 'admin')->where('role', '!=', 'manager')->where('role', '!=', 'trainer');
 
         return User::query()->where('id', 0);
