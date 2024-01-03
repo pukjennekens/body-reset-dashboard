@@ -46,3 +46,14 @@ jobs:
           add: "public/build"
           author_name: "Puk Jennekens"
           author_email: "pukjennekens@outlook.com"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Call the Envoyer webhook
+        uses: peter-evans/webhook@v2
+        with:
+          url: "https://envoyer.io/deploy/9Jn2FZ7TVxaniMhPlibbmVvCTxmPl62dXtavYVWQ"
+          method: GET
