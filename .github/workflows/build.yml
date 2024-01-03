@@ -37,5 +37,5 @@ jobs:
       - name: Archive production build
         uses: actions/upload-artifact@v2
         with:
-          name: dist
-          path: /public/dist
+          name: build
+          path: build
