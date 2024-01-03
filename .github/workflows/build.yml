@@ -37,5 +37,13 @@ jobs:
       - name: Archive production build
         uses: actions/upload-artifact@v2
         with:
-          name: build
-          path: public/build/**/*
+          name: build-artifacts
+          path: public/build
+
+      - name: Commit build artifacts
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: GitHub Actions
+          author_email: pukjennekens@outlook.com
+          message: "Build artifacts"
+          add: "public/build"
