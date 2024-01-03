@@ -40,20 +40,11 @@ jobs:
           name: build-artifacts
           path: public/build
 
-      - name: Commit and push build
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: "public/build"
-          author_name: "Puk Jennekens"
-          author_email: "pukjennekens@outlook.com"
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Call the Envoyer webhook
-        uses: peter-evans/webhook@v2
-        with:
-          url: "https://envoyer.io/deploy/9Jn2FZ7TVxaniMhPlibbmVvCTxmPl62dXtavYVWQ"
-          method: GET
+      - name: Commit and push build to build branch
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "pukjennekens@outlook.com"
+          git checkout -b build
+          git add .
+          git commit -m "Build"
+          git push origin build
