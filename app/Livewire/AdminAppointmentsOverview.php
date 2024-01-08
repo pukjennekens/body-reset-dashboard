@@ -46,8 +46,9 @@ class AdminAppointmentsOverview extends Component
             $this->branches = Branch::find($this->user->branch_id);
         }
 
+        
         if(empty($this->branches)) $this->branches = [];
-        if(!is_array($this->branches)) $this->branches = [$this->branches];
+        if(!is_a($this->branches, 'Illuminate\Database\Eloquent\Collection') && !is_array($this->branches) && !empty($this->branches)) $this->branches = [$this->branches];
     }
 
     public function previousDay()
