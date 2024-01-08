@@ -43,10 +43,11 @@ class AdminAppointmentsOverview extends Component
         } elseif( $this->user->hasRole('manager') && $this->user->manager_branches ) {
             $this->branches = Branch::whereIn('id', $this->user->manager_branches);
         } elseif( $this->user->hasRole('trainer') && $this->user->branch_id ) {
-            $this->branches = Branch::where('id', $this->user->branch_id);;
+            $this->branches = Branch::find($this->user->branch_id);
         }
 
         if(empty($this->branches)) $this->branches = [];
+        if(!is_array($this->branches)) $this->branches = [$this->branches];
     }
 
     public function previousDay()
