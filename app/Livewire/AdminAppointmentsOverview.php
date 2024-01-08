@@ -42,7 +42,7 @@ class AdminAppointmentsOverview extends Component
             $this->branches = Branch::all();
         } elseif( $this->user->hasRole('manager') && $this->user->manager_branches ) {
             $this->branches = Branch::whereIn('id', $this->user->manager_branches);
-        } elseif( $this->user->hasRole('trainer') ) {
+        } elseif( $this->user->hasRole('trainer') && $this->user->branch_id ) {
             $this->branches = Branch::where('id', $this->user->branch_id);;
         }
 
