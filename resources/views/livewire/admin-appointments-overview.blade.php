@@ -3,17 +3,21 @@
         <select wire:model.change="selectedServiceId" class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200">
             <option value="">Selecteer een dienst</option>
 
-            @foreach($services as $service)
-                <option value="{{ $service->id }}">{{ $service->name }}</option>
-            @endforeach
+            @if(!empty($services))
+                @foreach($services as $service)
+                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+                @endforeach
+            @endif
         </select>
 
         <select wire:model.change="selectedBranchId" class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200">
             <option value="">Selecteer een filiaal</option>
 
-            @foreach($branches as $branch)
-                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-            @endforeach
+            @if(!empty($branches))
+                @foreach($branches as $branch)
+                    <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                @endforeach
+            @endif
         </select>
     </div>
 
