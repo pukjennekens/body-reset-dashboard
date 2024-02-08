@@ -20,6 +20,8 @@ class CancelAppointment extends ModalComponent
     {
         if ($this->appointment->start->lt(now()->addDay())) return;
 
+        $this->appointment->user->notify(new \App\Notifications\AppointmentCancelled($this->appointment));
+
         $creditsToRefund = $this->appointment->service->price;
         $this->appointment->user->increment('credits', $creditsToRefund);
         $this->appointment->delete();

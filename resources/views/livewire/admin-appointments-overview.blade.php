@@ -59,6 +59,7 @@
                         <th>Start tijd</th>
                         <th>Eind tijd</th>
                         <th>Gebruiker</th>
+                        <th></th>
                     </thead>
 
                     <tbody>
@@ -67,6 +68,9 @@
                                 <td>{{ $appointment->start->format('d-m-Y H:i') }}</td>
                                 <td>{{ $appointment->end->format('d-m-Y H:i') }}</td>
                                 <td>{{ $appointment->user->name }}</td>
+                                <td>
+                                    <a href="{{ route('dashboard.admin.users.show', $appointment->user) }}" class="text-primary hover:underline">Bekijk gebruiker</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

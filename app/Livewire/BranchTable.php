@@ -96,11 +96,11 @@ final class BranchTable extends PowerGridComponent
         return [
             Button::add('show-branch')  
                 ->slot('<i class="fas fa-eye"></i>')
-                ->class('text-xs bg-primary text-white p-2 rounded-md hover:bg-green-700')
+                ->class('text-xs bg-primary text-white px-2 py-2 rounded-md hover:bg-green-700 block')
                 ->route('dashboard.admin.settings.branches.show', ['id' => $row->id]),
             Button::add('delete-branch')  
                 ->slot('<i class="fas fa-trash"></i>')
-                ->class('text-xs bg-red-500 text-white p-2 rounded-md hover:bg-red-700')
+                ->class('text-xs bg-red-500 text-white p-2 rounded-md hover:bg-red-700 block')
                 ->openModal('delete-branch', ['id' => $row->id])
                 ->can(auth()->user()->hasRole('admin')),
         ];

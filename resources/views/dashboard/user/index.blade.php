@@ -79,7 +79,7 @@
             </div>
 
             <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-2xl font-semibold mb-4">Omtrekkingen:</h3>
+                <h3 class="text-2xl font-semibold mb-4">Omtrekmetingen:</h3>
 
                 @livewire('girth-measurements-history-graph', ['userId' => auth()->user()->id])
             </div>

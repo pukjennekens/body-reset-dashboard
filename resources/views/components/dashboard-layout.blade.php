@@ -124,7 +124,7 @@
                             @csrf
 
                             <button type="submit" class="w-full text-left">
-                                {{ __('Log out') }}
+                                {{ __('Afmelden') }}
                             </button>
                         </form>
                     </x-dropdown-link>

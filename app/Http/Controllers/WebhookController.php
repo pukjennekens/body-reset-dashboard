@@ -28,6 +28,7 @@ class WebhookController extends Controller
             $creditOrder->user->addCredits($creditOrder->creditOption->credits);
             $creditOrder->user->update([
                 'credits_expiration_date' => now()->addDays($creditOrder->creditOption->expiration_days),
+                'credits_reminder_sent'   => false,
             ]);
         }
     }

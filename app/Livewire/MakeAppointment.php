@@ -58,13 +58,15 @@ class MakeAppointment extends ModalComponent
         $this->user->credits -= $this->service->price;
         $this->user->save();
 
-        Appointment::create([
+        $appointment = Appointment::create([
             'branch_id'  => $this->branchId,
             'service_id' => $this->serviceId,
             'user_id'    => $this->userId,
             'start'      => \Carbon\Carbon::createFromFormat('d-m-Y H:i', $this->date . ' ' . $this->from),
             'end'        => \Carbon\Carbon::createFromFormat('d-m-Y H:i', $this->date . ' ' . $this->to),
         ]);
+
+        $this->user->notify(new \App\Notifications\AppointmentCreated($appointment));
 
         $this->closeModal();
 

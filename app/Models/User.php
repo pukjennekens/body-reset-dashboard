@@ -47,6 +47,8 @@ class User extends Authenticatable
         'manager_branches',
 
         'role',
+
+        'credits_reminder_sent',
     ];
 
     /**
