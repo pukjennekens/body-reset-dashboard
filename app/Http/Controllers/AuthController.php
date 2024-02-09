@@ -35,4 +35,11 @@ class AuthController extends Controller
 
         return redirect()->route('auth.login');
     }
+
+    public function register()
+    {
+        if(auth()->check()) return redirect()->route('dashboard');
+
+        return view('auth.register');
+    }
 }
