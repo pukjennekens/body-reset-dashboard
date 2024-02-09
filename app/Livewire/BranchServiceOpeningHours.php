@@ -21,6 +21,9 @@ class BranchServiceOpeningHours extends Component
     public $opening_hours_sunday    = [];
     public $opening_hours_holiday   = [];
 
+    public $success      = false;
+    public $successCount = 0;
+
     public function mount($branchId, $serviceId)
     {
         $this->branchService = BranchService::where('branch_id', $branchId)
@@ -49,6 +52,9 @@ class BranchServiceOpeningHours extends Component
             'opening_hours_sunday'    => $this->opening_hours_sunday,
             'opening_hours_holiday'   => $this->opening_hours_holiday,
         ]);
+
+        $this->success = true;
+        $this->successCount++;
 
         $this->dispatch('branch-service-updated');
     }

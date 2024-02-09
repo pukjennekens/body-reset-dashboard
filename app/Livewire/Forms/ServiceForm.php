@@ -13,7 +13,7 @@ class ServiceForm extends Form
     #[Rule('required|numeric|min:1')]
     public int $appointment_duration_minutes;
     
-    #[Rule('required|numeric|min:1')]
+    #[Rule('required|numeric|min:0')]
     public int $appointment_overlap_minutes;
     
     #[Rule('required|regex:/^(\d){1,8}([\,](\d){0,2})?$/')]

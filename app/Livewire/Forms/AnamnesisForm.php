@@ -57,4 +57,31 @@ class AnamnesisForm extends Form
 
     #[Rule('nullable|boolean')]
     public $hypokalemia;
+
+    #[Rule('nullable|string|max:255')]
+    public $goal;
+
+    #[Rule('nullable|string|max:255')]
+    public $medical_operations;
+
+    #[Rule('nullable|string|max:255')]
+    public $fysical_complaints;
+
+    #[Rule('nullable|string|max:255')]
+    public $profession;
+
+    #[Rule('nullable|string|max:255')]
+    public $irregular_working_hours;
+
+    #[Rule('nullable|string|max:255')]
+    public $fysical_exercise;
+
+    #[Rule('nullable|string|max:255')]
+    public $hormonal_issues;
+
+    #[Rule('nullable|string|max:255')]
+    public $breastfeeding;
+
+    #[Rule('nullable|string|max:255')]
+    public $pregnant;
 }

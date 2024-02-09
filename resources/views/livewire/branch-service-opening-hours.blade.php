@@ -74,4 +74,8 @@
     <button type="submit" class="mt-4 rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600" wire:click="saveBranchServiceOpeningHours">
         <i class="fas fa-save"></i> Opslaan
     </button>
+
+    @if($success)
+    <span class="text-primary ml-4">Opgeslagen! {{ $successCount > 0 ? '(' . $successCount . ')' : '' }}</span>
+    @endif
 </div>

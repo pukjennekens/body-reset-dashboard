@@ -28,6 +28,15 @@ class Anamnesis extends Model
         'regular_muscle_cramps',
         'anti_depressants',
         'user_id',
+        'goal',
+        'medical_operations',
+        'fysical_complaints',
+        'profession',
+        'irregular_working_hours',
+        'fysical_exercise',
+        'hormonal_issues',
+        'breastfeeding',
+        'pregnant',
     ];
 
     protected $casts = [
