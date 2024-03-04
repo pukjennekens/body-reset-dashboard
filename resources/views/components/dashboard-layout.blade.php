@@ -79,6 +79,8 @@
                             </x-slot>
                         </x-dropdown>
                     @endif
+
+                    <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="https://bodyreset.be/documenten/" target="_blank"><i class="fa-solid fa-file"></i> Documenten</a>
                 </div>
             </div>
 
@@ -182,6 +184,8 @@
                     </x-slot>
                 </x-dropdown>
             @endif
+
+            <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="https://bodyreset.be/documenten/" target="_blank"><i class="fa-solid fa-file"></i> Documenten</a>
         </div>
     </header>
 
