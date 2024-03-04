@@ -7,6 +7,6 @@ use Livewire\Form;
 
 class ResetPasswordForm extends Form
 {
-    #[Rule('required|email')]
+    #[Rule('required|email|exists:users,email')]
     public string $email = '';
 }
