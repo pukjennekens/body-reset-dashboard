@@ -2,7 +2,7 @@
 <tr>
 <td class="header">
 <a href="{{ $url }}" style="display: inline-block;">
-    <img src="{{ asset('img/logo.jpg') }}" alt="{{ env('APP_NAME') }}" style="width: 200px; height: auto;">
+    <img src="{{ asset('img/logo.png') }}" alt="{{ env('APP_NAME') }}" style="width: 200px; height: auto;">
 </a>
 </td>
 </tr>
