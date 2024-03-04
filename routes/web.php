@@ -62,3 +62,5 @@ Route::get('/', function() {
 
 // Mollie webhook route
 Route::post('/webhooks/mollie', [WebhookController::class, 'mollie'])->name('webhooks.mollie');
+
+Route::redirect('/inloggen', '/login');
