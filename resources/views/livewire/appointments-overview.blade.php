@@ -8,7 +8,8 @@
             <table class="table-auto">
                 <thead>
                     <th>Datum</th>
-                    <th>Tijd</th>
+                    <th>Start tijd</th>
+                    <th>Eind tijd</th>
                     <th>Dienst</th>
                     <th>Prijs</th>
                     <th>Annuleren</th>
@@ -19,6 +20,7 @@
                         <tr>
                             <td class="whitespace-nowrap">{{ $appointment->start->format('d-m-Y') }}</td>
                             <td class="whitespace-nowrap">{{ $appointment->start->format('H:i') }}</td>
+                            <td class="whitespace-nowrap">{{ $appointment->end->format('H:i') }}</td>
                             <td class="whitespace-nowrap">{{ $appointment->service->name }}</td>
                             <td class="whitespace-nowrap">{{ $appointment->service->price }} {{ $appointment->service->price == 1 ? 'credit' : 'credits' }}</td>
                             <td class="whitespace-nowrap">

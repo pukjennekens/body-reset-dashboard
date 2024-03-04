@@ -1,16 +1,20 @@
 <div>
     <div>
-        <h3 class="text-2xl font-semibold mb-2">Selecteer een dienst</h3>
+        <h3 class="text-2xl font-semibold mb-4">Maak een afspraak</h3>
 
-        <select 
-            class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200"
-            wire:change="selectService($event.target.value)"
-        >
-            <option value="">Selecteer een dienst</option>
-            @foreach($services as $service)
-                <option value="{{ $service->id }}">{{ $service->name }}</option>
-            @endforeach
-        </select>
+        <div>
+            <label for="select-service" class="block mb-1">Selecteer een dienst</label>
+            <select 
+                class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200"
+                wire:change="selectService($event.target.value)"
+                id="select-service"
+            >
+                <option value="">Selecteer een dienst</option>
+                @foreach($services as $service)
+                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+                @endforeach
+            </select>
+        </div>
     </div>
 
     @if($serviceId)
