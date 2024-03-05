@@ -24,6 +24,6 @@
             </table>
         </div>
     @else
-        <p>U heeft nog geen pete- of metekinderen aan uw account gekoppeld</p>
+        <p>Je hebt nog geen pete- of metekinderen aan je account gekoppeld</p>
     @endif
 </div>

@@ -20,7 +20,7 @@
             </x-slot>
         </x-dropdown>
     @else
-        <p>U heeft geen credits</p>
+        <p>Je hebt geen credits</p>
     @endif
 
     <button 
