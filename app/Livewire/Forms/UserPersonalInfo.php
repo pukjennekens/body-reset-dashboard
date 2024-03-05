@@ -21,7 +21,7 @@ class UserPersonalInfo extends Component
     public function mount($id = null)
     {
         $this->user     = User::find($id) ?? new User();
-        $this->trainers = User::where('role', 'trainer')->get();
+        $this->trainers = User::whereIn('role', ['admin', 'manager', 'trainer'])->get();
         $this->branches = Branch::all();
         $this->role     = $this->user->role ?? 'user';
     }
