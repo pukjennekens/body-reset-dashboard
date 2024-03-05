@@ -58,8 +58,17 @@ class AppointmentCalendar extends Component
             $serviceDurationOverlap = $this->service->appointment_overlap_minutes;
             $actualServiceDuration  = $serviceDuration - $serviceDurationOverlap;
             $openingHours           = $this->getBranchServiceOpeningHours($this->branch, $this->service, $day);
+            $holidayHours           = $this->getBranchServiceOpeningHours($this->branch, $this->service, 'holiday');
 
-            if(!$openingHours) return null;
+            if($holidayHours) {
+                foreach($holidayHours as $holiday) {
+                    $holidayDate = \Carbon\Carbon::parse($holiday['date'])->format('d-m-Y');
+
+                    if($holidayDate == $day->format('d-m-Y')) {
+                        $openingHours = $holiday;
+                    }
+                }
+            }
 
             if(!$openingHours['closed']) {
                 foreach($openingHours['times'] as $time) {
@@ -136,7 +145,12 @@ class AppointmentCalendar extends Component
 
         if(!$branchService) return null;
 
-        $openingHours = $branchService->{'opening_hours_' . strtolower($day->format('l'))};
+        if($day == 'holiday') {
+            $openingHours = $branchService->opening_hours_holiday;
+            return $openingHours;
+        }
+
+        $openingHours = $branchService->{'opening_hours_' . strtolower($day->format('l') ?: $day)};
 
         if(!$openingHours) return null;
 

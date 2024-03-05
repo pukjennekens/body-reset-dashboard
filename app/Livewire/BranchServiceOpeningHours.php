@@ -37,7 +37,7 @@ class BranchServiceOpeningHours extends Component
         $this->opening_hours_friday    = $this->branchService->opening_hours_friday    ?? [ 'closed' => false, 'times' => [] ];
         $this->opening_hours_saturday  = $this->branchService->opening_hours_saturday  ?? [ 'closed' => false, 'times' => [] ];
         $this->opening_hours_sunday    = $this->branchService->opening_hours_sunday    ?? [ 'closed' => false, 'times' => [] ];
-        $this->opening_hours_holiday   = $this->branchService->opening_hours_holiday   ?? [ 'closed' => false, 'times' => [] ];
+        $this->opening_hours_holiday   = $this->branchService->opening_hours_holiday   ?? [];
     }
 
     public function saveBranchServiceOpeningHours()

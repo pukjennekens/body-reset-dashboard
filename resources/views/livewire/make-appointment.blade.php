@@ -11,7 +11,6 @@
         <i class="fas fa-info-circle"></i> <strong>{{ $service->name }}</strong> kost {{ $service->price }} {{ $service->price == 1 ? 'credit' : 'credits' }}.
     </p>
 
-
     {{-- Check if the startDateTime is less then 24 hours from now, if so, show a warning --}}
     @if($startDateTime->lessThan(now()->addDay()))
         <p class="bg-yellow-100 rounded-lg border border-yellow-600 text-sm px-4 py-2 mt-2">
