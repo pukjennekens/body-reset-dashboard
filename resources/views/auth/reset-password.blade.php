@@ -2,7 +2,7 @@
     <div class="space-y-2">
         <h1 class="text-2xl font-bold">Wachtwoord resetten</h1>
 
-        <p class="text-gray-600">Als je je wachtwoord bent vergeten, kunt je het hier opnieuw instellen. Je ontvangt een e-mail met een link om uw wachtwoord opnieuw in te stellen.</p>
+        <p class="text-gray-600">Als je je wachtwoord bent vergeten, kun je het hier opnieuw instellen. Je ontvangt een e-mail met een link om uw wachtwoord opnieuw in te stellen.</p>
 
         @livewire('forms.reset-password')
     </div>
