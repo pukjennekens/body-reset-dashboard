@@ -55,6 +55,9 @@ class Appointment extends Model
         $start = $this->start->format('Ymd\THis\Z');
         $end   = $this->end->format('Ymd\THis\Z');
 
+        $start = date('Ymd\THis\Z', strtotime($start . ' -1 hour'));
+        $end   = date('Ymd\THis\Z', strtotime($end . ' -1 hour'));
+
         return
 'BEGIN:VCALENDAR
 VERSION:2.0
