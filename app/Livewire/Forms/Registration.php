@@ -98,7 +98,7 @@ class Registration extends Component
                 'fysical_complaints'        => $this->fysical_complaints,
             ]);
 
-            $this->created = true;
+            return redirect()->away('https://bodyreset.be/super-je-dossier-werd-aangemaakt/');
         }
     }
 

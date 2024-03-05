@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\BranchService;
 use App\Models\Service;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -51,6 +52,13 @@ class BranchServiceOpeningHours extends Component
             'opening_hours_saturday'  => $this->opening_hours_saturday,
             'opening_hours_sunday'    => $this->opening_hours_sunday,
             'opening_hours_holiday'   => $this->opening_hours_holiday,
+        ]);
+
+        // Log the holiday opening hours
+        Log::debug('Holiday opening hours updated', [
+            'branch_id'  => $this->branchService->branch_id,
+            'service_id' => $this->branchService->service_id,
+            'opening_hours_holiday' => $this->opening_hours_holiday,
         ]);
 
         $this->success = true;
