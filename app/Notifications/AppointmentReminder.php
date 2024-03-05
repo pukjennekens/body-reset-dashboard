@@ -43,9 +43,9 @@ class AppointmentReminder extends Notification
                     ->subject('Herinnering voor uw afspraak bij BodyReset')
                     ->greeting('Beste ' . $this->appointment->user->name)
                     ->line('Dit bericht dient als herinnering voor uw afspraak bij BodyReset.')
-                    ->line('U heeft een afspraak gemaakt voor ' . $this->appointment->service->name . ' op ' . $this->appointment->start->format('d-m-Y H:i') . '.')
+                    ->line('Je heeft een afspraak gemaakt voor ' . $this->appointment->service->name . ' op ' . $this->appointment->start->format('d-m-Y H:i') . '.')
                     ->line('Deze afspraak duurt ' . $this->appointment->service->appointment_duration_minutes . ' minuten.')
-                    ->line('U kunt deze afspraak niet meer annuleren omdat hij binnen 24 uur plaatsvindt.')
+                    ->line('Je kunt deze afspraak niet meer annuleren omdat hij binnen 24 uur plaatsvindt.')
                     ->action('Bekijk uw afspraak online', route('dashboard.user.appointments'));
     }
 

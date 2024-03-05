@@ -22,7 +22,7 @@
             </div>
         @else
             <p>
-                U heeft nog geen voedingsschema's.
+                Je hebt nog geen voedingsschema's.
             </p>
         @endif
     </div>

@@ -61,7 +61,7 @@
 
             <div class="inline-flex items-center">
                 <div class="w-5 h-5 rounded-md bg-blue-400"></div>
-                <span class="ml-2">Door u geboekt</span>
+                <span class="ml-2">Door jou geboekt</span>
             </div>
 
             <div class="inline-flex items-center">

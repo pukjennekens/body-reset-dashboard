@@ -51,7 +51,7 @@ class MakeAppointment extends ModalComponent
     public function makeAppointment()
     {
         if($this->user->credits < $this->service->price) {
-            $this->addError('error', 'U heeft niet genoeg credits om deze afspraak te maken.');
+            $this->addError('error', 'Je hebt niet genoeg credits om deze afspraak te maken.');
             return;
         }
 

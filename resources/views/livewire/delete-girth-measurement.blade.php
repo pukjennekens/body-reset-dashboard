@@ -1,5 +1,5 @@
 <div class="space-y-2">
-    <h2 class="text-2xl font-semibold">Weet u zeker dat u deze omtrek meting wilt verwijderen?</h2>
+    <h2 class="text-2xl font-semibold">Weet je zeker dat je deze omtrek meting wilt verwijderen?</h2>
 
     <p>
         Het uitvoeren van deze actie kan niet ongedaan worden gemaakt.

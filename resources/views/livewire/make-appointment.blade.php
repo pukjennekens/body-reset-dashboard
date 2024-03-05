@@ -2,9 +2,9 @@
     <h2 class="text-2xl font-semibold mb-2">Afspraak maken</h2>
 
     <p>
-        U staat op het punt om een afspraak in te plannen voor:<br>
+        Je staat op het punt om een afspraak in te plannen voor:<br>
         <strong>{{ $service->name }}</strong> op <strong>{{ $date }}</strong> om <strong>{{ $from }}</strong>.<br>
-        Weet u zeker dat u deze afspraak wilt maken? U kunt de afspraak nog 24 uur van tevoren annuleren.
+        Weet je zeker dat je deze afspraak wilt maken? Je kunt de afspraak nog 24 uur van tevoren annuleren.
     </p>
 
     <p class="mt-4">
@@ -17,7 +17,7 @@
         <p class="bg-yellow-100 rounded-lg border border-yellow-600 text-sm px-4 py-2 mt-2">
             <span class="mb-2"><i class="fas fa-exclamation-triangle"></i> <strong>Let op!</strong></span>
             <br>
-            Deze afspraak valt binnen 24 uur. U kunt afpsraken maximaal 24 uur van te voren annuleren. Dat betekent dat u deze afspraak niet meer kunt annuleren.
+            Deze afspraak valt binnen 24 uur. Je kunt afpsraken maximaal 24 uur van te voren annuleren. Dat betekent dat je deze afspraak niet meer kunt annuleren.
         </p>
     @endif
 

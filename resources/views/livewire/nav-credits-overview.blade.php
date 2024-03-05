@@ -2,7 +2,7 @@
     @if($user->credits > 0)
         <x-dropdown align="center" width="48">
             <x-slot name="trigger">
-                <p class="underline decoration-dotted cursor-pointer">U heeft <strong>{{ $user->credits }}</strong> {{ $user->credits == 1 ? 'credit' : 'credits' }}</p>
+                <p class="underline decoration-dotted cursor-pointer">Je hebt <strong>{{ $user->credits }}</strong> {{ $user->credits == 1 ? 'credit' : 'credits' }}</p>
             </x-slot>
 
             <x-slot name="content">

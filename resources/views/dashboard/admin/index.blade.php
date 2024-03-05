@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-2">
-            Op deze pagina vind u een overzicht met al uw afspraken en pete- en metekinderen
+            Op deze pagina vind je een overzicht met al uw afspraken en pete- en metekinderen
         </p>
 
         <div class="mt-8">

@@ -7,6 +7,6 @@
 
 
     <div class="mt-4">
-        <a href="{{ route('auth.login') }}" class="text-sm text-gray-600 hover:underline">Heeft u al een account?</a>
+        <a href="{{ route('auth.login') }}" class="text-sm text-gray-600 hover:underline">Heb je al een account?</a>
     </div>
 </x-auth-layout>

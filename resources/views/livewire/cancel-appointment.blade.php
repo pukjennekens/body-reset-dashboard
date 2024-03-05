@@ -1,8 +1,8 @@
 <div class="space-y-2">
-    <h2 class="text-2xl font-semibold">Weet u zeker dat u deze afspraak wilt annuleren?</h2>
+    <h2 class="text-2xl font-semibold">Weet je zeker dat je deze afspraak wilt annuleren?</h2>
 
     <p>
-        Deze afspraak kostte u <strong>{{ $appointment->service->price }} {{ $appointment->service->price == 1 ? 'credit' : 'credits' }}</strong>, deze credit(s) worden teruggezet op uw account.
+        Deze afspraak kostte je <strong>{{ $appointment->service->price }} {{ $appointment->service->price == 1 ? 'credit' : 'credits' }}</strong>, deze credit(s) worden teruggezet op je account.
     </p>
 
     <div>

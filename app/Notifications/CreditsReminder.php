@@ -44,7 +44,7 @@ class CreditsReminder extends Notification
                     ->greeting('Beste ' . $this->user->name)
                     ->line('Dit bericht dient als herinnering voor uw credits bij BodyReset.')
                     ->line('Uw credits zullen over 14 dagen verlopen.')
-                    ->line('Zorg ervoor dat u uw credits op tijd gebruikt.')
+                    ->line('Zorg ervoor dat je je credits op tijd gebruikt.')
                     ->action('Maak online een afspraak', route('dashboard.user.appointments'));
     }
 

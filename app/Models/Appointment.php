@@ -60,7 +60,7 @@ class Appointment extends Model
 VERSION:2.0
 BEGIN:VEVENT
 CLASS:PUBLIC
-DESCRIPTION:U heeft een afspraak gemaakt voor ' . $this->service->name . ' op ' . $this->start->format('d-m-Y H:i') . '. Deze afspraak duurt ' . $this->service->appointment_duration_minutes . ' minuten.
+DESCRIPTION:Je hebt een afspraak gemaakt voor ' . $this->service->name . ' op ' . $this->start->format('d-m-Y H:i') . '. Deze afspraak duurt ' . $this->service->appointment_duration_minutes . ' minuten.
 DTSTART:' . $start . '
 DTEND:' . $end . '
 LOCATION:' . $this->branch->name . '
