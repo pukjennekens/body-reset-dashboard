@@ -42,7 +42,7 @@ class AppointmentCancelled extends Notification
         return (new MailMessage)
                 ->subject('Annulering van je afspraak bij BodyReset')
                 ->greeting('Beste ' . $this->appointment->user->name)
-                ->line('Uw afspraak voor ' . $this->appointment->service->name . ' op ' . $this->appointment->start->format('d-m-Y H:i') . ' is geannuleerd.')
+                ->line('Je afspraak voor ' . $this->appointment->service->name . ' op ' . $this->appointment->start->format('d-m-Y H:i') . ' is geannuleerd.')
                 ->line('Wil je toch nog een nieuwe afspraak maken? Dit kun je in je account doen.')
                 ->action('Bekijk/maak uw afspraken online', route('dashboard.user.appointments'));
     }

@@ -83,7 +83,7 @@ class AdminAppointmentsOverview extends Component
 
     public function generateAppointments($date)
     {
-        $this->appointments = Appointment::where('branch_id', $this->selectedBranch->id)->where('service_id', $this->selectedService->id)->whereDate('start', $date->format('Y-m-d'))->sortBy('start', 'asc')->get();
+        $this->appointments = Appointment::where('branch_id', $this->selectedBranch->id)->where('service_id', $this->selectedService->id)->whereDate('start', $date->format('Y-m-d'))->orderBy('start', 'asc')->get();
     }
 
     public function render()

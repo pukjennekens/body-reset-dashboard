@@ -40,13 +40,13 @@ class AppointmentReminder extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject('Herinnering voor uw afspraak bij BodyReset')
+                    ->subject('Herinnering voor je afspraak bij BodyReset')
                     ->greeting('Beste ' . $this->appointment->user->name)
-                    ->line('Dit bericht dient als herinnering voor uw afspraak bij BodyReset.')
+                    ->line('Dit bericht dient als herinnering voor je afspraak bij BodyReset.')
                     ->line('Je heeft een afspraak gemaakt voor ' . $this->appointment->service->name . ' op ' . $this->appointment->start->format('d-m-Y H:i') . '.')
                     ->line('Deze afspraak duurt ' . $this->appointment->service->appointment_duration_minutes . ' minuten.')
                     ->line('Je kunt deze afspraak niet meer annuleren omdat hij binnen 24 uur plaatsvindt.')
-                    ->action('Bekijk uw afspraak online', route('dashboard.user.appointments'));
+                    ->action('Bekijk je afspraak online', route('dashboard.user.appointments'));
     }
 
     /**

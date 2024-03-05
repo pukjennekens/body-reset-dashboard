@@ -45,7 +45,7 @@ class AppointmentCreated extends Notification
                     ->line('Je hebt een afspraak gemaakt voor ' . $this->appointment->service->name . ' op ' . $this->appointment->start->format('d-m-Y H:i') . '.')
                     ->line('Deze afspraak duurt ' . $this->appointment->service->appointment_duration_minutes . ' minuten.')
                     ->line('Wil je toch nog de afspraak annuleren? Dit kun je in je account doen, maximaal 24 uur van te voren.')
-                    ->action('Bekijk uw afspraak online', route('dashboard.user.appointments'))
+                    ->action('Bekijk je afspraak online', route('dashboard.user.appointments'))
                     ->attachData($this->appointment->getIcsCalendarInvite(), 'afspraak.ics', [
                         'mime' => 'text/calendar;charset=UTF-8;method=REQUEST',
                     ]);
