@@ -16,11 +16,16 @@ class Appointment extends Model
         'start',
         'end',
         'reminder_sent',
+        'module',
+        'submodules',
+        'cardio',
+        'notes',
     ];
 
     protected $casts = [
         'start' => 'datetime',
         'end'   => 'datetime',
+        'submodules' => 'json',
     ];
 
     public function branch()

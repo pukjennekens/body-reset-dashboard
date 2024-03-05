@@ -40,4 +40,18 @@
     </div>
 
     @livewire('girth-measurements-table', ['id' => $user->id])
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 mt-4 gap-4 mt-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-2xl font-semibold mb-4">Lichaamssamenstelling:</h3>
+
+            @livewire('body-composition-history-graph', ['userId' => $user->id])
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-2xl font-semibold mb-4">Omtrekmetingen:</h3>
+
+            @livewire('girth-measurements-history-graph', ['userId' => $user->id])
+        </div>
+    </div>
 @endsection

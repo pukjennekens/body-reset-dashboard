@@ -69,7 +69,19 @@
                                 <td>{{ $appointment->end->format('d-m-Y H:i') }}</td>
                                 <td>{{ $appointment->user->name }}</td>
                                 <td>
-                                    <a href="{{ route('dashboard.admin.users.show', $appointment->user) }}" class="text-primary hover:underline">Bekijk gebruiker</a>
+                                    <div class="inline-flex items-center gap-2">
+                                        <button 
+                                            type="button"
+                                            class="rounded-lg px-4 py-1.5 border-0 bg-blue-400 text-white uppercase font-semibold hover:bg-blue-600"
+                                            wire:click="$dispatch('openModal', {component: 'forms.appointment', arguments: {id: {{ $appointment->id }}}})"
+                                        >
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+
+                                        <a href="{{ route('dashboard.admin.users.show', $appointment->user) }}" class="rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600">
+                                            <i class="fa-solid fa-user"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
