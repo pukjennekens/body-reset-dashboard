@@ -36,5 +36,13 @@ class CreditReminder extends Command
                 'credits_reminder_sent' => true,
             ]);
         }
+
+        $removeCreditsUsers = \App\Models\User::where('credits_expiration_date', '<', now());
+        foreach ($removeCreditsUsers as $user) {
+            $user->update([
+                'credits'               => 0,
+                'credits_reminder_sent' => false,
+            ]);
+        }
     }
 }
