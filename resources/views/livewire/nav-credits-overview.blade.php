@@ -2,7 +2,7 @@
     @if($user->credits > 0)
         <x-dropdown align="center" width="48">
             <x-slot name="trigger">
-                <p class="underline decoration-dotted cursor-pointer">Je hebt <strong>{{ $user->credits }}</strong> {{ $user->credits == 1 ? 'credit' : 'credits' }}</p>
+                <p class="underline decoration-dotted cursor-pointer hidden sm:block">Je hebt <strong>{{ $user->credits }}</strong> {{ $user->credits == 1 ? 'credit' : 'credits' }}</p>
             </x-slot>
 
             <x-slot name="content">
@@ -20,11 +20,11 @@
             </x-slot>
         </x-dropdown>
     @else
-        <p>Je hebt geen credits</p>
+        <p class="hidden sm:block">Je hebt geen credits</p>
     @endif
 
     <button 
-        class="rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600 text-center hidden sm:block" 
+        class="rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600 text-center text-xs sm:text-base" 
         x-data=""
         x-on:click.prevent="$dispatch('openModal', {component: 'buy-credits'})"
     >
