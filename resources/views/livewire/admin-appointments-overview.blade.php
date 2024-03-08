@@ -76,7 +76,7 @@
                                 <td class="text-sm">{{ $appointment->trainer ? $appointment->trainer->name : '' }}</td>
                                 <td class="text-sm">{{ $appointment->cardio }}</td>
                                 <td class="text-sm">{{ $appointment->module }}</td>
-                                <td class="text-sm">{{ implode(', ', $appointment->submodules) }}</td>
+                                <td class="text-sm">{{ implode(', ', (array) $appointment->submodules) }}</td>
                                 <td class="text-sm">{{ $appointment->notes }}</td>
                                 <td class="text-sm">
                                     <div class="inline-flex items-center gap-2">
