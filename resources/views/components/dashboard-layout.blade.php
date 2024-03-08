@@ -89,7 +89,7 @@
             </a>
         </div>
 
-        <div class="flex items-center gap-8">
+        <div class="flex items-center gap-2 sm:gap-8">
             @if(auth()->user()->hasRole('user'))
                 @livewire('nav-credits-overview')
             @endif
