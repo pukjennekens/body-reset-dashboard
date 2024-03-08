@@ -18,7 +18,7 @@
                             <td class="whitespace-nowrap">{{ $user->email }}</td>
                             <td class="whitespace-nowrap">{{ $user->phone_number }}</td>
                             <td class="whitespace-nowrap">{{ $user->credits }}</td>
-                            <td class="whitespace-nowrap">{{ $user->credits_expiration_date ? $user->credits_expiration_date->format('d-m-Y') }}</td>
+                            <td class="whitespace-nowrap">{{ $user->credits_expiration_date ? $user->credits_expiration_date->format('d-m-Y') : '' }}</td>
                             <td>
                                 <a href="{{ route('dashboard.admin.users.show', $user) }}" class="rounded-lg px-4 py-1.5 border-0 bg-primary text-white uppercase font-semibold hover:bg-green-600">
                                     <i class="fa-solid fa-user"></i>
