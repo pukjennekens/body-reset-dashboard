@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class CreditReminder extends Command
 {
@@ -37,7 +38,7 @@ class CreditReminder extends Command
             ]);
         }
 
-        $removeCreditsUsers = \App\Models\User::where('credits_expiration_date', '<', now());
+        $removeCreditsUsers = \App\Models\User::where('credits_expiration_date', '<', now())->get();
         foreach ($removeCreditsUsers as $user) {
             $user->update([
                 'credits'               => 0,

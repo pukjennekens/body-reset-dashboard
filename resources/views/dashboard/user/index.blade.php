@@ -44,7 +44,11 @@
 
                 <p class="mt-2">{{ auth()->user()->credits }} credits</p>
                 @if(auth()->user()->credits_expiration_date)
-                    <p class="mt-1 text-sm font-bold text-gray-600 italic">Geldig tot: {{ auth()->user()->credits_expiration_date ?? auth()->user()->credits_expiration_date->format('d-m-Y') }}</p>
+                    @if(auth()->user()->credits_expiration_date->isPast())
+                        <p class="mt-1 text-sm font-bold text-red-600 italic">Vervallen</p>
+                    @else
+                        <p class="mt-1 text-sm font-bold text-gray-600 italic">Geldig tot: {{ auth()->user()->credits_expiration_date ?? auth()->user()->credits_expiration_date->format('d-m-Y') }}</p>
+                    @endif
                 @endif
             </div>
 
