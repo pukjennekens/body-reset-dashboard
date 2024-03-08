@@ -20,6 +20,7 @@ class Appointment extends Model
         'submodules',
         'cardio',
         'notes',
+        'trainer_id',
     ];
 
     protected $casts = [
@@ -41,6 +42,11 @@ class Appointment extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function trainer()
+    {
+        return $this->belongsTo(User::class, 'trainer_id');
     }
 
     public function scopeBetween($query, $start, $end)

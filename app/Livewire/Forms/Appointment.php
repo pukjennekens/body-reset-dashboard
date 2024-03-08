@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Models\Appointment as ModelsAppointment;
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\On;
 use LivewireUI\Modal\ModalComponent;
 
 class Appointment extends ModalComponent
@@ -26,8 +27,7 @@ class Appointment extends ModalComponent
         $this->form->validate();
 
         if($this->appointment) {
-            Log::debug('Updating appointment', $this->form->toArray());
-            $this->appointment->update(array_merge($this->form->toArray(), ['submodules' => $this->submodules]));
+            $this->appointment->update(array_merge($this->form->toArray(), ['submodules' => $this->submodules, 'trainer_id' => auth()->id()]));
         }
 
         $this->dispatch('appointment-updated');

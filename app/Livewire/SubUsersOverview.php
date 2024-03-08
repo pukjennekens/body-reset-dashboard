@@ -15,7 +15,7 @@ class SubUsersOverview extends Component
     {
         $this->userId   = $userId;
         $this->user     = User::find($userId);
-        $this->subUsers = $this->user->subUsers;
+        $this->subUsers = $this->user->getSubUsers();
     }
 
     public function render()

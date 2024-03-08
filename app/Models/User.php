@@ -233,6 +233,6 @@ class User extends Authenticatable
 
     public function getSubUsers()
     {
-        return $this->hasMany(User::class, 'trainer_user_id', 'id');
+        return $this->where('trainer_user_id', $this->id)->get();
     }
 }

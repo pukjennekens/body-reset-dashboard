@@ -46,7 +46,7 @@ final class CreditOrderTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('user_name', fn(CreditOrder $creditOrder) => $creditOrder->user->name)
+            ->addColumn('user_name', fn(CreditOrder $creditOrder) => $creditOrder->user ? $creditOrder->user->name : 'Niet gevonden')
             ->addColumn('credit_option_name', fn(CreditOrder $creditOrder) => $creditOrder->creditOption->name)
             ->addColumn('payment_method', fn(CreditOrder $creditOrder) => $creditOrder->payment_method ?? 'Nog niet bekend')
             ->addColumn('status')

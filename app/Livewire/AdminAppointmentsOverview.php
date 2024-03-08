@@ -7,6 +7,7 @@ use App\Models\Branch;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class AdminAppointmentsOverview extends Component
@@ -84,6 +85,14 @@ class AdminAppointmentsOverview extends Component
     public function generateAppointments($date)
     {
         $this->appointments = Appointment::where('branch_id', $this->selectedBranch->id)->where('service_id', $this->selectedService->id)->whereDate('start', $date->format('Y-m-d'))->orderBy('start', 'asc')->get();
+    }
+
+    #[On('appointment-created')]
+    #[On('appointment-updated')]
+    #[On('appointment-deleted')]
+    public function refreshAppointments()
+    {
+        if($this->selectedService && $this->selectedBranch) $this->generateAppointments($this->date);
     }
 
     public function render()

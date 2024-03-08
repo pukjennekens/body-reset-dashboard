@@ -46,6 +46,7 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'admin']],
     Route::get('/users/{id}/measurements', [AdminUserController::class, 'measurements'])->name('dashboard.admin.users.measurements')->where('id', '[0-9]+');
     Route::get('/users/{id}/credits', [AdminUserController::class, 'credits'])->name('dashboard.admin.users.credits')->where('id', '[0-9]+');
     Route::get('/users/{id}/nutrition-plans', [AdminUserController::class, 'nutritionPlans'])->name('dashboard.admin.users.nutrition-plans')->where('id', '[0-9]+');
+    Route::get('/users/{id}/appointments', [AdminUserController::class, 'appointments'])->name('dashboard.admin.users.appointments')->where('id', '[0-9]+');
 
     Route::get('/recipies', [AdminRecipiesController::class, 'index'])->name('dashboard.admin.recipies.index');
 

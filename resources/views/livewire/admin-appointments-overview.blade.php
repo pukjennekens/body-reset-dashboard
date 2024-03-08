@@ -59,16 +59,26 @@
                         <th>Start tijd</th>
                         <th>Eind tijd</th>
                         <th>Gebruiker</th>
+                        <th>Werknemer</th>
+                        <th>Cardio</th>
+                        <th>Module</th>
+                        <th>Submodules</th>
+                        <th>Opmerkingen</th>
                         <th></th>
                     </thead>
 
                     <tbody>
                         @foreach($appointments as $appointment)
                             <tr>
-                                <td>{{ $appointment->start->format('d-m-Y H:i') }}</td>
-                                <td>{{ $appointment->end->format('d-m-Y H:i') }}</td>
-                                <td>{{ $appointment->user->name }}</td>
-                                <td>
+                                <td class="text-sm">{{ $appointment->start->format('H:i') }}</td>
+                                <td class="text-sm">{{ $appointment->end->format('H:i') }}</td>
+                                <td class="text-sm">{{ $appointment->user->name }}</td>
+                                <td class="text-sm">{{ $appointment->trainer ? $appointment->trainer->name : '' }}</td>
+                                <td class="text-sm">{{ $appointment->cardio }}</td>
+                                <td class="text-sm">{{ $appointment->module }}</td>
+                                <td class="text-sm">{{ implode(', ', $appointment->submodules) }}</td>
+                                <td class="text-sm">{{ $appointment->notes }}</td>
+                                <td class="text-sm">
                                     <div class="inline-flex items-center gap-2">
                                         <button 
                                             type="button"

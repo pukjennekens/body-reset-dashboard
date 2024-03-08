@@ -22,28 +22,25 @@ final class UserTable extends PowerGridComponent
 {
     use WithExport;
 
+    public int $perPage = 25;
+
     public function setUp(): array
     {
         return [
             Header::make()->showSearchInput(),
             Footer::make()
-                ->showPerPage()
+                ->showPerPage($this->perPage)
                 ->showRecordCount(),
         ];
     }
 
     public function datasource(): Builder
     {
-        if(auth()->user()->hasRole('admin')) return User::query();
-        if(auth()->user()->hasRole('manager') && auth()->user()->manager_branches) return User::query()->whereIn('branch_id', auth()->user()->manager_branches)->where('role', '!=', 'admin')->where('role', '!=', 'manager');
-        if(auth()->user()->hasRole('trainer')) return User::query()->where('trainer_user_id', auth()->user()->id)->where('role', '!=', 'admin')->where('role', '!=', 'manager')->where('role', '!=', 'trainer');
+        if(auth()->user()->hasRole('admin')) return User::query()->orderBy('name');
+        if(auth()->user()->hasRole('manager') && auth()->user()->manager_branches) return User::query()->whereIn('branch_id', auth()->user()->manager_branches)->where('role', '!=', 'admin')->where('role', '!=', 'manager')->orderBy('name');
+        if(auth()->user()->hasRole('trainer')) return User::query()->where('trainer_user_id', auth()->user()->id)->where('role', '!=', 'admin')->where('role', '!=', 'manager')->where('role', '!=', 'trainer')->orderBy('name');
 
         return User::query()->where('id', 0);
-    }
-
-    public function relationSearch(): array
-    {
-        return [];
     }
 
     public function addColumns(): PowerGridColumns

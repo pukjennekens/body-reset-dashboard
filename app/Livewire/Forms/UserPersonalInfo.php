@@ -32,6 +32,17 @@ class UserPersonalInfo extends Component
         
         $this->validate();
 
+        if($this->form->email) {
+            // Check if the email changed and if it is unique
+            if($this->user->email != $this->form->email) {
+                $emailExists = User::where('email', $this->form->email)->exists();
+                if($emailExists) {
+                    $this->addError('form.email', __('validation.unique', ['attribute' => __('email')]));
+                    return;
+                }
+            }
+        }
+
         // Get the user data
         $userData = $this->form->toArray();
         foreach($userData as $key => $value) if(empty($value)) unset($userData[$key]);

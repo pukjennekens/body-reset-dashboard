@@ -37,6 +37,11 @@
                         <i class="fa-solid fa-utensils"></i>
                         Voedingsschema's
                     </a>
+
+                    <a href="{{ route('dashboard.admin.users.appointments', ['id' => $user->id]) }}" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100 inline-flex items-center gap-2 {{ request()->routeIs('dashboard.admin.users.appointments') ? 'border-primary' : '' }}"">
+                        <i class="fa-solid fa-calendar"></i>
+                        Afspraken
+                    </a>
                 @endif
             </div>
         </div>

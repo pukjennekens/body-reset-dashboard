@@ -20,9 +20,14 @@
             <h3 class="text-lg font-semibold">Adres gegevens</h3>
 
             <div class="flex flex-col gap-2">
-                <div class="grid grid-cols-6">
-                    <x-input.text name="street" label="Straat" />
-                    <x-input.text name="house_number" label="Huisnummer" />
+                <div class="grid grid-cols-6 gap-2">
+                    <div class="col-span-4">
+                        <x-input.text name="street" label="Straat" />
+                    </div>
+
+                    <div class="col-span-2">
+                        <x-input.text name="house_number" label="Huisnummer" />
+                    </div>
                 </div>
 
                 <x-input.text name="postal_code" label="Postcode" />
