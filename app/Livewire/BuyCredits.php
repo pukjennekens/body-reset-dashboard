@@ -32,10 +32,12 @@ class BuyCredits extends ModalComponent
             'payment_method'    => null,
         ]);
 
+        $price = number_format($creditOption->price, 2, '.', '');
+
         $payment = Mollie::api()->payments()->create([
             'amount' => [
                 'currency' => 'EUR',
-                'value'    => number_format($creditOption->price, 2),
+                'value'    => $price,
             ],
             'description' => $creditOption->credits . ' credits. ' . $creditOption->validityPeriodString(),
             'redirectUrl' => route('dashboard'),

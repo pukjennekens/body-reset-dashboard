@@ -72,6 +72,8 @@ class AppointmentCalendar extends Component
 
             if(!$openingHours['closed']) {
                 foreach($openingHours['times'] as $time) {
+                    if(!$time['from']|| !$time['to']) continue;
+
                     $from = $day->copy()->setTimeFromTimeString($time['from']);
                     $to   = $day->copy()->setTimeFromTimeString($time['to']);
 
