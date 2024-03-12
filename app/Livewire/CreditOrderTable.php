@@ -49,18 +49,21 @@ final class CreditOrderTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
+            ->addColumn('created_at', fn(CreditOrder $creditOrder) => $creditOrder->created_at->format('d-m-Y H:i'))
             ->addColumn('user_name', fn(CreditOrder $creditOrder) => $creditOrder->user ? $creditOrder->user->name : 'Niet gevonden')
             ->addColumn('credit_option_name', fn(CreditOrder $creditOrder) => $creditOrder->creditOption->name)
             ->addColumn('status')
             ->addColumn('price', fn(CreditOrder $creditOrder) => $creditOrder->currency . ' ' . number_format($creditOrder->price, 2))
-            ->addColumn('payment_id')
-            ->addColumn('created_at', fn(CreditOrder $creditOrder) => $creditOrder->created_at->format('d-m-Y H:i'));
+            ->addColumn('payment_id');
     }
 
     public function columns(): array
     {
         return [
             Column::make('Id', 'id'),
+            Column::make('Datum', 'created_at')
+                ->sortable()
+                ->searchable(),
             Column::make('Gebruiker', 'user_name', 'user.name'),
             Column::make('Credit pakket', 'credit_option_name', 'creditOption.name'),
 
@@ -73,10 +76,6 @@ final class CreditOrderTable extends PowerGridComponent
                 ->searchable(),
 
             Column::make('Mollie ID', 'payment_id')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Datum', 'created_at')
                 ->sortable()
                 ->searchable(),
         ];
