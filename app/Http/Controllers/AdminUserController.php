@@ -52,4 +52,10 @@ class AdminUserController extends Controller
         $user = User::findOrFail($id);
         return view('dashboard.admin.users.appointments', compact('user'));
     }
+
+    public function userOrders($id)
+    {
+        $user = User::findOrFail($id);
+        return view('dashboard.admin.users.orders', compact('user'));
+    }
 }

@@ -5,7 +5,7 @@
 <x-dashboard-layout>
     <div class="max-w-6xl mx-auto">
         <h2 class="text-2xl font-semibold mb-4">
-            Uw voedingsschema's:
+            Jouw voedingsschema's
         </h2>
 
         @if(auth()->user()->nutritionPlans()->count() > 0)

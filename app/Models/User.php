@@ -233,6 +233,6 @@ class User extends Authenticatable
 
     public function getSubUsers()
     {
-        return $this->where('trainer_user_id', $this->id)->get();
+        return $this->where('trainer_user_id', $this->id)->orderBy('name')->get();
     }
 }

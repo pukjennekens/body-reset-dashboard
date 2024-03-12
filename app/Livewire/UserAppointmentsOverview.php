@@ -15,7 +15,7 @@ class UserAppointmentsOverview extends Component
     public function mount($userId)
     {
         $this->user = User::findOrFail($userId);
-        $this->appointments = $this->user->appointments;
+        $this->appointments = $this->user->appointments->sortByDesc('start');
     }
 
     #[On('appointment-created')]

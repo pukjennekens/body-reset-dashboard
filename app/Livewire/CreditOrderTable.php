@@ -21,11 +21,13 @@ final class CreditOrderTable extends PowerGridComponent
 {
     use WithExport;
 
+    public int $perPage = 25;
+
     public function setUp(): array
     {
         return [
             Footer::make()
-                ->showPerPage()
+                ->showPerPage($this->perPage)
                 ->showRecordCount(),
         ];
     }
@@ -34,7 +36,8 @@ final class CreditOrderTable extends PowerGridComponent
     {
         return CreditOrder::query()
             ->with('user')
-            ->with('creditOption');
+            ->with('creditOption')
+            ->orderBy('id', 'desc');
     }
 
     public function relationSearch(): array
@@ -48,7 +51,6 @@ final class CreditOrderTable extends PowerGridComponent
             ->addColumn('id')
             ->addColumn('user_name', fn(CreditOrder $creditOrder) => $creditOrder->user ? $creditOrder->user->name : 'Niet gevonden')
             ->addColumn('credit_option_name', fn(CreditOrder $creditOrder) => $creditOrder->creditOption->name)
-            ->addColumn('payment_method', fn(CreditOrder $creditOrder) => $creditOrder->payment_method ?? 'Nog niet bekend')
             ->addColumn('status')
             ->addColumn('price', fn(CreditOrder $creditOrder) => $creditOrder->currency . ' ' . number_format($creditOrder->price, 2))
             ->addColumn('payment_id');
@@ -60,9 +62,6 @@ final class CreditOrderTable extends PowerGridComponent
             Column::make('Id', 'id'),
             Column::make('Gebruiker', 'user_name', 'user.name'),
             Column::make('Credit pakket', 'credit_option_name', 'creditOption.name'),
-            Column::make('Betaalmethode', 'payment_method')
-                ->sortable()
-                ->searchable(),
 
             Column::make('Mollie status', 'status')
                 ->sortable()
