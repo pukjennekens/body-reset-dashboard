@@ -53,7 +53,8 @@ final class CreditOrderTable extends PowerGridComponent
             ->addColumn('credit_option_name', fn(CreditOrder $creditOrder) => $creditOrder->creditOption->name)
             ->addColumn('status')
             ->addColumn('price', fn(CreditOrder $creditOrder) => $creditOrder->currency . ' ' . number_format($creditOrder->price, 2))
-            ->addColumn('payment_id');
+            ->addColumn('payment_id')
+            ->addColumn('created_at', fn(CreditOrder $creditOrder) => $creditOrder->created_at->format('d-m-Y H:i'));
     }
 
     public function columns(): array
@@ -72,6 +73,10 @@ final class CreditOrderTable extends PowerGridComponent
                 ->searchable(),
 
             Column::make('Mollie ID', 'payment_id')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('Datum', 'created_at')
                 ->sortable()
                 ->searchable(),
         ];
