@@ -226,6 +226,11 @@ class User extends Authenticatable
         return $this->hasMany(Appointment::class);
     }
 
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class);
+    }
+
     public function nextAppointment()
     {
         return $this->appointments()->where('start', '>', now())->orderBy('start', 'asc')->first();
@@ -234,5 +239,23 @@ class User extends Authenticatable
     public function getSubUsers()
     {
         return $this->where('trainer_user_id', $this->id)->orderBy('name')->get();
+    }
+
+    /**
+     * On delete of the user, delete all related data
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            $user->bodyCompositionMeasurements()->delete();
+            $user->girthMeasurements()->delete();
+            $user->nutritionPlans()->delete();
+            $user->creditOrders()->delete();
+            $user->anamnesis()->delete();
+            $user->appointments()->delete();
+        });
     }
 }

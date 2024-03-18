@@ -55,6 +55,9 @@ class MakeAppointment extends ModalComponent
             return;
         }
 
+        Log::info('Credits: ' . $this->user->credits);
+        Log::info('Price: ' . $this->service->price);
+
         $this->user->credits -= $this->service->price;
         $this->user->save();
 
