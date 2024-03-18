@@ -27,7 +27,8 @@
                     class="bg-primary font-bold text-white py-1.5 px-4 hover:bg-green-600 rounded-l-lg cursor-pointer"
                     wire:click="previousWeek"
                 >
-                    <i class="fa-solid fa-caret-left"></i>
+                    <i class="fa-solid fa-caret-left" wire:loading.remove wire:target="previousWeek"></i>
+                    <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="previousWeek"></i>
                 </button>
 
                 <button 
@@ -35,7 +36,8 @@
                     class="bg-primary font-bold text-white py-1.5 px-4 hover:bg-green-600 w-full sm:w-auto cursor-pointer"
                     wire:click="today"
                 >
-                    Vandaag
+                    <span wire:loading.remove wire:target="today">Vandaag</span>
+                    <span wire:loading wire:target="today">Laden...</span>
                 </button>
 
                 <button 
@@ -43,7 +45,8 @@
                     class="bg-primary font-bold text-white py-1.5 px-4 hover:bg-green-600 rounded-r-lg cursor-pointer"
                     wire:click="nextWeek"
                 >
-                    <i class="fa-solid fa-caret-right"></i>
+                    <i class="fa-solid fa-caret-right" wire:loading.remove wire:target="nextWeek"></i>
+                    <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="nextWeek"></i>
                 </button>
             </div>
         </div>
@@ -74,7 +77,7 @@
             <p><i class="fas fa-info-circle"></i> <strong>{{ $this->service->name }}</strong> kost {{ $this->service->price }} {{ $this->service->price == 1 ? 'credit' : 'credits' }}.</p>
         </div>
 
-        <div class="flex border rounded-lg overflow-x-auto bg-white shadow-md px-4">
+        <div class="flex border rounded-lg overflow-x-auto bg-white shadow-md px-4 transition-all" wire:loading.class="opacity-50 pointer-events-none">
             @foreach($days as $day)
                 <div class="min-w-[140px] w-full">
                     <div class="flex flex-col items-center px-2 py-4">

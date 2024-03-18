@@ -4,6 +4,10 @@
             Profiel
         </h2>
 
-        @livewire('forms.change-password')
+        <div class="space-y-8">
+            @livewire('forms.profile')
+
+            @livewire('forms.change-password')
+        </div>
     </div>
 </x-dashboard-layout>

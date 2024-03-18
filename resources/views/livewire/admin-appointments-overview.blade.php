@@ -1,3 +1,24 @@
+@php
+    function formatDayName($day) {
+        switch($day) {
+            case 0:
+                return 'zondag';
+            case 1:
+                return 'maandag';
+            case 2:
+                return 'dinsdag';
+            case 3:
+                return 'woensdag';
+            case 4:
+                return 'donderdag';
+            case 5:
+                return 'vrijdag';
+            case 6:
+                return 'zaterdag';
+        }
+    }
+@endphp
+
 <div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <select wire:model.change="selectedServiceId" class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200">
@@ -23,7 +44,7 @@
 
     @if($selectedServiceId && $selectedBranchId)
         <div class="flex flex-col sm:flex-row gap-4 sm:items-center justify-between items-start">
-            <h3 class="text-xl font-semibold">{{ $date->format('d-m-Y') }}</h3>
+            <h3 class="text-xl font-semibold">{{ formatDayName($date->format('w')) }} {{ $date->format('d-m-Y') }}</h3>
 
             <div class="flex gap-0 w-full sm:w-auto">
                 <button 
@@ -31,7 +52,8 @@
                     class="bg-primary font-bold text-white py-1.5 px-4 hover:bg-green-600 rounded-l-lg cursor-pointer"
                     wire:click="previousDay"
                 >
-                    <i class="fa-solid fa-caret-left"></i>
+                    <i class="fa-solid fa-caret-left" wire:loading.remove wire:target="previousDay"></i>
+                    <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="previousDay"></i>
                 </button>
 
                 <button 
@@ -39,7 +61,8 @@
                     class="bg-primary font-bold text-white py-1.5 px-4 hover:bg-green-600 w-full sm:w-auto cursor-pointer"
                     wire:click="today"
                 >
-                    Vandaag
+                    <span wire:loading.remove wire:target="today">Vandaag</span>
+                    <span wire:loading wire:target="today">Laden...</span>
                 </button>
 
                 <button 
@@ -47,12 +70,13 @@
                     class="bg-primary font-bold text-white py-1.5 px-4 hover:bg-green-600 rounded-r-lg cursor-pointer"
                     wire:click="nextDay"
                 >
-                    <i class="fa-solid fa-caret-right"></i>
+                    <i class="fa-solid fa-caret-right" wire:loading.remove wire:target="nextDay"></i>
+                    <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="nextDay"></i>
                 </button>
             </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4 transition-all" wire:loading.class="opacity-50 pointer-events-none">
             @if(count($appointments) > 0)
                 <div class="overflow-x-auto">
                     <table class="table-auto">

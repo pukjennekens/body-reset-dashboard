@@ -6,7 +6,7 @@
             </x-slot>
 
             <x-slot name="content">
-                <p class="px-4 py-2 text-center">Uw credits verlopen op {{ $user->credits_expiration_date ? $user->credits_expiration_date->format('d-m-Y') : '' }}</p>
+                <p class="px-4 py-2 text-center">Je credits verlopen op {{ $user->credits_expiration_date ? $user->credits_expiration_date->format('d-m-Y') : '' }}</p>
 
                 <div class="block sm:hidden p-2">
                     <button 

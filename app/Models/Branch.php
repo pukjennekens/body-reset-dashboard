@@ -18,6 +18,7 @@ class Branch extends Model
         'city',
         'country',
         'province',
+        'hidden',
     ];
 
     /**

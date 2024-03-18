@@ -42,6 +42,11 @@
                         <i class="fa-solid fa-calendar"></i>
                         Afspraken
                     </a>
+
+                    <a href="{{ route('dashboard.admin.users.orders', ['id' => $user->id]) }}" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100 inline-flex items-center gap-2 {{ request()->routeIs('dashboard.admin.users.orders') ? 'border-primary' : '' }}"">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        Bestellingen
+                    </a>
                 @endif
             </div>
         </div>

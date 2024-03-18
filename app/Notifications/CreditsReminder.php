@@ -40,10 +40,10 @@ class CreditsReminder extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject('Herinnering voor uw credits bij BodyReset')
+                    ->subject('Herinnering voor je credits bij BodyReset')
                     ->greeting('Beste ' . $this->user->name)
-                    ->line('Dit bericht dient als herinnering voor uw credits bij BodyReset.')
-                    ->line('Uw credits zullen over 14 dagen verlopen.')
+                    ->line('Dit bericht dient als herinnering voor je credits bij BodyReset.')
+                    ->line('Je credits zullen over 14 dagen verlopen.')
                     ->line('Zorg ervoor dat je je credits op tijd gebruikt.')
                     ->action('Maak online een afspraak', route('dashboard.user.appointments'));
     }

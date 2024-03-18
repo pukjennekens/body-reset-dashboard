@@ -28,10 +28,10 @@ final class BranchTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        if(auth()->user()->hasRole('admin')) return Branch::query();
-        if(auth()->user()->hasRole('manager') && auth()->user()->manager_branches) return Branch::query()->whereIn('id', auth()->user()->manager_branches);
+        if(auth()->user()->hasRole('admin')) return Branch::query()->where('hidden', false);
+        if(auth()->user()->hasRole('manager') && auth()->user()->manager_branches) return Branch::query()->whereIn('id', auth()->user()->manager_branches)->where('hidden', false);
 
-        return Branch::query()->where('id', 0);
+        return Branch::query()->where('id', 0)->where('hidden', false);
     }
 
     public function addColumns(): PowerGridColumns

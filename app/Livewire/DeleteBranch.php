@@ -21,7 +21,10 @@ class DeleteBranch extends ModalComponent
 
     public function deleteBranch()
     {
-        $this->branch->delete();
+        $this->branch->update([
+            'hidden' => 1,
+        ]);
+
         $this->dispatch('branch-deleted');
         $this->closeModal();
     }

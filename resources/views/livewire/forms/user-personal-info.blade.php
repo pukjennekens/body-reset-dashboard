@@ -91,7 +91,7 @@
                 <option value="admin" {{ old('form.role', $role) == 'admin' ? 'selected' : '' }}>Admin</option>
                 <option value="manager" {{ old('form.role', $role) == 'manager' ? 'selected' : '' }}>Manager</option>
                 <option value="trainer" {{ old('form.role', $role) == 'trainer' ? 'selected' : '' }}>Trainer</option>
-                <option value="user" {{ old('form.role', $role) == 'user' ? 'selected' : '' }}>Gebruiker</option>
+                <option value="user" {{ old('form.role', $role) == 'user' ? 'selected' : '' }}>Klant</option>
             </select>
         </div>
 
