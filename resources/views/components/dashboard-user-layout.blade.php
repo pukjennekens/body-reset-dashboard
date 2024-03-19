@@ -47,12 +47,12 @@
                         <i class="fa-solid fa-shopping-bag"></i>
                         Bestellingen
                     </a>
-
-                    <button type="button" class="px-4 py-2 rounded-md border border-red-500 hover:bg-red-100 inline-flex items-center gap-2 text-red-500" wire:click="$dispatch('openModal', {component: 'delete-user', arguments: {id: {{ $user->id }}}})">
-                        <i class="fa-solid fa-trash"></i>
-                        Verwijderen
-                    </button>
                 @endif
+
+                <div class="px-4 py-2 rounded-md border border-red-500 hover:bg-red-100 inline-flex items-center gap-2 text-red-500" x-data x-on:click.prevent="$dispatch('openModal', {component: 'delete-user', arguments: {id: {{ $user->id }}}});">
+                    <i class="fa-solid fa-trash"></i>
+                    Verwijderen
+                </div>
             </div>
         </div>
 
