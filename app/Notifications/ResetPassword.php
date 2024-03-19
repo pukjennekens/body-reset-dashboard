@@ -49,9 +49,9 @@ class ResetPassword extends Notification
         return (new MailMessage)
                     ->subject('Wachtwoord resetten')
                     ->greeting('Hey ' . $this->user->name)
-                    ->line('Je ontvangt deze e-mail omdat we een wachtwoord reset verzoek hebben ontvangen voor je account.')
+                    ->line('Je ontvangt deze e-mail omdat we een wachtwoordreset verzoek hebben ontvangen voor je account.')
                     ->line('Klik op de onderstaande knop om je wachtwoord te resetten.')
-                    ->line('Deze wachtwoord reset link is 6 uur geldig.')
+                    ->line('Deze wachtwoordreset link is 6 uur geldig.')
                     ->action('Reset wachtwoord', route('auth.reset-password.token', ['token' => $this->token]));
     }
 
