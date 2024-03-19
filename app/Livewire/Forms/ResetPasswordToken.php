@@ -35,10 +35,11 @@ class ResetPasswordToken extends Component
             }
         );
 
+        
         if ($status == Password::PASSWORD_RESET) {
             $this->submitted = true;
         } else {
-            $this->addError('email', 'Fout bij het resetten van het wachtwoord: ' . __($status));
+            $this->addError('form.email', 'Fout bij het resetten van het wachtwoord, het kan zijn dat uw token verlopen is. Vraag een nieuwe token aan en probeer het opnieuw binnen de aangegeven tijd in de e-mail.');
         }
     }
 
