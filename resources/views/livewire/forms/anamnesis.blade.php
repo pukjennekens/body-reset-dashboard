@@ -75,5 +75,13 @@
         </div>
     </div>
 
-    <x-input.button type="submit">Opslaan</x-input.button>
+    <x-input.button type="submit">
+        Opslaan
+
+        <i class="fa-solid fa-spinner fa-spin ml-2" wire:loading wire:target="createAnamnesis"></i>
+
+        @if($anamnesisSaved)
+            <i class="fa-solid fa-check ml-2" wire:loading.remove wire:target="createAnamnesis"></i>
+        @endif
+    </x-input.button>
 </form>

@@ -12,6 +12,7 @@ class Anamnesis extends ModalComponent
     public ModelsAnamnesis $anamnesis;
     public User $user;
     public AnamnesisForm $form;
+    public $anamnesisSaved = false;
 
     public function mount($userId)
     {
@@ -27,6 +28,8 @@ class Anamnesis extends ModalComponent
         $this->user->anamnesis()->save($this->anamnesis);
 
         $this->dispatch('anamnesis-created', id: $this->anamnesis->id);
+
+        $this->anamnesisSaved = true;
 
         $this->closeModal();
     }
