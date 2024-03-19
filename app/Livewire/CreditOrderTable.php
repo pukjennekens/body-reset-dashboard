@@ -49,8 +49,7 @@ final class CreditOrderTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('created_at', fn(CreditOrder $creditOrder) => $creditOrder->created_at->format('d-m-Y H:i'))
-            ->addColumn('user_name', fn(CreditOrder $creditOrder) => $creditOrder->user ? $creditOrder->user->name : 'Niet gevonden')
+            ->addColumn('created_at_formatted', fn(CreditOrder $creditOrder) => $creditOrder->created_at->format('d-m-Y H:i'))
             ->addColumn('credit_option_name', fn(CreditOrder $creditOrder) => $creditOrder->creditOption->name)
             ->addColumn('status')
             ->addColumn('price', fn(CreditOrder $creditOrder) => $creditOrder->currency . ' ' . number_format($creditOrder->price, 2))
@@ -61,10 +60,8 @@ final class CreditOrderTable extends PowerGridComponent
     {
         return [
             Column::make('Id', 'id'),
-            Column::make('Datum', 'created_at')
-                ->sortable()
-                ->searchable(),
-            Column::make('Gebruiker', 'user_name', 'user.name'),
+            Column::make('Aangemaakt op', 'created_at_formatted', 'created_at'),
+            Column::make('Klant', 'user_name'),
             Column::make('Credit pakket', 'credit_option_name', 'creditOption.name'),
 
             Column::make('Mollie status', 'status')

@@ -18,6 +18,7 @@ class CreditOrder extends Model
         'currency',
         'price',
         'payment_id',
+        'user_name',
     ];
 
     public function user()

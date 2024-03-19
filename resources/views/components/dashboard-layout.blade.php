@@ -49,7 +49,7 @@
                     @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
                         <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.home') }}"><i class="fa-solid fa-list"></i> Overzicht</a>
 
-                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
+                        <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Klanten</a>
 
                         <a class="uppercase w-full px-4 py-2 hover:bg-gray-100" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
                     @endif
@@ -150,7 +150,7 @@
             @if(auth()->user()->hasRole(['admin', 'manager', 'trainer']))
                 <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.home') }}"><i class="fa-solid fa-list"></i> Overzicht</a>
 
-                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Gebruikers</a>
+                <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.users.index') }}"><i class="fas fa-users"></i> Klanten</a>
 
                 <a class="uppercase text-sm py-5 px-6 hover:bg-green-600 inline-flex items-center gap-2" href="{{ route('dashboard.admin.recipies.index') }}"><i class="fas fa-utensils"></i> Recepten</a>
             @endif

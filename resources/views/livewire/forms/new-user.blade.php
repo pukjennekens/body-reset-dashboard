@@ -8,7 +8,7 @@
                     <option value="admin" {{ old('form.role', $form->role) == 'admin' ? 'selected' : '' }}>Admin</option>
                     <option value="manager" {{ old('form.role', $form->role) == 'manager' ? 'selected' : '' }}>Manager</option>
                     <option value="trainer" {{ old('form.role', $form->role) == 'trainer' ? 'selected' : '' }}>Trainer</option>
-                    <option value="user" {{ old('form.role', $form->role) == 'user' ? 'selected' : '' }}>Gebruiker</option>
+                    <option value="user" {{ old('form.role', $form->role) == 'user' ? 'selected' : '' }}>Klant</option>
                 </select>
             </div>
         </div>

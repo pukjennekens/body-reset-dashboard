@@ -30,6 +30,7 @@ class BuyCredits extends ModalComponent
             'user_id'           => auth()->id(),
             'credit_option_id'  => $this->selectedCreditOption,
             'payment_method'    => null,
+            'user_name'         => auth()->user()->name,
         ]);
 
         $price = number_format($creditOption->price, 2, '.', '');

@@ -34,8 +34,8 @@
                 <x-input.text name="city" label="Stad" />
                 <x-input.text name="province" label="Provincie" />
                 <x-input.select name="country" label="Land">
-                    <option value="nl">Nederland</option>
                     <option value="be">België</option>
+                    <option value="nl">Nederland</option>
                 </x-input.select>
                 <x-input.select name="branch_id" label="Vestiging">
                     @foreach($branches as $branch)

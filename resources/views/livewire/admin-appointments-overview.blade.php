@@ -83,7 +83,7 @@
                         <thead>
                             <th>Start tijd</th>
                             <th>Eind tijd</th>
-                            <th>Gebruiker</th>
+                            <th>Klant</th>
                             <th>Werknemer</th>
                             <th>Cardio</th>
                             <th>Module</th>

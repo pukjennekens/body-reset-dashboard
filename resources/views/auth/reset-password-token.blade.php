@@ -4,4 +4,8 @@
 
         @livewire('forms.reset-password-token', ['token' => $request->route('token')])
     </div>
+
+    <div class="mt-4">
+        <a href="{{ route('auth.login') }}" class="text-sm text-gray-600 hover:underline">Terug naar inloggen</a>
+    </div>
 </x-auth-layout>

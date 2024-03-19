@@ -138,6 +138,22 @@
             </div>
         @endif
 
+        @if(in_array($role, ['admin', 'manager']))
+            <div>
+                <h3 class="text-2xl font-semibold mt-12 mb-2">
+                    Meldignen
+                </h3>
+
+                {{-- notify_on_registration --}}
+                <div class="inline-flex items-center gap-2">
+                    <input type="checkbox" {{ old('form.notify_on_registration', $user ? $user->notify_on_registration : '') ? 'checked' : '' }} {{ !$editing ? 'disabled' : '' }} class="rounded-lg border border-gray-600 disabled:bg-gray-200 checked:bg-blue-600 checked:border-transparent" wire:click="toggleNotifyOnRegistration">
+                    <label for="notify_on_registration">
+                        Melding bij registratie
+                    </label>
+                </div>
+            </div>
+        @endif
+
         @if($editing)
             <div class="inline-flex items-center gap-4">
                 <x-input.button type="submit">

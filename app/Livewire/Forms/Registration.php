@@ -5,6 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Component;
 use App\Models\Branch;
 use App\Models\User;
+use App\Notifications\UserRegistered;
 
 class Registration extends Component
 {
@@ -97,6 +98,12 @@ class Registration extends Component
                 'medications_or_supplements'=> $this->medications_or_supplements,
                 'fysical_complaints'        => $this->fysical_complaints,
             ]);
+
+            // Notify all users who have the notify_on_registration flag set to true
+            $users = User::where('notify_on_registration', true)->get();
+            foreach ($users as $_user) {
+                $user->notify(new UserRegistered($user));
+            }
 
             return redirect()->away('https://bodyreset.be/super-je-dossier-werd-aangemaakt/');
         }

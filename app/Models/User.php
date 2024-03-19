@@ -49,6 +49,7 @@ class User extends Authenticatable
         'role',
 
         'credits_reminder_sent',
+        'notify_on_registration',
     ];
 
     /**

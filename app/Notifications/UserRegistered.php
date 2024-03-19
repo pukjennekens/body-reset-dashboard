@@ -2,33 +2,24 @@
 
 namespace App\Notifications;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\Models\User;
 
-class ResetPassword extends Notification
+class UserRegistered extends Notification
 {
     use Queueable;
 
-    /**
-     * @var \App\Models\User $user The user to reset the password
-     */
-    private User $user;
-
-    /**
-     * @var string $token The token to reset the password
-     */
-    private string $token;
+    public User $user;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($user, $token)
+    public function __construct(User $user)
     {
         $this->user = $user;
-        $this->token = $token;
     }
 
     /**
@@ -47,12 +38,11 @@ class ResetPassword extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject('Wachtwoord resetten')
-                    ->greeting('Hey ' . $this->user->name)
-                    ->line('Je ontvangt deze e-mail omdat we een wachtwoord reset verzoek hebben ontvangen voor je account.')
-                    ->line('Klik op de onderstaande knop om je wachtwoord te resetten.')
-                    ->line('Deze wachtwoordreset link is 6 uur geldig.')
-                    ->action('Reset wachtwoord', route('auth.reset-password.token', ['token' => $this->token]));
+            ->subject('Nieuwe registratie van een klant')
+            ->greeting('Hey,')
+            ->line('Je ontvangt deze e-mail omdat er een nieuwe klant is geregistreerd.')
+            ->line('Klik op de onderstaande knop om de klant te bekijken.')
+            ->action('Klant bekijken', route('dashboard.admin.users.show', ['id' => $this->user->id]));
     }
 
     /**

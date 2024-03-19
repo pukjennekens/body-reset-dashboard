@@ -72,6 +72,11 @@ class UserPersonalInfo extends Component
         return redirect()->route('dashboard.admin.users.show', $this->user->id);
     }
 
+    public function toggleNotifyOnRegistration() {    
+        $this->user->notify_on_registration = !$this->user->notify_on_registration;
+        $this->user->save();
+    }
+
     public function toggleEditing()
     {
         $this->editing = ! $this->editing;

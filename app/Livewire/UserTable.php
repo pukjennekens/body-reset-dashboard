@@ -50,7 +50,7 @@ final class UserTable extends PowerGridComponent
             ->addColumn('name')
             ->addColumn('email')
             ->addColumn('role', fn(User $model) => ucfirst($model->role == 'user' ? 'Klant' : $model->role))
-            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d-m-Y H:i:s'));
     }
 
     public function columns(): array
@@ -69,8 +69,7 @@ final class UserTable extends PowerGridComponent
 
             Column::make('Type', 'role'),
 
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->sortable(),
+            Column::make('Aangemaakt op', 'created_at_formatted', 'created_at'),
 
             Column::action('Acties'),
         ];
