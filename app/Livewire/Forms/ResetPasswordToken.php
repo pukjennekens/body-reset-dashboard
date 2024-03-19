@@ -38,7 +38,7 @@ class ResetPasswordToken extends Component
         if ($status == Password::PASSWORD_RESET) {
             $this->submitted = true;
         } else {
-            $this->addError('email', __($status));
+            $this->addError('email', 'Fout bij het resetten van het wachtwoord: ' . __($status));
         }
     }
 
