@@ -47,7 +47,7 @@
 @isset($actionText)
 <x-slot:subcopy>
 @lang(
-    "Als je niet op de \":actionText\" knop kunt drukken, kopieer en plak dan onderstaande URL in je browser:\n".
+    "Als u niet op de \":actionText\" knop kunt drukken, kopieer en plak dan onderstaande URL in uw browser:\n",
     [
         'actionText' => $actionText,
     ]
