@@ -22,7 +22,8 @@
 
             <div
                 x-show="mobileMenuOpen"
-                class="fixed inset-0 z-50 bg-white block md:hidden"
+                class="fixed inset-0 z-50 bg-white hidden"
+                :class="{ 'hidden': !mobileMenuOpen, 'block': mobileMenuOpen }"
                 x-on:keydown.escape.window="mobileMenuOpen = false"
                 x-transition:enter="transition ease-in-out duration-500 transform"
                 x-transition:enter-start="-translate-x-full"
