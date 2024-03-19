@@ -37,6 +37,8 @@ class ResetPasswordToken extends Component
 
         if ($status == Password::PASSWORD_RESET) {
             $this->submitted = true;
+        } else {
+            $this->addError('email', __($status));
         }
     }
 
