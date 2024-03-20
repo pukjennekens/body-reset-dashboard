@@ -40,7 +40,7 @@
                 <template x-for="(recipe, index) in recipiesMonday" :key="index">
                     <div class="flex items-center gap-4">
                         <div class="inline-flex flex-col gap-2 w-full">
-                            <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 w-full">
+                            <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class=" bg-white rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 w-full">
                                 <option value="" disabled>Selecteer een recept</option>
                                 @foreach ($recipies as $recipeId => $recipe)
                                     <option value="{{ $recipeId }}">{{ $recipe }}</option>
@@ -67,7 +67,7 @@
                 <template x-for="(recipe, index) in recipiesTuesday" :key="index">
                     <div class="flex items-center gap-4">
                         <div class="inline-flex flex-col gap-2 w-full">
-                            <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 w-full">
+                            <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 w-full bg-white">
                                 <option value="" disabled>Selecteer een recept</option>
                                 @foreach ($recipies as $recipeId => $recipe)
                                     <option value="{{ $recipeId }}">{{ $recipe }}</option>
@@ -94,7 +94,7 @@
                 <template x-for="(recipe, index) in recipiesWednesday" :key="index">
                     <div class="flex items-center gap-4">
                         <div class="inline-flex flex-col gap-2 w-full">
-                            <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 w-full">
+                            <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 bg-white w-full">
                                 <option value="" disabled>Selecteer een recept</option>
                                 @foreach ($recipies as $recipeId => $recipe)
                                     <option value="{{ $recipeId }}">{{ $recipe }}</option>
@@ -121,7 +121,7 @@
                 <template x-for="(recipe, index) in recipiesThursday" :key="index">
                     <div class="flex items-center gap-4">
                     <div class="inline-flex flex-col gap-2 w-full">
-                        <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 w-full">
+                        <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 bg-white w-full">
                         <option value="" disabled>Selecteer een recept</option>
                         @foreach ($recipies as $recipeId => $recipe)
                             <option value="{{ $recipeId }}">{{ $recipe }}</option>
@@ -148,7 +148,7 @@
                 <template x-for="(recipe, index) in recipiesFriday" :key="index">
                     <div class="flex items-center gap-4">
                     <div class="inline-flex flex-col gap-2 w-full">
-                        <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 w-full">
+                        <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 bg-white w-full">
                         <option value="" disabled>Selecteer een recept</option>
                         @foreach ($recipies as $recipeId => $recipe)
                             <option value="{{ $recipeId }}">{{ $recipe }}</option>
@@ -175,7 +175,7 @@
                 <template x-for="(recipe, index) in recipiesSaturday" :key="index">
                     <div class="flex items-center gap-4">
                     <div class="inline-flex flex-col gap-2 w-full">
-                        <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 w-full">
+                        <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 bg-white w-full">
                         <option value="" disabled>Selecteer een recept</option>
                         @foreach ($recipies as $recipeId => $recipe)
                             <option value="{{ $recipeId }}">{{ $recipe }}</option>
@@ -202,7 +202,7 @@
                 <template x-for="(recipe, index) in recipiesSunday" :key="index">
                     <div class="flex items-center gap-4">
                     <div class="inline-flex flex-col gap-2 w-full">
-                        <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 w-full">
+                        <select x-model="recipe.recipeId" placeholder="Hoeveelheid" class="rounded-lg px-4 py-1.5 border border-gray-600 disabled:bg-gray-200 bg-white w-full">
                         <option value="" disabled>Selecteer een recept</option>
                         @foreach ($recipies as $recipeId => $recipe)
                             <option value="{{ $recipeId }}">{{ $recipe }}</option>

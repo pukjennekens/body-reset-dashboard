@@ -87,7 +87,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <select class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200" wire:model.change="role" label="Rol" {{ !$editing ? 'disabled' : '' }}>
+            <select class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200 bg-white" wire:model.change="role" label="Rol" {{ !$editing ? 'disabled' : '' }}>
                 <option value="admin" {{ old('form.role', $role) == 'admin' ? 'selected' : '' }}>Admin</option>
                 <option value="manager" {{ old('form.role', $role) == 'manager' ? 'selected' : '' }}>Manager</option>
                 <option value="trainer" {{ old('form.role', $role) == 'trainer' ? 'selected' : '' }}>Trainer</option>

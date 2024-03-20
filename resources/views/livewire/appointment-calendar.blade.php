@@ -5,7 +5,7 @@
         <div>
             <label for="select-service" class="block mb-1">Selecteer een dienst</label>
             <select 
-                class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200"
+                class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200 bg-white"
                 wire:change="selectService($event.target.value)"
                 id="select-service"
             >
