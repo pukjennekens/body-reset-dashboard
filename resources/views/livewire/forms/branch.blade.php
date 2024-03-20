@@ -7,8 +7,8 @@
         <x-input.text name="form.postal_code" label="Postcode" value="{{ old('form.postal_code', $branch ? $branch->postal_code : '') }}" />
         <x-input.text name="form.city" label="Stad" value="{{ old('form.city', $branch ? $branch->city : '') }}" />
         <x-input.select name="form.country" label="Land">
-            <option value="nl" {{ old('form.country', $branch ? $branch->country : '') == 'nl' ? 'selected' : '' }}>Nederland</option>
             <option value="be" {{ old('form.country', $branch ? $branch->country : '') == 'be' ? 'selected' : '' }}>België</option>
+            <option value="nl" {{ old('form.country', $branch ? $branch->country : '') == 'nl' ? 'selected' : '' }}>Nederland</option>
         </x-input.select>
         <x-input.text name="form.province" label="Provincie" value="{{ old('form.province', $branch ? $branch->province : '') }}" />
     </div>

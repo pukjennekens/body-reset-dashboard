@@ -1,5 +1,5 @@
 <div class="space-y-2">
-    <h2 class="text-2xl font-semibold">Weet je zeker dat je dit filiaal wilt verwijderen?</h2>
+    <h2 class="text-2xl font-semibold">Weet je zeker dat je het filiaal "{{ $branch->name }}" wilt verwijderen?</h2>
 
     <p>
         Het uitvoeren van deze actie kan niet ongedaan worden gemaakt.

@@ -21,7 +21,7 @@
 
 <div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-        <select wire:model.change="selectedServiceId" class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200">
+        <select wire:model.change="selectedServiceId" class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200 bg-white">
             <option value="">Selecteer een dienst</option>
 
             @if(!empty($services))
@@ -31,7 +31,7 @@
             @endif
         </select>
 
-        <select wire:model.change="selectedBranchId" class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200">
+        <select wire:model.change="selectedBranchId" class="rounded-lg px-4 py-1.5 w-full border border-gray-600 disabled:bg-gray-200 bg-white">
             <option value="">Selecteer een filiaal</option>
 
             @if(!empty($branches))

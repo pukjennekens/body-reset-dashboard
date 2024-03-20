@@ -46,8 +46,8 @@
             @endif
 
             <x-input.select name="form.country" label="Land">
-                <option value="nl">Nederland</option>
                 <option value="be">België</option>
+                <option value="nl">Nederland</option>
             </x-input.select>
 
             @if($form->role == 'user')

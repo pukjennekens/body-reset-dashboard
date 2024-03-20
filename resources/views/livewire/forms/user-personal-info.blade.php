@@ -54,8 +54,8 @@
 
             {{-- Country --}}
             <x-input.select name="form.country" label="Land" :disabled="!$editing">
-                <option value="nl" {{ old('form.country', $user ? $user->country : '') == 'nl' ? 'selected' : '' }}>Nederland</option>
                 <option value="be" {{ old('form.country', $user ? $user->country : '') == 'be' ? 'selected' : '' }}>België</option>
+                <option value="nl" {{ old('form.country', $user ? $user->country : '') == 'nl' ? 'selected' : '' }}>Nederland</option>
             </x-input.select>
 
             @if($role == 'user')
