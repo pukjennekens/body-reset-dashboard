@@ -30,6 +30,14 @@
 
     <div class="flex justify-end gap-2">
         <button wire:click="cancel" class="rounded-lg px-4 py-1.5 border-0 bg-red-500 text-sm text-white uppercase font-semibold hover:bg-red-700">Annuleren</button>
-        <button wire:click="makeAppointment" class="rounded-lg px-4 py-1.5 border-0 bg-primary text-sm text-white uppercase font-semibold hover:bg-green-600">Afspraak maken</button>
+        <button 
+            wire:click="makeAppointment" 
+            class="rounded-lg px-4 py-1.5 border-0 bg-primary text-sm text-white uppercase font-semibold hover:bg-green-600"
+            wire:loading.attr="disabled"
+            wire:target="makeAppointment"
+        >
+            <span>Afspraak maken</span>
+            <span wire:loading wire:target="makeAppointment" class="ml-2"><i class="fas fa-spinner fa-spin"></i></span>
+        </button>
     </div>
 </div>
