@@ -26,6 +26,7 @@
                     type="button"
                     class="bg-primary font-bold text-white py-1.5 px-4 hover:bg-green-600 rounded-l-lg cursor-pointer"
                     wire:click="previousWeek"
+                    wire:loading.attr="disabled"
                 >
                     <i class="fa-solid fa-caret-left" wire:loading.remove wire:target="previousWeek"></i>
                     <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="previousWeek"></i>
@@ -35,6 +36,7 @@
                     type="button" 
                     class="bg-primary font-bold text-white py-1.5 px-4 hover:bg-green-600 w-full sm:w-auto cursor-pointer"
                     wire:click="today"
+                    wire:loading.attr="disabled"
                 >
                     <span wire:loading.remove wire:target="today">Vandaag</span>
                     <span wire:loading wire:target="today">Laden...</span>
@@ -44,6 +46,7 @@
                     type="button"
                     class="bg-primary font-bold text-white py-1.5 px-4 hover:bg-green-600 rounded-r-lg cursor-pointer"
                     wire:click="nextWeek"
+                    wire:loading.attr="disabled"
                 >
                     <i class="fa-solid fa-caret-right" wire:loading.remove wire:target="nextWeek"></i>
                     <i class="fa-solid fa-spinner fa-spin" wire:loading wire:target="nextWeek"></i>
