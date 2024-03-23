@@ -15,6 +15,7 @@ class Service extends Model
         'appointment_duration_minutes',
         'appointment_overlap_minutes',
         'price',
+        'hidden',
     ];
 
     protected $casts = [

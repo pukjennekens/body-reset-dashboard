@@ -32,7 +32,7 @@ final class ServiceTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return Service::query();
+        return Service::query()->where('hidden', false);
     }
 
     public function addColumns(): PowerGridColumns

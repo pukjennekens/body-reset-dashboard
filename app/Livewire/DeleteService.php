@@ -21,7 +21,10 @@ class DeleteService extends ModalComponent
 
     public function deleteService()
     {
-        $this->service->delete();
+        $this->service->update([
+            'hidden' => 1,
+        ]);
+        
         $this->dispatch('service-deleted');
         $this->closeModal();
     }

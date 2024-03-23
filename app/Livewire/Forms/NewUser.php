@@ -17,7 +17,7 @@ class NewUser extends ModalComponent
     public function mount()
     {
         $this->branches = Branch::all();
-        $this->trainers = User::where('role', 'trainer')->get();
+        $this->trainers = User::whereIn('role', ['trainer', 'manager', 'admin'])->get();
     }
 
     public function createUser()

@@ -25,8 +25,14 @@ class NutritionPlan extends ModalComponent
 
     public $recipies = [];
 
-    public function mount($id = null)
+    public $userId = null;
+
+    public function mount($id = null, $userId = null)
     {
+        if(!$id && !$userId) {
+            throw new \Exception('You must provide either an id or a userId');
+        }
+
         $this->nutritionPlan = NutritionPlanModel::find($id) ?? new NutritionPlanModel();
 
         $this->recipies_monday    = $this->nutritionPlan->recipies_monday    ?: [];
@@ -41,6 +47,8 @@ class NutritionPlan extends ModalComponent
         foreach ($recipies as $recipe) {
             $this->recipies[$recipe->id] = '[' . $recipe->meal_type . ']' . ' ' . $recipe->name;
         }
+
+        $this->userId = $userId;
     }
 
     public function createNutritionPlan()
@@ -59,7 +67,7 @@ class NutritionPlan extends ModalComponent
                     'recipies_saturday'  => $this->recipies_saturday,
                     'recipies_sunday'    => $this->recipies_sunday,
                     'creator_user_id'    => auth()->user()->id,
-                    'user_id'            => auth()->user()->id,
+                    'user_id'            => $this->userId,
                 ]
             ));
         } else {
@@ -74,7 +82,7 @@ class NutritionPlan extends ModalComponent
                     'recipies_saturday'  => $this->recipies_saturday,
                     'recipies_sunday'    => $this->recipies_sunday,
                     'creator_user_id'    => auth()->user()->id,
-                    'user_id'            => auth()->user()->id,
+                    'user_id'            => $this->userId,
                 ]
             ));
         }
