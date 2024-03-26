@@ -5,9 +5,6 @@ namespace App\Livewire\Forms;
 use LivewireUI\Modal\ModalComponent;
 use App\Models\NutritionPlan as NutritionPlanModel;
 use App\Models\Recipe;
-use Illuminate\Support\Facades\Log;
-
-use function Ramsey\Uuid\v1;
 
 class NutritionPlan extends ModalComponent
 {
@@ -87,7 +84,7 @@ class NutritionPlan extends ModalComponent
             ));
         }
 
-        $this->dispatch('nutrition-plan-created', userId: auth()->user()->id);
+        $this->dispatch('nutrition-plan-created', userId: $this->userId);
         $this->closeModal();
     }
 

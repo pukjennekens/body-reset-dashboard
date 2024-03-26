@@ -17,7 +17,7 @@ class BranchServices extends Component
     {
         $this->branch      = Branch::findOrFail($branchId);
         $this->services    = $this->branch->services->pluck('id')->toArray();
-        $this->allServices = Service::all();
+        $this->allServices = Service::where('hidden', false)->get();
     }
 
     public function saveBranchServices()

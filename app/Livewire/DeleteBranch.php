@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Branch;
+use App\Models\BranchService;
 use LivewireUI\Modal\ModalComponent;
 
 class DeleteBranch extends ModalComponent
@@ -24,6 +25,8 @@ class DeleteBranch extends ModalComponent
         $this->branch->update([
             'hidden' => 1,
         ]);
+
+        $this->branch->services()->detach();
 
         $this->dispatch('branch-deleted');
         $this->closeModal();

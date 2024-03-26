@@ -11,9 +11,10 @@ class UserNutritionPlansTable extends Component
     public User $user;
     public $nutritionPlans = [];
 
-    public function mount($userId)
+    public function mount($userId = null)
     {
-        $this->user = User::find($userId) ?? new User();
+        $this->user = User::find($userId);
+        if(!$this->user) return;
         $this->nutritionPlans = $this->user->nutritionPlans->sortBy('date');
     }
 

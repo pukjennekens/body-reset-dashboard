@@ -16,10 +16,10 @@
     }
 @endphp
 
-<div class="px-6 py-4 border border-gray-400 rounded-lg mb-4">
+<div class="px-6 py-4 border border-gray-400 rounded-lg mb-4 whitespace-nowrap overflow-x-auto">
     <h3 class="text-xl font-semibold mb-4">{{ $branchService->service->name }}</h3>
 
-    <table class="table-fixed">
+    <table class="table-auto">
         <thead>
             <tr>
                 <th>Dag</th>
@@ -74,7 +74,7 @@
     <div 
         x-data="{ holidays: @entangle('opening_hours_holiday') }"
     >
-        <table class="table-fixed mt-4">
+        <table class="table-auto mt-4">
             <thead>
                 <tr>
                     <th>Datum</th>
