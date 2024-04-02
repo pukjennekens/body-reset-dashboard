@@ -50,6 +50,7 @@ class User extends Authenticatable
 
         'credits_reminder_sent',
         'notify_on_registration',
+        'one_day_credits_reminder_sent',
     ];
 
     /**

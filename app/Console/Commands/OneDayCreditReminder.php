@@ -3,16 +3,15 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
 
-class CreditReminder extends Command
+class OneDayCreditReminder extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:credit-reminder';
+    protected $signature = 'app:one-day-credit-reminder';
 
     /**
      * The console command description.
@@ -26,13 +25,13 @@ class CreditReminder extends Command
      */
     public function handle()
     {
-        $users = \App\Models\User::where('credits_reminder_sent', false)
-            ->where('credits_expiration_date', '>', now()->addDays(14))
-            ->where('credits_expiration_date', '<', now()->addDays(15))
+        $users = \App\Models\User::where('one_day_credits_reminder_sent', false)
+            ->where('credits_expiration_date', '>', now()->addDays(1))
+            ->where('credits_expiration_date', '<', now()->addDays(2))
             ->get();
 
         foreach ($users as $user) {
-            $user->notify(new \App\Notifications\CreditsReminder($user));
+            $user->notify(new \App\Notifications\OneDayCreditReminder($user));
             $user->update([
                 'credits_reminder_sent' => true,
             ]);

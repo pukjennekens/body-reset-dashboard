@@ -22,7 +22,7 @@ class UserPersonalInfo extends Component
     {
         $this->user     = User::find($id) ?? new User();
         $this->trainers = User::whereIn('role', ['admin', 'manager', 'trainer'])->get();
-        $this->branches = Branch::all();
+        $this->branches = Branch::notHidden()->get();
         $this->role     = $this->user->role ?? 'user';
     }
 

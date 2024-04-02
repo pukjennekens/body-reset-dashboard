@@ -49,4 +49,15 @@ class Branch extends Model
     {
         return $this->hasMany(Appointment::class);
     }
+
+    /**
+     * Scope a query to only include non-hidden branches.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeNotHidden($query)
+    {
+        return $query->where('hidden', false);
+    }
 }

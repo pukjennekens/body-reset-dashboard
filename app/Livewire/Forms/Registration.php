@@ -32,7 +32,7 @@ class Registration extends Component
 
     public function mount()
     {
-        $this->branches = Branch::all();
+        $this->branches = Branch::notHidden()->get();
     }
 
     protected function rules()
