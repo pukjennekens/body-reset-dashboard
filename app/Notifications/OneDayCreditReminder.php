@@ -43,7 +43,7 @@ class OneDayCreditReminder extends Notification
                     ->subject('Herinnering voor je credits bij BodyReset')
                     ->greeting('Beste ' . $this->user->name)
                     ->line('Dit bericht dient als herinnering voor je credits bij BodyReset.')
-                    ->line('Je credits vervellen binnen 1 dag.')
+                    ->line('Je credits vervallen binnen 1 dag.')
                     ->line('Zorg ervoor dat je je credits op tijd gebruikt.')
                     ->action('Maak online een afspraak', route('dashboard.user.appointments'));
     }
