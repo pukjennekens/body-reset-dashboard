@@ -33,7 +33,7 @@ class OneDayCreditReminder extends Command
         foreach ($users as $user) {
             $user->notify(new \App\Notifications\OneDayCreditReminder($user));
             $user->update([
-                'credits_reminder_sent' => true,
+                'one_day_credits_reminder_sent' => true,
             ]);
         }
 
