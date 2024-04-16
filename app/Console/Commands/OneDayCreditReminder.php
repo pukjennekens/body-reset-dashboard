@@ -26,8 +26,8 @@ class OneDayCreditReminder extends Command
     public function handle()
     {
         $users = \App\Models\User::where('one_day_credits_reminder_sent', false)
-            ->where('credits_expiration_date', '>=', now()->addDays(1))
-            ->where('credits_expiration_date', '<', now()->addDays(2))
+            ->where('credits_expiration_date', '>=', now())
+            ->where('credits_expiration_date', '<', now()->addDays(1))
             ->get();
 
         foreach ($users as $user) {
