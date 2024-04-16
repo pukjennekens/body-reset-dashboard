@@ -88,6 +88,7 @@ class Registration extends Component
                 'country'      => $this->country,
                 'password'     => bcrypt(rand(100000, 999999)),
                 'branch_id'    => $this->branch_id,
+                'trainer_user_id' => 775, // <-- User ID to Tom Ector
             ]);
 
             $user->save();
