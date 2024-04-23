@@ -86,10 +86,12 @@ class AppointmentCalendar extends Component
                     $toDateTime      = $day->copy()->setTimeFromTimeString($time['to']);
                     $maxAppointments = intval( $openingHours['max_participants_per_slot'] ?? 1 );
 
-                    $appointments = $this->branch->appointments()->between(
-                        $fromDateTime->format('Y-m-d H:i:s'),
-                        $toDateTime->format('Y-m-d H:i:s')
-                    )->get();
+                    $appointments = $this->branch->appointments()
+                        ->where('service_id', $this->service->id)
+                        ->between(
+                            $fromDateTime->format('Y-m-d H:i:s'),
+                            $toDateTime->format('Y-m-d H:i:s')
+                        )->get();
 
                     $slots = $from->diffInMinutes($to) / $actualServiceDuration;
 
