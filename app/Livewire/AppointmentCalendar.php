@@ -60,6 +60,10 @@ class AppointmentCalendar extends Component
             $openingHours           = $this->getBranchServiceOpeningHours($this->branch, $this->service, $day);
             $holidayHours           = $this->getBranchServiceOpeningHours($this->branch, $this->service, 'holiday');
 
+            $creditsExpired = false;
+
+            if($this->user->credits_expiration_date && $this->user->credits_expiration_date->lt($day)) $creditsExpired = true;
+
             if($holidayHours) {
                 foreach($holidayHours as $holiday) {
                     $holidayDate = \Carbon\Carbon::parse($holiday['date'])->format('d-m-Y');
@@ -126,10 +130,11 @@ class AppointmentCalendar extends Component
                                 'date'                 => $day->format('d-m-Y'),
                                 'from'                 => $slotFrom->format('H:i'),
                                 'to'                   => $slotTo->format('H:i'),
-                                'available'            => $available,
+                                'available'            => $creditsExpired == true ? false : $available,
                                 'maxAppointments'      => $maxAppointments,
                                 'numberOfAppointments' => $numberOfAppointments,
                                 'bookedByUser'         => $bookedByUser,
+                                'creditsExpired'       => $creditsExpired,
                             ];
                         }
                     }

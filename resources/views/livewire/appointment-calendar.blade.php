@@ -74,6 +74,11 @@
                 <div class="w-5 h-5 rounded-md bg-red-500"></div>
                 <span class="ml-2">Niet beschikbaar</span>
             </div>
+
+            <div class="inline-flex items-center">
+                <div class="w-5 h-5 rounded-md bg-red-200"></div>
+                <span class="ml-2">Credits vervallen</span>
+            </div>
         </div>
 
         <div class="mb-4">
@@ -93,7 +98,7 @@
                             @foreach($slots[$day->format('d-m-Y')] as $slot)
                                 <button 
                                     type="button"
-                                    class="w-full font-semibold text-center py-2 rounded-md cursor-pointer inline-block {{ $slot['available'] ? ( $slot['maxAppointments'] > 1 ? ($slot['maxAppointments'] - $slot['numberOfAppointments'] == 1 ? 'bg-yellow-400 text-white hover:bg-yellow-500' : 'bg-primary text-white hover:bg-green-600') : 'bg-primary text-white hover:bg-green-600' ) : ($slot['bookedByUser'] ? 'bg-blue-400 text-white cursor-not-allowed' : 'bg-red-500 text-white cursor-not-allowed') }}"
+                                    class="w-full font-semibold text-center py-2 rounded-md cursor-pointer inline-block {{ $slot['creditsExpired'] ? 'bg-red-200 cursor-not-allowed' : ($slot['available'] ? ( $slot['maxAppointments'] > 1 ? ($slot['maxAppointments'] - $slot['numberOfAppointments'] == 1 ? 'bg-yellow-400 text-white hover:bg-yellow-500' : 'bg-primary text-white hover:bg-green-600') : 'bg-primary text-white hover:bg-green-600' ) : ($slot['bookedByUser'] ? 'bg-blue-400 text-white cursor-not-allowed' : 'bg-red-500 text-white cursor-not-allowed')) }}"
                                     @if($slot['available'])
                                         wire:click="$dispatch('openModal', {component: 'make-appointment', arguments: {date: '{{ $slot['date'] }}', from: '{{ $slot['from'] }}', to: '{{ $slot['to'] }}', serviceId: {{ $this->service->id }}, branchId: {{ $this->branch->id }}, userId: {{ $this->user->id }}}})"
                                     @endif

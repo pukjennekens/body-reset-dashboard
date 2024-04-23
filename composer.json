@@ -16,6 +16,7 @@
         "livewire/livewire": "^3.1",
         "mollie/laravel-mollie": "^2.25",
         "power-components/livewire-powergrid": "^5.1",
+        "spatie/icalendar-generator": "^2.6",
         "wire-elements/modal": "^2.0"
     },
     "require-dev": {

@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use DateTimeZone;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
+use Spatie\IcalendarGenerator\Components\Calendar;
+use Spatie\IcalendarGenerator\Components\Event;
 
 class Appointment extends Model
 {
@@ -58,23 +62,26 @@ class Appointment extends Model
 
     public function getIcsCalendarInvite()
     {
-        $start = $this->start->format('Ymd\THis\Z');
-        $end   = $this->end->format('Ymd\THis\Z');
+        $timezone = new DateTimeZone('Europe/Amsterdam');
+        $start = clone $this->start;
+        $start->setTimezone($timezone);
+        $end = clone $this->end;
+        $end->setTimezone($timezone);
 
-        $start = date('Ymd\THis\Z', strtotime($start . ' -1 hour'));
-        $end   = date('Ymd\THis\Z', strtotime($end . ' -1 hour'));
+        $startFormatted = $start->format('Ymd\THis\Z');
+        $endFormatted = $end->format('Ymd\THis\Z');
 
-        return
-'BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-CLASS:PUBLIC
-DESCRIPTION:Je hebt een afspraak gemaakt voor ' . $this->service->name . ' op ' . $this->start->format('d-m-Y H:i') . '. Deze afspraak duurt ' . $this->service->appointment_duration_minutes . ' minuten.
-DTSTART:' . $start . '
-DTEND:' . $end . '
-LOCATION:' . $this->branch->name . '
-SUMMARY:Afspraak bij ' . $this->branch->name . ' voor ' . $this->service->name . '
-END:VEVENT
-END:VCALENDAR';
+        Log::debug('Start: ' . $startFormatted);
+        Log::debug('End: ' . $endFormatted);
+
+        $ical = Calendar::create('Afspraak bij ' . $this->branch->name . ' voor ' . $this->service->name)
+            ->event(Event::create($this->service->name)
+                ->startsAt($start)
+                ->endsAt($end)
+                ->description('Je hebt een afspraak gemaakt voor ' . $this->service->name . ' op ' . $this->start->format('d-m-Y H:i') . '. Deze afspraak duurt ' . $this->service->appointment_duration_minutes . ' minuten.')
+                ->addressName($this->branch->name)
+            );
+
+        return $ical->get();
     }
 }
