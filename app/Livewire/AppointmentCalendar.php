@@ -63,7 +63,7 @@ class AppointmentCalendar extends Component
             $creditsExpired = false;
 
             // If credits expiration date is $day or later than $day, set creditsExpired to true
-            if($this->user->credits_expiration_date && $this->user->credits_expiration_date->gte($day)) $creditsExpired = true;
+            if($this->user->credits_expiration_date && $this->user->credits_expiration_date->lte($day)) $creditsExpired = true;
 
             if($holidayHours) {
                 foreach($holidayHours as $holiday) {
