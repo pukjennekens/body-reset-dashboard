@@ -29,8 +29,8 @@ class MontlySummary extends Command
      */
     public function handle()
     {
-        $prevMonthStart = now()->subMonth()->subMonth()->startOfMonth();
-        $prevMonthEnd   = now()->subMonth()->subMonth()->endOfMonth();
+        $prevMonthStart = now()->subMonth()->startOfMonth();
+        $prevMonthEnd   = now()->subMonth()->endOfMonth();
 
         $appointments = Appointment::whereBetween('start', [$prevMonthStart, $prevMonthEnd])
             ->whereNotNull('trainer_id')
