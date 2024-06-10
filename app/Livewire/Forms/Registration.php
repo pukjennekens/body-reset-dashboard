@@ -103,7 +103,7 @@ class Registration extends Component
             // Notify all users who have the notify_on_registration flag set to true
             $users = User::where('notify_on_registration', true)->get();
             foreach ($users as $_user) {
-                $user->notify(new UserRegistered($user));
+                $_user->notify(new UserRegistered($user));
             }
 
             return redirect()->away('https://bodyreset.be/super-je-dossier-werd-aangemaakt/');
