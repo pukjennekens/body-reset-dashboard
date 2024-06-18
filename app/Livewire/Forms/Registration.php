@@ -100,10 +100,10 @@ class Registration extends Component
                 'fysical_complaints'        => $this->fysical_complaints,
             ]);
 
-            // Notify all users who have the notify_on_registration flag set to true
-            $users = User::where('notify_on_registration', true)->get();
-            foreach ($users as $_user) {
-                $_user->notify(new UserRegistered($user));
+            // Get all admin users where notify_on_registration is true
+            $notifyUsers = User::where('notify_on_registration', true)->where('role', 'admin')->get();
+            foreach($notifyUsers as $notifyUser) {
+                $notifyUser->notify(new UserRegistered($user));
             }
 
             return redirect()->away('https://bodyreset.be/super-je-dossier-werd-aangemaakt/');
