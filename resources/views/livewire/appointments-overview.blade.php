@@ -24,7 +24,7 @@
                             <td class="whitespace-nowrap">{{ $appointment->service->name }}</td>
                             <td class="whitespace-nowrap">{{ $appointment->service->price }} {{ $appointment->service->price == 1 ? 'credit' : 'credits' }}</td>
                             <td class="whitespace-nowrap">
-                                @if($appointment->start->diffInHours(now()) > 24)
+                                @if($appointment->start->diffInHours(now()) >= 24)
                                     <button 
                                         type="button"
                                         class="rounded-lg px-4 py-1.5 border-0 bg-red-500 text-sm text-white uppercase font-semibold hover:bg-red-700 inline-flex items-center justify-center"
