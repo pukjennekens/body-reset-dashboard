@@ -82,7 +82,7 @@ class AppointmentCalendar extends Component
                     $from = $day->copy()->setTimeFromTimeString($time['from']);
                     $to   = $day->copy()->setTimeFromTimeString($time['to']);
 
-                    $fromDateTime    = $day->copy()->setTimeFromTimeString($time['from']);
+                    $fromDateTime    = $day->copy()->setTimeFromTimeString($time['from'], );
                     $toDateTime      = $day->copy()->setTimeFromTimeString($time['to']);
                     $maxAppointments = intval( $openingHours['max_participants_per_slot'] ?? 1 );
 
@@ -98,6 +98,7 @@ class AppointmentCalendar extends Component
                     for($i = 0; $i < $slots; $i++) {
                         $available = true;
 
+                        // Ignore timezones for slotFrom and slotTo
                         $slotFrom             = $from->copy()->addMinutes($i * $actualServiceDuration);
                         $slotTo               = $slotFrom->copy()->addMinutes($serviceDuration);
                         $numberOfAppointments = 0;
@@ -107,11 +108,13 @@ class AppointmentCalendar extends Component
                             $available = false;
                         } else {
                             foreach($appointments as $appointment) {
-                                $appointmentFrom = $appointment->start;
-                                $appointmentTo   = $appointment->end;
+                                // Only get the time, not the date from the appointmentFrom and appointmentTo
+                                $appointmentFrom = $appointment->start->toTimeString();
+                                $appointmentTo   = $appointment->end->toTimeString();
     
                                 if(
-                                    $slotFrom == $appointmentFrom && $slotTo == $appointmentTo
+                                    $slotFrom->toTimeString() >= $appointmentFrom &&
+                                    $slotTo->toTimeString() <= $appointmentTo
                                 ) {
                                     $numberOfAppointments++;
 
